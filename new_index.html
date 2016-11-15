@@ -13,38 +13,27 @@ and open the template in the editor.
         <meta description='This is my personal website.'>
         <title>Ricky Kennedy</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="public/css/bootstrap.css" rel="stylesheet">
+        <link href="public/css/style.css" rel="stylesheet">
     </head>
     <body>
-        <script type="text/javascript" src="jquery-1.12.0.min.js.css"></script>
+        <script type="text/javascript" src="public/js/jquery.js"></script>
+        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
         <style type="text/css">
-            body{
+            /*body{
                 position:relative;
                 width:100%;
                 height:100%;
                 background-color:#e3e3e3;
                 margin: 0px;
             }
-            .header{
-                text-align:center;
-            }
-            .share-button{
-                position:relative;
-                padding:0px 8px 0px 8px;
-            }
-            .share-button img{
-                width:250px;
-                display: block;
-                vertical-align: middle;
-                margin: auto;
-                border-radius: 5px;
-            }
+            
             .container{
                 border-radius: 15px;
-                /*background-color:cornflowerblue;*/
                 background-color:#ffffff;
                 position:relative;
-                margin:0px 8px 45px 8px;
-                padding:0px 8px 8px 8px;
+                margin:0px 0px 0px 0px;
+                padding:0px 0px 0px 0px;
             }
             .container-left{
 
@@ -72,26 +61,68 @@ and open the template in the editor.
             .user_details p{
                 display:inline-block;
                 margin-left:10px;
-            }
-            #footer {
-                  position: fixed;
-                  z-index: 10;
-                  left: 0;
-                  right: 0;
-                  bottom: 0;
-                  height: 40px;
-                /*background: #2e2c2a;*/
-                background: grey;
-                text-align: center;
-            }
+            }*/
+            
+            .header-background{
+                width:100%;
+                min-height:600px;
 
+                /*min-height: 100%;*/
+                 /* Set up proportionate scaling */
+                  /*width: 100%;*/
+                  /*height: auto;*/
+                    
+                  /* Set up positioning */
+                  /*position: fixed;
+                  top: 0;
+                  left: 0;*/
+
+                /*background: url(img/image_11.jpeg) no-repeat center; */
+                /* fallback */
+                background: url(img/image_11.jpeg) no-repeat center center fixed; 
+                /* W3C */
+
+                /*background-image: linear-gradient(#eb01a5, transparent), url("img/image_11.jpeg") no-repeat center center fixed ; */
+                /*FF 3.6+*/
+                /*background: url('img/image_11.jpeg') center center no-repeat, -moz-linear-gradient(top, #e3e3e3, transparent); */
+                /*Safari 4+, Chrome 2+*/
+                /*background: url('img/image_11.jpeg') center center no-repeat, -webkit-gradient(linear, 0 0, 0 100%, from(#e3e3e3), to(transparent));*/
+                /* Safari 5.1+, Chrome 10+*/
+                /*background: url('img/image_11.jpeg') center center no-repeat, -webkit-linear-gradient(top, #e3e3e3, transparent);*/
+                /*Opera 11.10*/
+                /*background: url('img/image_11.jpeg') center center no-repeat, -o-linear-gradient(top, #e3e3e3, transparent);*/
+                /*Standard, IE10*/
+                /*background: url('img/image_11.jpeg') center center no-repeat, linear-gradient(to bottom, #e3e3e3, transparent);*/
+                /*background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;*/
+                  -webkit-background-size: cover;
+                  -moz-background-size: cover;
+                  -o-background-size: cover;
+                  background-size: cover;
+                  /*-webkit-animation: play .8s steps(10) infinite;
+                   -moz-animation: play .8s steps(10) infinite;
+                    -ms-animation: play .8s steps(10) infinite;
+                     -o-animation: play .8s steps(10) infinite;
+                        animation: play .8s steps(10) infinite;*/
+            }
+            .marquee{
+                overflow: hidden;
+                     -webkit-animation: marquee 50s linear infinite;
+                }
+
+                @keyframes marquee {
+                0%   { left:0 }
+                100% { left:100% }
+                }
         </style>
-        <div class='header'>
-            <h1>Ricky Kennedy</h1>
-            <h2>Programming is an art</h2>
-        </div>
-        <div class="share-button">
-            <img src="img/programmer.jpg" alt="programmer.jpg">
+        <div class="header-background" class="marquee">
+            <div id="mask-overlay"></div>
+            <div class='header'>
+                <h1>Ricky Kennedy</h1>
+                <h2>Programming is an art</h2>
+            </div>
         </div>
         <div class='container'>
             <div class='profile_picture'>
@@ -112,11 +143,14 @@ and open the template in the editor.
                     <p>
                         <ul>
                             <li>I am a computer science student major in Digital Systems Security</li>
-                            <li>I have an experience in web development for 2 years</li>
+                            <li>I have an experience in web development for 3 years</li>
                             <li>I love and enjoy coding</li>
-                            <li>I play dota2 during my leisure time</li>
+                            <!-- <li>I play dota2 during my leisure time</li> -->
                             <li>For the past two years, I have been playing with java and c++</li>
-                            <li>Currently learning node</li>
+                            <li>I have done a little bit of python for my final year project in Republic Polytechnic</li>
+                            <li>I have played around with node to create RESTful API as a backend</li>
+                            <li>Currently learning mobile app development using Appcelerator</li>
+                            <li>I am intending to learn ionic in the near future</li>
                         </ul>
                     </p>
                     <!-- <p>I am a computer science student major in Digital Systems Security. I have an experience in web development for 2 years. I love and enjoy coding. I play dota2 during my leisure time.</p> -->
@@ -130,12 +164,13 @@ and open the template in the editor.
                 </div>
                 </div>
                 <div>
+                    <label>Pages:</label>
                     <a href="mysql.html">Mysql</a> | 
                     <a href="nodejs.html">Node JS</a> 
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div id="container-last" class="container">
             <div class="container-left">
                 <h1>Contact Info</h1>
                 <ul>
@@ -155,7 +190,7 @@ and open the template in the editor.
         </div>
         <div id="footer">
             <div class="left">
-                <p>© 2015 Ricky Kennedy. All Rights Reserved.</p>
+                <p>© 2016 Ricky Kennedy. All Rights Reserved.</p>
             </div>
             <a id="top" href="#" style="display: none; opacity: 0;">Top</a>
             <div class="right"></div>

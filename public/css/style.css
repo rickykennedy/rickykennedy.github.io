@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+.header{
+                text-align:center;
+            }
+            .profile_picture img {
+                width: 100px;
+                margin: 5px 5px 0px 0px;
+                display: inline;
+                border-radius: 5px;
+            }
+#mask-overlay{
+      position: absolute;
+   top: 0;
+   left: 0;
+    max-height:620px;
+   width: 100%;
+   height: 100%;
+   /*background-color: black;*/
+   background-color: #DCDCDC;
+   opacity: 0.6;
+   overflow: hidden;
+}
+
+#container-last{
+    padding-bottom: 50px;
+}
+
+
+            #footer {
+                  position: fixed;
+                  z-index: 10;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  height: 40px;
+                background: #DCDCDC;
+                text-align: center;
+            }
+            #footer p{
+                margin: 10px 0;
+            }
