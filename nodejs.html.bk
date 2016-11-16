@@ -1,0 +1,131 @@
+<!-- nodejs.php -->
+<!-- This page is about how to install express on terminal -->
+
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name='Ricky Kennedy'>
+        <meta title="Ricky's Resume">
+        <meta description='This is my personal website.'>
+        <title>Ricky Kennedy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <style type="text/css">
+            body{
+                position:relative;
+                width:100%;
+                height:100%;
+                background-color:#cccccc;
+                margin: 0px;
+            }
+            .header{
+                text-align:center;
+            }
+            .share-button{
+                position:relative;
+                padding:0px 8px 0px 8px;
+            }
+            .share-button img{
+                width:250px;
+                display: block;
+                vertical-align: middle;
+                margin: auto;
+                border-radius: 5px;
+            }
+            .container{
+                border-radius: 15px;
+                background-color:cornflowerblue;
+                position:relative;
+                margin:0px 8px 45px 8px;
+                padding:0px 8px 8px 8px;
+            }
+            .profile_picture{
+                padding:8px 0px 0px 15px;
+                display:inline-block;
+            }
+            .profile_picture img {
+                width: 100px;
+                margin: 5px 5px 0px 0px;
+                display: inline;
+                border-radius: 5px;
+            }
+            .user_details{
+                display:inline-block;
+                vertical-align: top;
+            }
+            .user_details div{
+                width:auto;
+            }
+            .user_details p{
+                display:inline-block;
+                margin-left:10px;
+            }
+            #footer {
+                  position: fixed;
+                  z-index: 10;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  height: 40px;
+                background: #2e2c2a;
+                text-align: center;
+            }
+        </style>
+        <div class='header'>
+            <h1>Ricky Kennedy</h1>
+            <h2>Node.js</h2>
+        </div>
+        <div class='container'>
+            <div class='row-content'>
+                <div>How to install express from command line</div>
+                <div>
+                    <ul>
+                        <li>To install express, type the command "<em>sudo npm install express</em>"</li>
+                        <li>To install express globally, type the command "<em>sudo npm install -g express</em>"</li>
+                        <li>
+                            <div>If you see an issue with security vulnerability in Express</div>
+                            <div>To install express, type the command "<em>sudo npm install -g express-generator@4</em>"</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class='row-content'>
+                <div><How to stop node.js gracefully</div>
+                <p>It is as simple as pressing ctrl + c</p>
+            </div>
+
+            <div class='row-content'>
+                <p>To check npm version, type <em>npm --version</em></p>
+                <p>expected outcome: <em>2.14.4</em></p>
+            </div>
+            <div class='row-content'>
+                <p>To update npm, type <em>sudo npm install npm -g</em></p>
+                <p>outcome should be <em>/usr/local/bin/npm -> /usr/local/lib/node_modules/npm/bin/npm-cli.js
+npm@3.7.5 /usr/local/lib/node_modules/npm</em></p>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="left">
+                <p>© 2015 Ricky Kennedy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+

@@ -1,0 +1,66 @@
+<!-- mysql.php -->
+<!-- This page is about how to reset mysql root password -->
+
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name='Ricky Kennedy'>
+        <meta title="Ricky's Resume">
+        <meta description='This is my personal website.'>
+        <title>Ricky Kennedy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="public/css/bootstrap.css" rel="stylesheet">
+        <link href="public/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <style type="text/css">
+        </style>
+        <div class='container'>
+            <div class="view-form">
+
+                <div class='header'>
+                    <h1>Ricky Kennedy</h1>
+                    <h2 class="highlight">MySql</h2>
+                </div>
+                <div>Steps to reset root password on Macbook</div>
+                <div>
+                    <ul>
+                        <li ><span class="circle"></span><span>Stop the mysqld server, with the command "<em>sudo /usr/local/mysql/support-files/mysql.server stop</em>"</span></li>
+                        <li>Run the server in safe mode with privilege bypass, with the command "<em>sudo mysqld_safe --skip-grant-tables</em>"</li>
+                        <li>In a new window connect to the database, with the command "<em>mysql -u root</em>"</li>
+                        <li>set a new password, with the command "<em>UPDATE mysql.user SET Password=PASSWORD('password') WHERE User='root';</em>"</li>
+                        <li>flush the permissions, with the command "<em>FLUSH PRIVILEGES;</em>"</li>
+                        <li>to quit, with the command "<em>\q</em>"</li>
+                        <li>Stop the safe mode server by pressing "<em>control + z</em>"</li>
+                        <li>start your regular server back, with the command "<em>sudo /usr/local/mysql/support-files/mysql.server start</em>"</li>
+                        <li>The new password should work now</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="left">
+                <p>© 2016 Ricky Kennedy. All Rights Reserved.</p>
+            </div>
+            <a id="top" href="#" style="display: none; opacity: 0;">Top</a>
+            <div class="right"></div>
+        </div>
+    </body>
+</html>
+
+
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+

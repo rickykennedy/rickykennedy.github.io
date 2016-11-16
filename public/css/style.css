@@ -1,5 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
+.background{
+  background-color: #DCDCDC;
+  background-clip: border-box,border-box,padding-box;
+}
 .header{
     text-align:center;
 }
@@ -8,6 +12,21 @@
     margin: 5px 5px 0px 0px;
     display: inline;
     border-radius: 5px;
+}
+.header-background .header{
+  padding-top: 15px;
+  z-index: 10;
+  position: relative;
+}
+.header .highlight{
+  text-decoration: underline;
+  font-style: italic;
+  /*border-bottom: 1px solid #000000;*/
+}
+.view-form{
+  margin-top: 15px;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
 }
 .header-background{
     width:100%;
@@ -57,6 +76,22 @@
     overflow: hidden;
     -webkit-animation: marquee 50s linear infinite;
 }
+.circle {
+  content: ' \25CF';
+  width: 100px;
+  height: 100px;
+  background: #29ABE2;
+  /*color:#4D4D4D;
+  color:#CCCCCC;
+  color: #CBF914;
+  color: #0D71BA;
+  color: #29ABE2;
+  color: #1274f2;
+  color: #C1272D;*/
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+}
 
 @keyframes marquee {
     0%   { left:0 }
@@ -71,7 +106,7 @@
     height: 100%;
     /*background-color: black;*/
     background-color: #DCDCDC;
-    opacity: 0.6;
+    opacity: 0.5;
     overflow: hidden;
 }
 
@@ -96,8 +131,12 @@
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 568px) { 
     /* STYLES GO HERE */
-
-.header-background{
+  .header-background .header{
+    padding-top: 10px;
+      z-index: 10;
+      position: relative;
+  }
+  .header-background{
     width:100%;
     min-height:600px;
 
@@ -122,19 +161,19 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
-    #mask-overlay{
-        position: absolute;
-        top: 0;
-        left: 0;
-        max-height:620px;
-        width: 100%;
-        height: 150%;
-        /*background-color: black;*/
-        background-color: #DCDCDC;
-        opacity: 0.6;
-        overflow: hidden;
-    }
+  }
+  #mask-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height:620px;
+    width: 100%;
+    height: 150%;
+    /*background-color: black;*/
+    background-color: #DCDCDC;
+    opacity: 0.5;
+    overflow: hidden;
+  }
 }
 
 
