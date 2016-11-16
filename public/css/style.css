@@ -1,25 +1,78 @@
 @charset "utf-8";
 /* CSS Document */
 .header{
-                text-align:center;
-            }
-            .profile_picture img {
-                width: 100px;
-                margin: 5px 5px 0px 0px;
-                display: inline;
-                border-radius: 5px;
-            }
+    text-align:center;
+}
+.profile_picture img {
+    width: 100px;
+    margin: 5px 5px 0px 0px;
+    display: inline;
+    border-radius: 5px;
+}
+.header-background{
+    width:100%;
+    min-height:600px;
+
+    /*min-height: 100%;*/
+    /* Set up proportionate scaling */
+    /*width: 100%;*/
+    /*height: auto;*/
+
+    /* Set up positioning */
+    /*position: fixed;
+    top: 0;
+    left: 0;*/
+
+    /*background: url(img/image_11.jpeg) no-repeat center; */
+    /* fallback */
+    background: url(img/image_11.jpeg) no-repeat center center fixed; 
+    /* W3C */
+
+    /*background-image: linear-gradient(#eb01a5, transparent), url("img/image_11.jpeg") no-repeat center center fixed ; */
+    /*FF 3.6+*/
+    /*background: url('img/image_11.jpeg') center center no-repeat, -moz-linear-gradient(top, #e3e3e3, transparent); */
+    /*Safari 4+, Chrome 2+*/
+    /*background: url('img/image_11.jpeg') center center no-repeat, -webkit-gradient(linear, 0 0, 0 100%, from(#e3e3e3), to(transparent));*/
+    /* Safari 5.1+, Chrome 10+*/
+    /*background: url('img/image_11.jpeg') center center no-repeat, -webkit-linear-gradient(top, #e3e3e3, transparent);*/
+    /*Opera 11.10*/
+    /*background: url('img/image_11.jpeg') center center no-repeat, -o-linear-gradient(top, #e3e3e3, transparent);*/
+    /*Standard, IE10*/
+    /*background: url('img/image_11.jpeg') center center no-repeat, linear-gradient(to bottom, #e3e3e3, transparent);*/
+    /*background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /*-webkit-animation: play .8s steps(10) infinite;
+     -moz-animation: play .8s steps(10) infinite;
+      -ms-animation: play .8s steps(10) infinite;
+       -o-animation: play .8s steps(10) infinite;
+          animation: play .8s steps(10) infinite;*/
+}
+.marquee{
+    overflow: hidden;
+    -webkit-animation: marquee 50s linear infinite;
+}
+
+@keyframes marquee {
+    0%   { left:0 }
+    100% { left:100% }
+}
 #mask-overlay{
-      position: absolute;
-   top: 0;
-   left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
     max-height:620px;
-   width: 100%;
-   height: 100%;
-   /*background-color: black;*/
-   background-color: #DCDCDC;
-   opacity: 0.6;
-   overflow: hidden;
+    width: 100%;
+    height: 100%;
+    /*background-color: black;*/
+    background-color: #DCDCDC;
+    opacity: 0.6;
+    overflow: hidden;
 }
 
 #container-last{
@@ -27,16 +80,65 @@
 }
 
 
-            #footer {
-                  position: fixed;
-                  z-index: 10;
-                  left: 0;
-                  right: 0;
-                  bottom: 0;
-                  height: 40px;
-                background: #DCDCDC;
-                text-align: center;
-            }
-            #footer p{
-                margin: 10px 0;
-            }
+#footer {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40px;
+    background: #DCDCDC;
+    text-align: center;
+}
+#footer p{
+    margin: 10px 0;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) { 
+    /* STYLES GO HERE */
+
+.header-background{
+    width:100%;
+    min-height:600px;
+
+    /*min-height: 100%;*/
+    /* Set up proportionate scaling */
+    /*width: 100%;*/
+    /*height: auto;*/
+
+    /* Set up positioning */
+    /*position: fixed;
+    top: 0;
+    left: 0;*/
+
+    /*background: url(img/image_11.jpeg) no-repeat center; */
+    /* fallback */
+    background: url(img/image_11.jpeg); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+    #mask-overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-height:620px;
+        width: 100%;
+        height: 150%;
+        /*background-color: black;*/
+        background-color: #DCDCDC;
+        opacity: 0.6;
+        overflow: hidden;
+    }
+}
+
+
+/* iphone 6  */
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) { 
+    /* STYLES GO HERE */
+}
