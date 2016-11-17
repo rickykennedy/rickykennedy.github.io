@@ -4,6 +4,16 @@
   background-color: #DCDCDC;
   background-clip: border-box,border-box,padding-box;
 }
+.container-background{
+    width:100%;
+    min-height:600px;
+    background: url(img/image_15.jpeg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
 .header{
     text-align:center;
 }
@@ -174,6 +184,20 @@
     opacity: 0.5;
     overflow: hidden;
   }
+.container-background{
+    width:100%;
+    min-height:600px;
+    background: url(img/image_15.jpeg); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  
+}
 }
 
 
