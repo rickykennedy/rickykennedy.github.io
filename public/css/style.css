@@ -139,8 +139,10 @@
     right: 0;
     bottom: 0;
     height: 40px;
-    background: #DCDCDC;
+    /*background: #DCDCDC;*/
+    background: #444;
     text-align: center;
+    color:#848484;
 }
 #footer p{
     margin: 10px 0;
@@ -149,13 +151,15 @@
   margin: 10px 0;
 }
 .social-media{
-  width:60px;
+  width:50px;
   display: inline-block;
   background-color: transparent;
   margin: 3px 0px;
   padding: 0px;
+  border: none;
 }
 .back-to-top{
+  color: #4a8bfc;
   /*border: 1px solid #e3e3e3;*/
   /*border-radius: 5px;*/
 }
