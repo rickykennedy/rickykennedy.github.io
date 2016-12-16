@@ -14,33 +14,23 @@ and open the template in the editor.
         <title>Ricky Kennedy</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="public/css/bootstrap.css" rel="stylesheet">
+        <link href="public/css/font-awesome.min.css" rel="stylesheet">
         <link href="public/css/style.css" rel="stylesheet">
     </head>
     <body>
         <script type="text/javascript" src="public/js/jquery.js"></script>
         <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
         <style type="text/css">
-        html,body {
-            height: 100%;
-            color: #e3e3e3;
-        }
+            html,body {
+                height: 100%;
+                color: #e3e3e3;
+            }
             .main-wrapper { 
                 background: #eb01a5;
-                /*background-image: url(img/image_11.png); */
-                /*background-image: url(img/image_11.png) no-repeat, linear-gradient(#eb01a5, #d13531);  */
-                /*background-image: url(img/image_11.png), linear-gradient(#1e5799, #a5c9e5 100%); */
                 background-image: linear-gradient(#a5c9e5, #1e5799); 
-                /*-webkit-background-size: cover;
-                -moz-background-size: cover;
-                -o-background-size: cover;
-                background-size: cover;*/
-                /*background:
-                    url(img/image_11.png) no-repeat 50% 300px,
-                    linear-gradient(top, #1e5799 0%,#a5c9e5 100%);*/
-                /*min-height: 700px;*/
                 margin:0px;
                 padding:0px;
-                height:100%;
+                height:auto;
                 min-height:100%;
             }
             .container{
@@ -57,7 +47,6 @@ and open the template in the editor.
                 margin-left:auto;
                 margin-right:auto;
                 text-align: -webkit-center;
-                /*border-radius: 50%;*/
             }
             .profile_picture_image{
                 background-image: url(img/rickykennedy.jpg);
@@ -80,6 +69,9 @@ and open the template in the editor.
             .occupation{
 
             }
+            .donate{
+                color:#ffffff;
+            }
             .dob{
                 padding-top:10px;
             }
@@ -90,39 +82,18 @@ and open the template in the editor.
                 display: inline-block;
                 margin-bottom: 0px;
             }
-            .header-background{
-                /*width:100%;
-                min-height:600px;*/
-                /* fallback */
-                /*background: url(img/image_11.png) no-repeat center center fixed; */
-                /* W3C */
-                  /*-webkit-background-size: cover;
-                  -moz-background-size: cover;
-                  -o-background-size: cover;
-                  background-size: cover;
-                  */
-            }
-            /*.marquee{
-                overflow: hidden;
-                -webkit-animation: marquee 50s linear infinite;
-            }
-
-            @keyframes marquee {
-                0%   { left:0 }
-                100% { left:100% }
-            }*/
         </style>
         <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper">
             <div class='container'>
                 <div class="content">
                     <div class='profile_picture'>
                         <div class="profile_picture_image"></div>
-                        <!-- <img class="profile_picture_image" src='img/rickykennedy.jpg'> -->
                         <div></div>
                     </div>
                     <div class='user_details'>
                         <div class='name'>Ricky Kennedy</div>
                         <div class="occupation">Mobile and Web Developer and unofficially graduate student at University Of Wollongong</div>
+                        <div class="donate"><a href="https://paypal.me/rickykennedy/1" style="color:#ffffff;">Buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe? :)</a></div>
                         <div class="dob">
                             <label>DOB: 24-08-1989</label>
                         </div>

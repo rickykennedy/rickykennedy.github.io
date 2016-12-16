@@ -79,28 +79,70 @@ and open the template in the editor.
                 min-height:100%;
             }
             .resume{
-                background-image: url(img/image_17.jpg);
+                background-image: url(img/image_18_light.png);
                 background-repeat: no-repeat;
                 background-size: cover;
-                background-position: 10% 90%;
+                background-position: 10% 55%;
+                animation:backgroundAnimUp 5s;
+                -webkit-animation:backgroundAnimUp 5s;
                 /*background-color: blue;*/
             }
             .portfolio{
-                background-image: url(img/image_9.jpeg);
+                background-image: url(img/image_9.png);
                 background-repeat: no-repeat;
                 background-size: cover;
-                /*background-color: red;*/
+                animation:backgroundAnimDown 5s;
+                -webkit-animation:backgroundAnimDown 5s;
             }
             .enquiry{
-                background-image: url(img/image_16.jpeg);
+                /*background-image: url(img/image_16.jpeg);*/
+                background-image: url(img/image_16.png);
                 background-repeat: no-repeat;
                 background-size: cover;
-                /*background-color: green;*/
+                animation:backgroundAnimDown 5s;
+                -webkit-animation:backgroundAnimDown 5s;
             }
             .box-link{
                 height:100%;
             }
-
+            @keyframes backgroundAnimUp {
+                /*0% {
+                    background-position: 0% 0%;
+                }
+                100% {
+                    background-position: 10% 60%;
+                }*/
+                0% {
+                    background-position: 100% 100%;
+                }
+                100% {
+                    background-position: 10% 55%;
+                }
+            }
+            @-webkit-keyframes backgroundAnimUp {
+                0% {
+                    background-position: 100% 100%;
+                }
+                100% {
+                    background-position: 10% 55%;
+                }
+            }
+            @keyframes backgroundAnimDown {
+                0% {
+                    background-position: 0% 90%;
+                }
+                100% {
+                    background-position: 0% 0%;
+                }
+            }
+            @-webkit-keyframes backgroundAnimDown {
+                0% {
+                    background-position: 0% 90%;
+                }
+                100% {
+                    background-position: 0% 0%;
+                }
+            }
             .profile_picture{
                 padding-top:100px;
                 width:100px;

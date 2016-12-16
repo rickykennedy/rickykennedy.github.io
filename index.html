@@ -20,111 +20,228 @@ and open the template in the editor.
         <script type="text/javascript" src="public/js/jquery.js"></script>
         <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
         <style type="text/css">
-            /*body{
-                position:relative;
-                width:100%;
+        body,html{height:100%;}
+        a:hover{
+            text-decoration: none;
+        }
+            .main-wrapper { 
+                background: #eb01a5;
+                /*background-image: linear-gradient(#a5c9e5, #1e5799); */
+                background:linear-gradient(#347eff,#1ea3ff);
+              /*background-image: url(img/image_11.png); */
+              /*background-image: url(img/image_11.png), linear-gradient(#eb01a5, #d13531);*/
+                /*background:
+                    url(img/image_11.png) no-repeat 50% 300px,
+                    linear-gradient(top, #1e5799 0%,#a5c9e5 100%);*/
+                /*min-height: 700px;*/
+                margin:0px;
+                padding:0px;
                 height:100%;
-                background-color:#e3e3e3;
-                margin: 0px;
             }
-            
-            .container{
-                border-radius: 15px;
-                background-color:#ffffff;
-                position:relative;
-                margin:0px 0px 0px 0px;
-                padding:0px 0px 0px 0px;
+            .left-wrapper{
+                /*background-color: #e3e3e3;*/
+                height:100%;
+                margin:0px;
+                padding:0px;
+                /*min-height: 100%;*/
+                /*margin:0 auto;*/
             }
-            .container-left{
-
+            .left-container{
+                height:100%;
             }
-            .container-right{
-                
+            .left-content{
+                height:100%;
+                background-image: url(img/rickykennedy.jpg);
+                background-repeat: no-repeat;
+                padding: 0 10%;
+            }
+            .right-wrapper{
+                margin:0px;
+                padding:0px;
+                /*background-color: #e3e3e3;*/
+                /*height:auto;*/
+                height: 100%;
+                /*margin:0 auto;*/
+            }
+            .right-container{
+                /*height: 33.33%;*/
+                min-height:33.33%;
+                /*margin:0 auto;*/
+            }
+            .right-content{
+                display: block;
+                padding-top:100px;
+                /*margin-top:auto;
+                margin-bottom:auto;*/
+                text-align: center;
+                vertical-align: middle;
+                height: 100%;
+                min-height:100%;
+            }
+            .resume{
+                background-image: url(img/image_18_light.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: 10% 55%;
+                animation:backgroundAnimUp 5s;
+                -webkit-animation:backgroundAnimUp 5s;
+                /*background-color: blue;*/
+            }
+            .portfolio{
+                background-image: url(img/image_9.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                animation:backgroundAnimDown 5s;
+                -webkit-animation:backgroundAnimDown 5s;
+            }
+            .enquiry{
+                /*background-image: url(img/image_16.jpeg);*/
+                background-image: url(img/image_16.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                animation:backgroundAnimDown 5s;
+                -webkit-animation:backgroundAnimDown 5s;
+            }
+            .box-link{
+                height:100%;
+            }
+            @keyframes backgroundAnimUp {
+                /*0% {
+                    background-position: 0% 0%;
+                }
+                100% {
+                    background-position: 10% 60%;
+                }*/
+                0% {
+                    background-position: 100% 100%;
+                }
+                100% {
+                    background-position: 10% 55%;
+                }
+            }
+            @-webkit-keyframes backgroundAnimUp {
+                0% {
+                    background-position: 100% 100%;
+                }
+                100% {
+                    background-position: 10% 55%;
+                }
+            }
+            @keyframes backgroundAnimDown {
+                0% {
+                    background-position: 0% 90%;
+                }
+                100% {
+                    background-position: 0% 0%;
+                }
+            }
+            @-webkit-keyframes backgroundAnimDown {
+                0% {
+                    background-position: 0% 90%;
+                }
+                100% {
+                    background-position: 0% 0%;
+                }
             }
             .profile_picture{
-                padding:8px 0px 0px 15px;
-                display:inline-block;
+                padding-top:100px;
+                width:100px;
+                margin-left:auto;
+                margin-right:auto;
+                text-align: -webkit-center;
+                /*border-radius: 50%;*/
             }
-            .profile_picture img {
+            .profile_picture_image{
+                background-image: url(img/rickykennedy.jpg);
+                background-position: 50% 9%;
+                /*background-origin: border-box;*/
+                border: 1px solid #a5c9e5;
+                border-radius: 50%;
+                height: 100px;
                 width: 100px;
-                margin: 5px 5px 0px 0px;
-                display: inline;
-                border-radius: 5px;
+                background-size: 100px 120px;
+                background-repeat: no-repeat;
             }
             .user_details{
-                display:inline-block;
-                vertical-align: top;
+                text-align: center;
             }
-            .user_details div{
-                width:auto;
+            .name{
+                font-size: 15px;
+                font-weight: bold;
             }
-            .user_details p{
-                display:inline-block;
-                margin-left:10px;
-            }*/
-            
+            .occupation{
+
+            }
             .header-background{
-                width:100%;
-                min-height:600px;
-
-                /*min-height: 100%;*/
-                 /* Set up proportionate scaling */
-                  /*width: 100%;*/
-                  /*height: auto;*/
-                    
-                  /* Set up positioning */
-                  /*position: fixed;
-                  top: 0;
-                  left: 0;*/
-
-                /*background: url(img/image_11.jpeg) no-repeat center; */
+                /*width:100%;
+                min-height:600px;*/
                 /* fallback */
-                background: url(img/image_11.png) no-repeat center center fixed; 
+                /*background: url(img/image_11.png) no-repeat center center fixed; */
                 /* W3C */
-
-                /*background-image: linear-gradient(#eb01a5, transparent), url("img/image_11.jpeg") no-repeat center center fixed ; */
-                /*FF 3.6+*/
-                /*background: url('img/image_11.jpeg') center center no-repeat, -moz-linear-gradient(top, #e3e3e3, transparent); */
-                /*Safari 4+, Chrome 2+*/
-                /*background: url('img/image_11.jpeg') center center no-repeat, -webkit-gradient(linear, 0 0, 0 100%, from(#e3e3e3), to(transparent));*/
-                /* Safari 5.1+, Chrome 10+*/
-                /*background: url('img/image_11.jpeg') center center no-repeat, -webkit-linear-gradient(top, #e3e3e3, transparent);*/
-                /*Opera 11.10*/
-                /*background: url('img/image_11.jpeg') center center no-repeat, -o-linear-gradient(top, #e3e3e3, transparent);*/
-                /*Standard, IE10*/
-                /*background: url('img/image_11.jpeg') center center no-repeat, linear-gradient(to bottom, #e3e3e3, transparent);*/
-                /*background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-attachment: fixed;*/
-                  -webkit-background-size: cover;
+                  /*-webkit-background-size: cover;
                   -moz-background-size: cover;
                   -o-background-size: cover;
-                  background-size: cover;
-                  /*-webkit-animation: play .8s steps(10) infinite;
-                   -moz-animation: play .8s steps(10) infinite;
-                    -ms-animation: play .8s steps(10) infinite;
-                     -o-animation: play .8s steps(10) infinite;
-                        animation: play .8s steps(10) infinite;*/
+                  background-size: cover;*/
             }
-            .marquee{
+            /*.marquee{
                 overflow: hidden;
-                     -webkit-animation: marquee 50s linear infinite;
-                }
+                -webkit-animation: marquee 50s linear infinite;
+            }
 
-                @keyframes marquee {
+            @keyframes marquee {
                 0%   { left:0 }
                 100% { left:100% }
-                }
+            }*/
         </style>
-        <div class="header-background" class="marquee">
+        <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper">
+            <div class="col-md-6 col-sm-12 col-xs-12 left-wrapper">
+                <div class="left-container">
+                    <div class="left-content">
+                        <div class='profile_picture'>
+                            <div class="profile_picture_image"></div>
+                            <div></div>
+                        </div>
+                        <div class='user_details'>
+                            <div class='name'>Ricky Kennedy</div>
+                            <div class="occupation">Mobile and Web Developer and unofficially graduate student at University Of Wollongong</div>
+                        </div>
+                    </div>
+                    Ricky Kennedy
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 right-wrapper">
+                <div class="right-container resume">
+                    <div class="right-content">
+                        <a class="box-link" href="resume.html">
+                            <span>Resume</span>
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="right-container portfolio">
+                    <div class="right-content">
+                        <a class="box-link" href="javascript:void(0);">
+                            <!-- <span>portfolio</span> -->
+                        </a>
+                    </div>
+                </div>
+                <div class="right-container enquiry">
+                    <div class="right-content">
+                        <a class="box-link" href="javascript:void(0);">
+                            <!-- <span>enquiry</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="header-background">
             <div id="mask-overlay"></div>
             <div class='header'>
                 <h1>Ricky Kennedy</h1>
-                <!-- <h2 class="highlight">Programming is an art</h2> -->
                 <h2 class="highlight">Live to code and code to live</h2>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                      <blockquote>
+                      <blockquote class="marquee">
                         Mobile and Web Developer.
                       </blockquote>
                 </div>
@@ -135,26 +252,13 @@ and open the template in the editor.
                         - Seymour Cray
                       </blockquote>
                 </div>
-                <!-- <div>
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="hosted_button_id" value="8X8J9FE74CWHN">
-                        <table>
-                        <tr><td><input type="hidden" name="on0" value="Email (optional)">Email (optional)</td></tr><tr><td><input type="text" name="os0" maxlength="200"></td></tr>
-                        </table>
-                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                    </form>
-                </div> -->
             </div>
-        </div>
-        <div class='container'>
+        </div> -->
+
+        <!-- <div class='container'>
             <div class='profile_picture'>
                 <img src='img/rickykennedy.jpg'>
-                <div>
-
-
-                </div>
+                <div></div>
             </div>
             <div class='user_details'>
                 <div class='name'>
@@ -181,7 +285,6 @@ and open the template in the editor.
                             <li>I am intending to learn ionic in the near future</li>
                         </ul>
                     </p>
-                    <!-- <p>I am a computer science student major in Digital Systems Security. I have an experience in web development for 2 years. I love and enjoy coding. I play dota2 during my leisure time.</p> -->
                 </div>
                 <div>
                     <label>Device:</label>
@@ -197,8 +300,9 @@ and open the template in the editor.
                     <a href="nodejs.html">Node JS</a> 
                 </div>
             </div>
-        </div>
-        <div id="container-last" class="container">
+        </div> -->
+
+        <!-- <div id="container-last" class="container">
             <div class="container-left">
                 <h1>Contact Info</h1>
                 <ul>
@@ -206,15 +310,6 @@ and open the template in the editor.
                     <li><i></i><span>Mobile:</span> <span class="phone-code" href="#" data-toggle="tooltip" title="International Code Number for Singapore" data-placement="top">+65 </span> <span>9224 2773</span></li>
                 </ul>
             </div>
-            <!-- <div class="container-right">
-                 <h1>
-                Programming Quote
-              </h1>
-              <p>
-                "The trouble with programmers is that you can never tell what a programmer is doing until it’s too late"
-                - Seymour Cray
-              </p>
-            </div> -->
         </div>
         <div id="footer">
             <div class="row">
@@ -231,23 +326,20 @@ and open the template in the editor.
                     
               </div>
             </div>
-            <!-- <div class="left">
-                <p>© 2016 Ricky Kennedy. All Rights Reserved.</p>
-            </div> -->
             <div class="right"></div>
-        </div>
+        </div> -->
         <script type="text/javascript">
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip(); 
-                $(window).scroll(function() {
-                 if ($(this).scrollTop() > 100) {
-                    $('#top').fadeIn();
-                } else {
-                    // $('#top').css({'opacity':'0','display':'none'}).fadeOut();
-                    $('#top').fadeOut();
-                    // $('#top').css(['opacity','display'],['0','none']);
-                }
-            });
+            // $('[data-toggle="tooltip"]').tooltip(); 
+            //     $(window).scroll(function() {
+            //      if ($(this).scrollTop() > 100) {
+            //         $('#top').fadeIn();
+            //     } else {
+            //         // $('#top').css({'opacity':'0','display':'none'}).fadeOut();
+            //         $('#top').fadeOut();
+            //         // $('#top').css(['opacity','display'],['0','none']);
+            //     }
+            // });
         });
         </script>
     </body>
