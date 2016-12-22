@@ -15,11 +15,15 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="public/css/bootstrap.css" rel="stylesheet">
         <link href="public/css/font-awesome.min.css" rel="stylesheet">
+        <link href="public/css/jquery-ui.css" rel="stylesheet">
         <link href="public/css/style.css" rel="stylesheet">
     </head>
     <body>
         <script type="text/javascript" src="public/js/jquery.js"></script>
         <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/js/jquery-ui.js"></script>
+
+        
         <style type="text/css">
             
             .header-background{
@@ -32,19 +36,31 @@ and open the template in the editor.
                   background-size: cover;
                   background-attachment: initial;
             }
+            .enquiry-form{
+                margin-top: -80px;
+            }
             .contact-form{
                 width: 100%;
                 background-color: #e3e3e3;
                 border: 1px solid #e9e9e9;
                 padding: 5px;
                 margin: 0 auto;
+                padding-bottom: 40px;
             }
-            .services{
-                width: 80%;
+            .quotation-form{
+                width: 100%;
                 background-color: #e3e3e3;
                 border: 1px solid #e9e9e9;
                 padding: 5px;
                 margin: 0 auto;
+            }
+            .small-icon{
+                padding-top:15px;
+                /*color: #
+                ffffff; */
+            }
+            .services{
+                padding-bottom: 20px;
             }
             .service-icon{
                 margin: 10px auto 0 auto;
@@ -55,17 +71,31 @@ and open the template in the editor.
                 height:50px;
                 border-radius: 50%;
             }
-            .small-icon{
-                padding-top:30%;
-                color: #ffffff; 
-            }
-            .service-title{
+
+            .form-title{
                 margin-top: 10px;
                 margin-bottom: 10px;
                 text-align: center;
                 font-weight: bold;
             }
-            .quotation-button{
+            .form-content{
+                overflow: hidden;
+            }
+            .collapseContent{
+                overflow: hidden;
+                width:100%;
+                padding: 0 10px;
+            }
+            .form-group{
+                padding: 0px 10px 20px;
+            }
+            .submit-form{
+                margin: 10px auto 50px auto;
+                text-align: center;
+                padding-bottom: 15px;
+            }
+
+            .submit-button{
                 background-color: #4288F0;
                 padding: 15px 40px;
                 margin: 0 auto;
@@ -75,7 +105,7 @@ and open the template in the editor.
                 box-shadow: 3px 3px 5px #888888;
                 text-decoration: none;
             }
-            .quotation-button:hover{
+            .submit-button:hover{
                 background-color: #e3e3e3;
                 padding: 15px 40px;
                 margin: 0 auto;
@@ -86,11 +116,33 @@ and open the template in the editor.
                 text-decoration: none;
                 border: 1px solid #428bca;
             }
-            .enquiry-form{
-                margin-top: -80px;
+
+            .socialMedias{
+                float:right;
+            }
+            @media only screen and (min-width : 320px) and (max-width : 568px) { 
+                .enquiry-form{
+                    margin-bottom:100px;
+                }
+            }
+            @media only screen and (min-device-width : 320px) and (max-device-width : 568px) { 
+            /*@media only screen and (min-device-width : 375px) and (max-device-width : 667px) { */
+                /*@media only screen and (max-height : 600px) { */
+                .quotation-form{
+                    width: 100%;
+                    background-color: #e3e3e3;
+                    border: 1px solid #e9e9e9;
+                    padding: 5px;
+                    margin: 0 auto;
+                    margin-top: 40px;
+
+                }
+                .enquiry-form{
+                    margin-bottom:100px;
+                }
             }
         </style>
-        <div class="header-background" class="marquee">
+        <div class="header-background">
             <div class='header'>
                 <h1>Ricky Kennedy</h1>
                 <!-- <h2 class="highlight">Programming is an art</h2> -->
@@ -116,41 +168,90 @@ and open the template in the editor.
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="contact-form">
                     <div class="container-left">
-                <h1>Contact Info</h1>
-                <ul>
-                    <li><i></i><span>Email:</span> <a href="javascript:void(0);">Rickykennedy.development@gmail.com</a></li>
-                    <li><i></i><span>Mobile:</span> <span class="phone-code" href="#" data-toggle="tooltip" title="International Code Number for Singapore" data-placement="top">+65 </span> <span>9224 2773</span></li>
-                </ul>
-            </div>
+                        <h1>Contact Info</h1>
+                        <ul style="word-wrap: break-word;">
+                            <li><i></i><span>Email:</span> <a href="javascript:void(0);">Rickykennedy.development@gmail.com</a></li>
+                            <li><i></i><span>Mobile:</span> <span class="phone-code" href="#" data-toggle="tooltip" title="International Code Number for Singapore" data-placement="top">+65 </span> <span>9224 2773</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-md-8 col-sm-8 col-xs-12">
-                <div class="services">
-                    <div class="service-icon"><span><i class="fa fa-coffee small-icon" aria-hidden="true"></i></span></div>
-                    <div class="service-title">Responsive Website</div>
+                <div class="quotation-form">
+                    <div class="form-title"><span style="padding-right:10px;"><i class="fa fa-paper-plane small-icon" aria-hidden="true"></i></span>Responsive Website</div>
+                    <div class="form-content" id="form-content">
+                        <div class="col-md-4 col-sm-4 col-xs-4 services" data-toggle="collapse" href="#collapseExample1">
+                                <div class="service-icon"><span><i class="fa fa-coffee small-icon" aria-hidden="true"></i></span></div>
+                                <div class="">Make a new website</div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 services" data-toggle="collapse" href="#collapseExample2">
+                                <div class="service-icon"><span><i class="fa fa-coffee small-icon" aria-hidden="true"></i></span></div>
+                                <div class="">Change an existing website</div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 services" data-toggle="collapse" href="#collapseExample3">
+                                <div class="service-icon"><span><i class="fa fa-coffee small-icon" aria-hidden="true"></i></span></div>
+                                <div class="">Other service</div>
+                        </div>
+                        <form class="form-inline" style="clear:both;">
+                              <div class="col-md-4 col-sm-4 col-xs-12 form-group" style="">
+                                <label class="sr-only" for="name">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Fullname">
+                              </div>
+                              <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                                <label class="sr-only" for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email">
+                              </div>
+                              <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                                <label class="sr-only" for="phone">Phone</label>
+                                <input type="text" class="form-control" id="phone" placeholder="Phone No (Optional)">
+                              </div>
+
+                            <div class="accordion-group collapseContent">
+                                <div class="collapse" id="collapseExample1">
+                                  <div class="well">
+                                    This is a test
+                                  </div>
+                                </div>
+
+                                <div class="collapse" id="collapseExample2">
+                                  <div class="well">
+                                    Another test
+                                  </div>
+                                </div>
+
+                                <div class="collapse" id="collapseExample3">
+                                  <div class="well">
+                                    It works!
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <textarea class="form-control" rows="3" placeholder="Brief Description for the project"></textarea>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                <div class="input-group">
+                                  <div class="input-group-addon">$</div>
+                                  <input type="text" class="form-control" id="budget" placeholder="Estimated budget">
+                                  <div class="input-group-addon">.00</div>
+                                  <!-- <span class="phone-code" href="#" data-toggle="tooltip" title="Amount in SGD" data-placement="top">? </span> -->
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group" style="">
+                                <input type="text" class="form-control" id="deadline" placeholder="Deadline for the project">
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 submit-form" style="">
+                                <a href="javascript:void(0);" class="submit-button">button</a>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
-            <!-- <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="services">
-                    <div class="service-icon"><span><i class="fa fa-coffee small-icon" aria-hidden="true"></i></span></div>
-                    <div class="service-title">Customize Website Application</div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="services">
-                    <div class="service-icon"><span><i class="fa fa-coffee small-icon" aria-hidden="true"></i></span></div>
-                    <div class="service-title">Blog</div>
-                </div>
-            </div> -->
-        </div>
-        <!-- <div class='container'></div> -->
-        <div id="container-last" class="container">
-            
         </div>
         <div id="footer">
             <div class="row">
-                <div class="col-xs-12 col-md-6 copyright">© 2016 Ricky Kennedy. All Rights Reserved.</div>
-                <div class="col-xs-12 col-md-6">
+                <div class="col-xs-12 col-md-6 socialMedias">
                     <ul class="list-group">
                         <li class="list-group-item social-media"><a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/woshiricky"><img alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0></a></li>
                         <li class="list-group-item social-media"><a target="_blank" title="follow me on facebook" href="http://www.facebook.com/woshiricky"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a></li>
@@ -159,11 +260,8 @@ and open the template in the editor.
                         <li class="list-group-item social-media back-to-top"><a id="top" href="#" style="display: none; opacity: 1;"><span class="glyphicon glyphicon-chevron-up"></span></a></li>
                     </ul>
                 </div>
+                <div class="col-xs-12 col-md-6 copyright">© 2016 Ricky Kennedy. All Rights Reserved.</div>
             </div>
-            <!-- <div class="left">
-                <p>© 2016 Ricky Kennedy. All Rights Reserved.</p>
-            </div> -->
-            <div class="right"></div>
         </div>
         <script type="text/javascript">
         $(document).ready(function(){
@@ -177,7 +275,16 @@ and open the template in the editor.
                     // $('#top').css(['opacity','display'],['0','none']);
                 }
             });
-        });
+
+            var $form = $('#form-content');
+                $form.on('show.bs.collapse','.collapse', function() {
+                    $form.find('.collapse.in').collapse('hide');
+                });
+            });
+            $("#deadline").datepicker({dateFormat: 'dd MM yy'});
+            $('.submit-button').on('click',function(){
+                alert('submitting form');
+            });
         </script>
     </body>
 </html>
