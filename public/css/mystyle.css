@@ -1,0 +1,223 @@
+@charset "utf-8";
+/* CSS Document */
+/* Replacing bootstrap */
+.navbar-default{
+    background-color: transparent;
+    border-color: transparent;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+/* self define */
+body{
+  color:#ffffff;
+}
+
+.main-background{
+    /*background-color: #DCDCDC;
+    background-clip: border-box,border-box,padding-box;*/
+
+    background: url(../images/background/image_18_light.png) no-repeat center center fixed; 
+}
+.main-wrapper{
+    width:100%;
+    min-height:700px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+.main-personal{
+    /*min-height:200px;*/
+    padding: 50px 0px;
+    background-color: #edeeef;
+    font-size: 16px;
+    line-height: 1.8em;
+    color: rgba(26,26,26,.6);
+    text-align: center;
+}
+.main-footer{
+    /*background-color: #353439;*/
+    background-color: #26262a;
+}
+.main-personal > .personal-title{
+    font-size: 28px;
+    color: rgba(26,26,26,.9);
+    margin:20px auto;
+}
+.main-personal > .personal-info{
+
+    margin:20px auto;
+}
+.main-portfolio{
+    font-size: 16px;
+    line-height: 1.8em;
+    color: rgba(26,26,26,.6);
+    text-align: center;
+    margin: 50px auto;
+}
+.main-portfolio > .portfolio-title{
+  font-size: 28px;
+  color: rgba(26,26,26,.9);
+  margin:20px auto;
+}
+.main-portfolio > .portfolio-projects{
+  /*font-size: 28px;
+  color: rgba(26,26,26,.9);*/
+  margin:20px auto;
+}
+.navbar-default .navbar-nav > li > a{
+      color: #ffffff;
+}
+.navbar-default .navbar-nav > li.active-page > a{
+      color: #d3d3d3;
+      text-decoration: underline;
+}
+.logo{
+    height: 60px;
+    width: 60px;
+    padding: 5px 5px;
+}
+.mask-overflow{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.7);
+    z-index: 99;
+}
+.content{
+  /*padding: 180px 0 155px;*/
+}
+.desc-wrapper{
+  -webkit-animation: feature-text-anim 1.75s ease-in-out;
+    animation: feature-text-anim 1.75s ease-in-out;
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 32px;
+    text-align: center;
+    text-rendering: optimizeLegibility;
+}
+.desc-wrapper p{
+    font-family: "adobe-garamond-pro";
+    font-size: 30px;
+    line-height: 1.5em;
+    text-transform: none;
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-style: italic;
+    margin: 20px auto;
+}
+.desc-wrapper > .desc-name{
+  font-size: 42px;
+  letter-spacing: 5px;
+}
+.desc-wrapper > .desc-quote{
+  font-weight: bold;
+}
+.desc-wrapper > .desc-resume{
+  margin-top: 30px;
+}
+.desc-resume a{
+  background-color: transparent;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+.desc-resume a:hover{
+  border: 0px;
+}
+.desc-wrapper > .desc-donate{
+  font-size: 22px;
+}
+.footer-wrapper{
+  /*width:100%;*/
+  padding: 64px 32px;
+  /*margin: 0px 17px;*/
+  margin: 10px auto;
+  position: relative;
+  text-align:center;
+  /*margin-left: -17px;
+  margin-right: -17px;*/
+}
+.footer-nav{
+  font-size: 24px;
+  line-height: 1.8em;
+}
+.footer-navigations{
+  display: inline-block;
+  width: 19%;
+  padding: 0px 0px 40px;
+}
+.footer-navigations a{
+  color:#d3d3d3;
+}
+.footer-info a{
+  /*color:#ffffff;*/
+}
+/*.portfolio-intro{
+  background-color: #edeeef;
+}*/
+/*@media only screen and (max-height : 600px) { 
+
+
+}*/
+@media screen and (max-width: 1024px) {
+  .navbar-default .navbar-toggle:hover{
+    background-color:#ffffff;
+  }
+  .navbar-default .navbar-toggle:active{
+    background-color:#ffffff;
+  }
+  .navbar-default .navbar-toggle:focus{
+    background-color:#ffffff;
+  }
+    
+    
+}
+@media screen and (max-width: 480px) {
+  .navbar-default .navbar-toggle:hover{
+    background-color:#ffffff;
+  }
+  .navbar-default .navbar-toggle:active{
+    background-color:#ffffff;
+  }
+  .navbar-default .navbar-toggle:focus{
+    background-color:#ffffff;
+  }
+  .navbar-toggle:hover > .icon-bar{
+    /*background-color: #ffffff;*/
+  }
+    .desc-wrapper{
+      padding: 0px;
+    }
+    
+}
+/*@media screen and (min-width: 480px) {
+
+
+}*/
+/*@media only screen and (min-width : 320px) and (max-width : 568px) { 
+ 
+}*/
+/*@media only screen and (min-device-width : 320px) and (max-device-width : 568px) { 
+ 
+}*/
+
+
+/* iphone 6  */
+/*@media only screen and (min-device-width : 375px) and (max-device-width : 667px) { 
+ 
+}*/
