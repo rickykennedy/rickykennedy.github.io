@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name='Ricky Kennedy'>
+        <meta title="Ricky's Resume">
+        <meta description='This is my personal website.'>
+        <title>Ricky Kennedy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="public/css/bootstrap.css" rel="stylesheet">
+        <link href="public/css/font-awesome.min.css" rel="stylesheet">
+        <link href="public/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <script type="text/javascript" src="public/js/jquery.js"></script>
+        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+        <style type="text/css">
+        body,html{height:100%;}
+        a:hover{
+            text-decoration: none;
+        }
+            .main-wrapper { 
+                background: #eb01a5;
+                /*background-image: linear-gradient(#a5c9e5, #1e5799); */
+                background:linear-gradient(#347eff,#1ea3ff);
+              /*background-image: url(img/image_11.png); */
+              /*background-image: url(img/image_11.png), linear-gradient(#eb01a5, #d13531);*/
+                /*background:
+                    url(img/image_11.png) no-repeat 50% 300px,
+                    linear-gradient(top, #1e5799 0%,#a5c9e5 100%);*/
+                /*min-height: 700px;*/
+                margin:0px;
+                padding:0px;
+                height:100%;
+            }
+            .left-wrapper{
+                /*background-color: #e3e3e3;*/
+                height:100%;
+                margin:0px;
+                padding:0px;
+                /*min-height: 100%;*/
+                /*margin:0 auto;*/
+            }
+            .left-container{
+                height:100%;
+            }
+            .left-content{
+                height:100%;
+                background-image: url(img/rickykennedy.jpg);
+                background-repeat: no-repeat;
+                padding: 0 10%;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            .right-content{
+                display: block;
+                padding-top:100px;
+                /*margin-top:auto;
+                margin-bottom:auto;*/
+                text-align: center;
+                vertical-align: middle;
+                height: 100%;
+                min-height:100%;
+            }
+            .resume{
+                background-image: url(img/image_18_light.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: 10% 55%;
+                animation:backgroundAnimUp 5s;
+                -webkit-animation:backgroundAnimUp 5s;
+                /*background-color: blue;*/
+            }
+            .portfolio{
+                background-image: url(img/image_9.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                animation:backgroundAnimDown 5s;
+                -webkit-animation:backgroundAnimDown 5s;
+            }
+            .enquiry{
+                /*background-image: url(img/image_16.jpeg);*/
+                background-image: url(img/image_16.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                animation:backgroundAnimDown 5s;
+                -webkit-animation:backgroundAnimDown 5s;
+            }
+            .box-link{
+                height:100%;
+            }
+            @keyframes backgroundAnimUp {
+                /*0% {
+                    background-position: 0% 0%;
+                }
+                100% {
+                    background-position: 10% 60%;
+                }*/
+                0% {
+                    background-position: 100% 100%;
+                }
+                100% {
+                    background-position: 10% 55%;
+                }
+            }
+            @-webkit-keyframes backgroundAnimUp {
+                0% {
+                    background-position: 100% 100%;
+                }
+                100% {
+                    background-position: 10% 55%;
+                }
+            }
+            @keyframes backgroundAnimDown {
+                0% {
+                    background-position: 0% 90%;
+                }
+                100% {
+                    background-position: 0% 0%;
+                }
+            }
+            @-webkit-keyframes backgroundAnimDown {
+                0% {
+                    background-position: 0% 90%;
+                }
+                100% {
+                    background-position: 0% 0%;
+                }
+            }
+            .profile_picture{
+                padding-top:100px;
+                width:100px;
+                margin-left:auto;
+                margin-right:auto;
+                text-align: -webkit-center;
+                /*border-radius: 50%;*/
+            }
+            .profile_picture_image{
+                background-image: url(img/rickykennedy.jpg);
+                background-position: 50% 9%;
+                /*background-origin: border-box;*/
+                border: 1px solid #a5c9e5;
+                border-radius: 50%;
+                height: 100px;
+                width: 100px;
+                background-size: 100px 120px;
+                background-repeat: no-repeat;
+            }
+            .user_details{
+                text-align: center;
+            }
+            .name{
+                font-size: 15px;
+                font-weight: bold;
+            }
+            .occupation{
+
+            }
+            .header-background{
+                /*width:100%;
+                min-height:600px;*/
+                /* fallback */
+                /*background: url(img/image_11.png) no-repeat center center fixed; */
+                /* W3C */
+                  /*-webkit-background-size: cover;
+                  -moz-background-size: cover;
+                  -o-background-size: cover;
+                  background-size: cover;*/
+            }
+            #footer{
+                /*position:initial;*/
+                /*background: #eb01a5;*/
+                /*background-image: linear-gradient(#a5c9e5, #1e5799); */
+            }
+            .list-group{
+                margin:0px;
+            }
+            /*.marquee{
+                overflow: hidden;
+                -webkit-animation: marquee 50s linear infinite;
+            }
+
+            @keyframes marquee {
+                0%   { left:0 }
+                100% { left:100% }
+            }*/
+        </style>
+        <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper">
+            <div class="col-md-6 col-sm-12 col-xs-12 left-wrapper">
+                <div class="left-container">
+                    <div class="left-content">
+                        <div class='profile_picture'>
+                            <div class="profile_picture_image"></div>
+                            <div></div>
+                        </div>
+                        <div class='user_details'>
+                            <div class='name'>Ricky Kennedy</div>
+                            <div class="occupation">Mobile and Web Developer and unofficially graduate student at University Of Wollongong</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 right-wrapper">
+                <div class="right-container resume">
+                    <div class="right-content">
+                        <a class="box-link" href="resume.html">
+                            <span>Resume</span>
+                        </a>
+                    </div>
+                    
+                </div>
+                <div class="right-container portfolio">
+                    <div class="right-content">
+                        <a class="box-link" href="javascript:void(0);">
+                            <!-- <span>portfolio</span> -->
+                        </a>
+                    </div>
+                </div>
+                <div class="right-container enquiry">
+                    <div class="right-content">
+                        <a class="box-link" href="javascript:void(0);">
+                            <!-- <span>enquiry</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+            <div id="footer">
+                  <div class="col-xs-12 col-md-6 copyright">© 2016 Ricky Kennedy. All Rights Reserved.</div>
+                  <div class="col-xs-12 col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item social-media"><a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/woshiricky"><img alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0></a></li>
+                            <li class="list-group-item social-media"><a target="_blank" title="follow me on facebook" href="http://www.facebook.com/woshiricky"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a></li>
+                            <li class="list-group-item social-media"><a target="_blank" title="follow me on instagram" href="http://www.instagram.com/ricky_kennedy"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a></li>
+                            <li class="list-group-item social-media"><a target="_blank" title="follow me on github" href="https://github.com/rickykennedy"><img src="public/images/GitHub-Mark-32px.png"></a></li>
+                            <li class="list-group-item social-media"><a target="_blank" title="follow me on github" href="https://stackoverflow.com/users/891005/icezz"><img src="public/images/so-icon.png"></a></li>
+                            <li class="list-group-item social-media back-to-top"><a id="top" href="#" style="display: none; opacity: 1;"><span class="glyphicon glyphicon-chevron-up"></span></a></li>
+                        </ul>
+                  </div>
+            </div>
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+        });
+        </script>
+    </body>
+</html>
