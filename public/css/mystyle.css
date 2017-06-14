@@ -281,6 +281,13 @@ a{
     
 }
 @media screen and (max-width: 480px) {
+  .list-group-item{
+    padding: 8px 5px;
+    border: 0px solid;
+  }
+  .list-group-item a img{
+    width:80%;
+  }
   .navbar-default .navbar-toggle:hover{
     background-color:#ffffff;
   }
@@ -295,6 +302,12 @@ a{
   }
     .desc-wrapper{
       padding: 0px;
+    }
+    .desc-wrapper > .desc-donate{
+      margin: 0px;
+    }
+    .desc-wrapper > .desc-resume{
+      font-size: 26px;
     }
     .footer-navigations{
       display:block;
