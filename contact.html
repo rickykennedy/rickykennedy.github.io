@@ -71,31 +71,35 @@ and open the template in the editor.
             </div>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 main-contact">
-            <form action="send_email.php" method="post">
+            <!--<form action="send_email.php" method="post">-->
             <div class="contact-row contact-title">Contact me now</div>
             <!--<div class="contact-row contact-subtitle">Please don't hesitate to reach out to me if you have any questions or feedback about the service I offer. Just drop a note below. </div>-->
             <div class="contact-row contact-subtitle">Feel free to drop me an email for the service I offer or any collaboration work or even as simple as sharing an idea.</div>
             <div class="contact-row contact-note">Or you could <a href="https://paypal.me/rickykennedy/1">buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe?</a> :)</div>
             <div class="contact-row contact-form">
                 <!--<div class="col-md-8 col-sm-12 col-xs-12">-->
-                    <div class="row">
-                        <input name="name" type="text" placeholder="Type your name here."></input>
+
+                    <div id="response" class="row">
+                        <!--Error: fill in all the the form-->
                     </div>
                     <div class="row">
-                        <input name="email" type="email" placeholder="Type your email here."></input>
+                        <input id="contact-form-name" name="name" type="text" placeholder="Type your name here."></input>
                     </div>
                     <div class="row">
-                        <textarea name="name" placeholder="Share your message with me."></textarea>
+                        <input id="contact-form-email" name="email" type="email" placeholder="Type your email here."></input>
                     </div>
                     <div class="row">
-                        <input class="btn btn-primary" name="submit" type="submit" value="submit"></input>
+                        <textarea id="contact-form-message" name="message" placeholder="Share your message with me."></textarea>
+                    </div>
+                    <div class="row">
+                        <input class="btn btn-primary btn-submit" name="submit" type="submit" value="submit" data-status="false"></input>
                     </div>
                 <!--</div>-->
                 <!--<div class="col-md-8 col-sm-12 col-xs-12">
 
                 </div>-->
             </div>
-            </form>
+            <!--</form>-->
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 main-footer">
             <div class="footer-wrapper">
@@ -129,6 +133,49 @@ and open the template in the editor.
         $(document).ready(function(){
             var currentYear = (new Date).getFullYear();
             $("#currentYear").text((new Date).getFullYear() );
+
+            $('.btn-submit').on('click',function(){
+                if($(this).attr('data-status') == "false" && $('#contact-form-name').val() != "" && $('#contact-form-email').val() != "" && $('#contact-form-message').val() != "" && $('#btn-submit').val() != ""){
+                    $(this).attr('data-status', true);
+                    var btn = $(this);
+                    var data = {
+                        name : $('#contact-form-name').val(),
+                        email : $('#contact-form-email').val(),
+                        message : $('#contact-form-message').val(),
+                        submit : $('.btn-submit').val(),
+                    }
+                    $.ajax({
+                        url: "send_email.php",
+                        type: "post",
+                        data: data ,
+                        dataType: 'json',
+                        success: function (response) {
+                        // you will get response from your php page (what you echo or print)                 
+                            if(response['code'] == "200"){
+                                $('#response').css('color','green').html(response['message']);
+                            }else{
+                                $('#response').css('color','red').html(response['message']);
+                            }
+                            $('#response').fadeIn();
+                            btn.attr('data-status', false);
+                            setTimeout(function(){
+                                $('#response').fadeOut();
+                            },15000);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                            btn.attr('data-status', false);
+                            setTimeout(function(){
+                                $('#response').fadeOut();
+                            },15000);
+
+                        }
+                    });
+                    
+                }else{
+                    $('#response').css('color','red').html('Please fill in the form');
+                }
+            });
         });
         </script>
     </body>
