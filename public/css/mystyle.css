@@ -69,7 +69,27 @@ a{
   cursor: pointer;
   
 }
+.main-banner{
+  width:100%;
+  height:75px;
+  padding:0px;
+  /*margin:0px auto;*/
+  background-image: linear-gradient(#034ea2, #034ea2);
+}
 
+.main-banner .promo-1{
+  width:80%;
+  /*height:80px;*/
+  padding:0px;
+  margin: -30px auto 0px;
+}
+.main-banner .promo-1 a img{
+  width:80%;
+  height:100%;
+  /*height:80px;*/
+  /*padding:0px;
+  margin: -30px auto 0px;*/
+}
 .main-background{
                 background-image: url(../images/background/image_18_light.png);
                 background-repeat: no-repeat;
@@ -144,6 +164,10 @@ a{
   color: #091a1a;
     padding-bottom: 3px;
     border-bottom: 1px solid #091a1a;
+}
+.contact-row.contact-note a:hover{
+  text-decoration: none;
+  border-bottom:0px solid;
 }
 .contact-row .row{
   width:60%;
