@@ -127,8 +127,13 @@ a{
     margin:20px auto;
 }
 .main-personal > .personal-info{
-
+    padding: 0px 20px;
     margin:20px auto;
+}
+.main-personal > .personal-description{
+    padding: 0px 20px;
+    text-align: left;
+    /*margin:20px auto;*/
 }
 .main-portfolio{
     font-size: 16px;
