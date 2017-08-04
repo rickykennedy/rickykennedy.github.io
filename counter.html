@@ -15,15 +15,23 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="public/css/bootstrap.css" rel="stylesheet">
         <link href="public/css/font-awesome.min.css" rel="stylesheet">
+        <link href="public/css/jquery-ui.css" rel="stylesheet">
+
         <link href="public/css/style.css" rel="stylesheet">
     </head>
     <body>
         <script type="text/javascript" src="public/js/jquery.js"></script>
         <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/js/jquery-ui.min"></script>
+        <script type="text/javascript" src="public/js/jquery.countdown.min.js"></script>
         <style type="text/css">
+
             html,body {
                 height: 100%;
                 color: #e3e3e3;
+            }
+            p{
+                margin:0px;
             }
             .main-wrapper { 
                 background: #eb01a5;
@@ -34,13 +42,12 @@ and open the template in the editor.
                 min-height:100%;
             }
             .container{
-                padding:10%;
+                padding:5%;
                 height:100%;
             }
             .content{
                 padding:15px;
-                /*border:1px solid #e3e3e3;*/
-                /*border-radius:15px;*/
+                text-align: center;
             }
             .profile_picture{
                 width:100px;
@@ -59,48 +66,66 @@ and open the template in the editor.
                 background-size: 100px 120px;
                 background-repeat: no-repeat;
             }
-            .user_details{
-                text-align: center;
-            }
-            .name{
-                font-size: 15px;
-                font-weight: bold;
-            }
-            .occupation{
 
-            }
-            .donate{
-                color:#ffffff;
-            }
-            .dob{
-                padding-top:10px;
-            }
-            .description{
-                padding-top:10px;
-            }
-            label{
-                display: inline-block;
-                margin-bottom: 0px;
-            }
+.counter{
+  position:relative;
+  font-size:18px;
+  text-align: center;
+  width:100px;
+  height:100px;
+  border-color:#a7a7a7;
+  background-color: #361752;
+  background-image: -webkit-linear-gradient(90deg,  #B31B67,#361752);
+  margin:30px auto 20px;
+  border-radius:50%;
+}
+.counter .day{
+  font-size:32px;
+  padding-top: 15%;
+}
+.counter .day-text{
+    display:none;
+}
+.counter .back{
+  transform: rotateX(180deg);
+}
+.counter .flip{
+  transform-origin: 100% 213.5px; /* half of height */
+}
+.counter:hover .flip{
+  transform: rotateX(-180deg);
+}
+.flipping{
+    overflow: hidden;
+    -webkit-animation: flipping 5s linear infinite;
+}
+@keyframes flipping {
+    0%   { transform: rotateY(0deg) }
+    50% { transform: rotateY(180deg) }
+    100%   { transform: rotateY(360deg) }
+}
         </style>
         <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper">
             <div class='container'>
-                <!--<div class="content">
-                    <div class='profile_picture'>
+                <div class="content">
+                    <div class='profile_picture flipping'>
                         <div class="profile_picture_image"></div>
                         <div></div>
                     </div>
                     <div class='user_details'>
                         <div class='name'>Ricky Kennedy</div>
-                        <div class="occupation">Mobile and Web Developer and unofficially graduate student at University Of Wollongong</div>
+                        <div class="occupation">Mobile and Web Developer</div>
                         <div class="donate"><a href="https://paypal.me/rickykennedy/1" style="color:#ffffff;">Buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe? :)</a></div>
                     </div>
-                </div>-->
+                </div>
                 <div class="content">
+                    <div class="info">Hello there, click on the date first together day box and choose the date you first hangout with your love one. <br/>Enjoy!</div>
+                    <div id="getting-started"></div>
+                    <div class="counter flip"><p class="day"></p> <p class="day-text">days</p></div>
                     <div>
-                        <input type="text" class="" value="Male name"/>
-                        <input type="text" class="" value="Female name"/>
-                        <button class="btn btn-default btn-calculate">Calculate</button>
+                        <input type="text" class="first_day" value="First together day"/>
+                        <!--<input type="text" class="" value="Today"/>-->
+                        <!--<button class="btn btn-default btn-calculate">Calculate</button>-->
                     </div>
 
                 </div>
@@ -158,6 +183,44 @@ and open the template in the editor.
         </div> -->
         <script type="text/javascript">
         $(document).ready(function(){
+            $( function() {
+                $( ".first_day" ).datepicker({
+                    changeMonth: true,
+                    changeYear: true
+                });
+            });
+
+            $('.first_day').on('change',function(){
+                console.log($('.first_day').val());
+                var firstDay = $('.first_day').val();
+                var dateObj = new Date();
+                var month = dateObj.getUTCMonth() + 1; //months from 1-12
+                var day = dateObj.getUTCDate();
+                var year = dateObj.getUTCFullYear();
+
+                var today = month + "/" + day + "/" + year;
+                var diffDays = daydiff(parseDate(firstDay), parseDate(today));
+                if(diffDays >= 0){
+                    if(diffDays == 0){
+                        $('.day-text').html('day');
+                    }else{
+                        $('.day-text').html('days');
+                    }
+                    $('.day').html(diffDays);
+                    $('.day-text').show();
+                }else{
+                    alert('Please choose older date.');
+                }
+            });
+
+            function parseDate(str) {
+                var mdy = str.split('/');
+                return new Date(mdy[2], mdy[0]-1, mdy[1]);
+            }
+
+            function daydiff(first, second) {
+                return Math.round((second-first)/(1000*60*60*24));
+            }
             // $('[data-toggle="tooltip"]').tooltip(); 
             //     $(window).scroll(function() {
             //      if ($(this).scrollTop() > 100) {
@@ -167,6 +230,9 @@ and open the template in the editor.
             //         $('#top').fadeOut();
             //         // $('#top').css(['opacity','display'],['0','none']);
             //     }
+            // });
+            //  $('#getting-started').countdown('2018/01/01', function(event) {
+            //     $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
             // });
         });
         </script>

@@ -87,6 +87,10 @@
     overflow: hidden;
     -webkit-animation: marquee 50s linear infinite;
 }
+@keyframes marquee {
+    0%   { left:0 }
+    100% { left:100% }
+}
 .circle {
   content: ' \25CF';
   width: 100px;
@@ -104,10 +108,7 @@
   border-radius: 50px;
 }
 
-@keyframes marquee {
-    0%   { left:0 }
-    100% { left:100% }
-}
+
 #mask-overlay{
     position: absolute;
     top: 0;
