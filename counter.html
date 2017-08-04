@@ -117,6 +117,10 @@ and open the template in the editor.
                         <div class="occupation">Mobile and Web Developer</div>
                         <div class="donate"><a href="https://paypal.me/rickykennedy/1" style="color:#ffffff;">Buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe? :)</a></div>
                     </div>
+                    <div>
+                        <p>Click here to find out my first date with my girlfriend.</p>
+                        <button class="btn btn-sm btn-default my-btn">My First Together Day</button>
+                    </div>
                 </div>
                 <div class="content">
                     <div class="info">Hello there, click on the date first together day box and choose the date you first hangout with your love one. <br/>Enjoy!</div>
@@ -189,10 +193,18 @@ and open the template in the editor.
                     changeYear: true
                 });
             });
-
+            $('.my-btn').on('click',function(){
+                var firstDay = '02/14/2015';
+                $('.first_day').val(firstDay);
+                countDate(firstDay);
+            });
             $('.first_day').on('change',function(){
                 console.log($('.first_day').val());
                 var firstDay = $('.first_day').val();
+                countDate(firstDay);
+            });
+            function countDate(firstDay){
+
                 var dateObj = new Date();
                 var month = dateObj.getUTCMonth() + 1; //months from 1-12
                 var day = dateObj.getUTCDate();
@@ -211,8 +223,7 @@ and open the template in the editor.
                 }else{
                     alert('Please choose older date.');
                 }
-            });
-
+            }
             function parseDate(str) {
                 var mdy = str.split('/');
                 return new Date(mdy[2], mdy[0]-1, mdy[1]);
