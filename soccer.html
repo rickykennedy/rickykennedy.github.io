@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name='Ricky Kennedy'>
+        <meta title="Ricky's counter sample">
+        <meta description='This is my personal website.'>
+        <title>Ricky Kennedy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="public/css/bootstrap.css" rel="stylesheet">
+        <link href="public/css/font-awesome.min.css" rel="stylesheet">
+        <link href="public/css/jquery-ui.css" rel="stylesheet">
+
+        <link href="public/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <script type="text/javascript" src="public/js/jquery.js"></script>
+        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/js/jquery-ui.min"></script>
+        <script type="text/javascript" src="public/js/jquery.countdown.min.js"></script>
+        <style type="text/css">
+
+            html,body {
+                height: 100%;
+                color: #e3e3e3;
+            }
+            p{
+                margin:0px;
+            }
+            .main-wrapper { 
+                background: #eb01a5;
+                background-image: linear-gradient(#a5c9e5, #1e5799); 
+                margin:0px;
+                padding:0px;
+                height:auto;
+                min-height:100%;
+            }
+            .container{
+                padding:5%;
+                height:100%;
+            }
+            .content{
+                padding:15px;
+                text-align: center;
+            }
+            .profile_picture{
+                width:100px;
+                margin-left:auto;
+                margin-right:auto;
+                text-align: -webkit-center;
+            }
+            .profile_picture_image{
+                background-image: url(img/rickykennedy.jpg);
+                background-position: 50% 9%;
+                background-origin: border-box;
+                border: 1px solid #a5c9e5;
+                border-radius: 50%;
+                height: 100px;
+                width: 100px;
+                background-size: 100px 120px;
+                background-repeat: no-repeat;
+            }
+
+.counter{
+    display:none;
+  position:relative;
+  font-size:18px;
+  text-align: center;
+  width:100px;
+  height:100px;
+  border-color:#a7a7a7;
+  background-color: #361752;
+  background-image: -webkit-linear-gradient(90deg,  #B31B67,#361752);
+  margin:30px auto 20px;
+  border-radius:50%;
+}
+.counter .day{
+  font-size:32px;
+  padding-top: 15%;
+}
+.counter .day-text{
+    display:none;
+}
+.flipping{
+    overflow: hidden;
+    -webkit-animation: flipping 5s linear infinite;
+}
+@keyframes flipping {
+    0%   { transform: rotateY(0deg) }
+    50% { transform: rotateY(180deg) }
+    100%   { transform: rotateY(360deg) }
+}
+        </style>
+        <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper">
+            <div class='container'>
+                <div class="content">
+                    <div class='profile_picture flipping'>
+                        <div class="profile_picture_image"></div>
+                        <div></div>
+                    </div>
+                    <div class='user_details'>
+                        <div class='name'>Ricky Kennedy</div>
+                        <div class="occupation">I am a Manchester United Fans</div>
+                        <div class="donate"><a href="https://paypal.me/rickykennedy/1" style="color:#ffffff;">Buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe? :)</a></div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div>Coming Matches</div>
+                        <div class="counter"><p class="day"></p> <p class="day-text">days</p></div>
+                    
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+
+                    </div>
+                    <div class="info">Hello there, click on the date first together day box and choose the date you first hangout with your love one. <br/>Enjoy!</div>
+                    <div id="getting-started"></div>
+                    <div>
+                        <input type="text" class="first_day" value="First together day"/>
+                        <!--<input type="text" class="" value="Today"/>-->
+                        <!--<button class="btn btn-default btn-calculate">Calculate</button>-->
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- <div class="header-background">
+            <div id="mask-overlay"></div>
+            <div class='header'>
+                <h1>Ricky Kennedy</h1>
+                <h2 class="highlight">Live to code and code to live</h2>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                      <blockquote class="marquee">
+                        Mobile and Web Developer.
+                      </blockquote>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                     <h3> Programming Quote </h3>
+                      <blockquote>
+                        "The trouble with programmers is that you can never tell what a programmer is doing until it’s too late"
+                        - Seymour Cray
+                      </blockquote>
+                </div>
+            </div>
+        </div> -->
+
+        
+
+        <!-- <div id="container-last" class="container">
+            <div class="container-left">
+                <h1>Contact Info</h1>
+                <ul>
+                    <li><i></i><span>Email:</span> <a href="javascript:void(0);">Rickykennedy.development@gmail.com</a></li>
+                    <li><i></i><span>Mobile:</span> <span class="phone-code" href="#" data-toggle="tooltip" title="International Code Number for Singapore" data-placement="top">+65 </span> <span>9224 2773</span></li>
+                </ul>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="row">
+              <div class="col-xs-12 col-md-6 copyright">© 2016 Ricky Kennedy. All Rights Reserved.</div>
+              <div class="col-xs-12 col-md-6">
+                    <ul class="list-group">
+                        <li class="list-group-item social-media"><a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/woshiricky"><img alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0></a></li>
+                        <li class="list-group-item social-media"><a target="_blank" title="follow me on facebook" href="http://www.facebook.com/woshiricky"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a></li>
+                        <li class="list-group-item social-media"><a target="_blank" title="follow me on instagram" href="http://www.instagram.com/ricky_kennedy"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a></li>
+                        <li class="list-group-item social-media"><a target="_blank" title="follow me on github" href="https://github.com/rickykennedy"><img src="public/images/GitHub-Mark-32px.png"></a></li>
+                        <li class="list-group-item social-media back-to-top"><a id="top" href="#" style="display: none; opacity: 1;"><span class="glyphicon glyphicon-chevron-up"></span></a></li>
+                    </ul>
+
+                    
+              </div>
+            </div>
+            <div class="right"></div>
+        </div> -->
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $( function() {
+                $( ".first_day" ).datepicker({
+                    changeMonth: true,
+                    changeYear: true
+                });
+            });
+            $('.my-btn').on('click',function(){
+                var firstDay = '02/14/2015';
+                $('.first_day').val(firstDay);
+                countDate(firstDay);
+            });
+            $('.first_day').on('change',function(){
+                console.log($('.first_day').val());
+                var firstDay = $('.first_day').val();
+                countDate(firstDay);
+            });
+            function countDate(firstDay){
+
+                var dateObj = new Date();
+                var month = dateObj.getUTCMonth() + 1; //months from 1-12
+                var day = dateObj.getUTCDate();
+                var year = dateObj.getUTCFullYear();
+
+                var today = month + "/" + day + "/" + year;
+                var diffDays = daydiff(parseDate(firstDay), parseDate(today));
+                if(diffDays >= 0){
+                    if(diffDays == 0){
+                        $('.day-text').html('day');
+                    }else{
+                        $('.day-text').html('days');
+                    }
+                    $('.day').html(diffDays);
+                    $('.day-text').show();
+                }else{
+                    alert('Please choose older date.');
+                }
+            }
+            function parseDate(str) {
+                var mdy = str.split('/');
+                return new Date(mdy[2], mdy[0]-1, mdy[1]);
+            }
+
+            function daydiff(first, second) {
+                return Math.round((second-first)/(1000*60*60*24));
+            }
+            // $('[data-toggle="tooltip"]').tooltip(); 
+            //     $(window).scroll(function() {
+            //      if ($(this).scrollTop() > 100) {
+            //         $('#top').fadeIn();
+            //     } else {
+            //         // $('#top').css({'opacity':'0','display':'none'}).fadeOut();
+            //         $('#top').fadeOut();
+            //         // $('#top').css(['opacity','display'],['0','none']);
+            //     }
+            // });
+            //  $('#getting-started').countdown('2018/01/01', function(event) {
+            //     $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
+            // });
+        });
+        </script>
+    </body>
+</html>
