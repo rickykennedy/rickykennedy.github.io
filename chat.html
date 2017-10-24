@@ -111,19 +111,36 @@ and open the template in the editor.
     text-align:left;
     border: 1px solid #ffffff;
     height:300px; 
-    overflow:auto
+    overflow:auto;
+    margin-bottom:20px;
+    padding:5px;
 }
 .text-msg{
     display:block;
     padding-bottom:5px;
 }
+.text-msg.text-admin{
+    color:#000;
+    font-weight:bold;
+}
 .submit-btn{
     background-color:#e3e3e3;
+}
+.info{
+    padding-bottom:10px;
+}
+.msg_box{
+    width:70%;
+    display:inline-block;
+}
+.submit-btn{
+    width:25%;
+    display:inline-block;
 }
         </style>
         <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper">
             <div class='container'>
-                <div class="content">
+                <div class="col-md-6 col-sm-6 col-xs-12 content">
                     <div class='profile_picture flipping'>
                         <div class="profile_picture_image"></div>
                         <div></div>
@@ -133,20 +150,23 @@ and open the template in the editor.
                         <div class="occupation">Mobile and Web Developer</div>
                         <div class="donate"><a href="https://paypal.me/rickykennedy/1" style="color:#ffffff;">Buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe? :)</a></div>
                     </div>
-                    <div>
-                        <p>Click here to find out my first date with my girlfriend.</p>
-                        <button class="btn btn-sm btn-default my-btn">My First Together Day</button>
-                    </div>
                 </div>
-                <div class="content">
-                    <div class="info">Hello there, click on the date first together day box and choose the date you first hangout with your love one. <br/>Enjoy!</div>
+                <div class="col-md-6 col-sm-6 col-xs-12 content">
+                    <div class="info">Hello there, enter your name and have a chat. <br/>Enjoy!</div>
+                    <div class="info">
+                        <p>Please enter your name:</p>
+                        <input type="text" class="form-control msg_name" placeholder="e.g. Ricky" value=""/>
+                        <p class="error-text text-danger"></p>
+                        <!--<button class="btn btn-sm btn-default my-btn">My First Together Day</button>-->
+                    </div>
                     <div class="chat_box"></div>
                     <!--<div class="counter flip"><p class="day"></p> <p class="day-text">days</p></div>-->
                     
                     <form class="chat_form">
-                    <div>
-                        <input type="text" class="msg_box" value=""/>
-                        <input class="btn btn-sm submit-btn" type="submit" value="send message"/>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <input type="text" class="form-control msg_box" value=""/>
+                        <input class="btn btn-sm submit-btn" type="submit" value="Send"/>
+                        <p class="error-msg text-danger"></p>
                     </div>
                     </form>
                 </div>
@@ -159,32 +179,39 @@ and open the template in the editor.
             var chat_box = $('.chat_box');
             var chat_form = $('.chat_form');
             var msg_box = $('.msg_box');
+            var msg_name = $('.msg_name');
             chat_form.submit(function(e){
+                $('.error-text').html('');
+                $('.error-msg').html('');
                 e.preventDefault();
                 console.log('send message');
                 console.log(msg_box.val());
-                if(msg_box.val() != ''){
-                    socket.emit('send_message',msg_box.val());
+                if(msg_box.val() != '' && msg_name.val() != ''){
+                    socket.emit('send_message',{ name:msg_name.val(), msg:msg_box.val()});
                     msg_box.val('');
+                }else if(msg_name.val() == ''){
+                    $('.error-text').html('Please enter your name or code name.');
+                }else if(msg_box.val() == ''){
+                    $('.error-msg').html('Please enter your message.');
                 }
                 
             })
             socket.on('message',function(data){
                 console.log('message data');
                 console.log(data);
-                chat_box.append('<div class="text-msg">'+data + '</div>');
+                chat_box.append('<div class="text-msg"><span>'+data.name+':</span> '+data.msg + '</div>');
                 scroll_down();
             });
             socket.on('messaging',function(data){
                 console.log('message data');
                 console.log(data);
-                chat_box.append('<div class="text-msg">'+data + '</div>');
+                chat_box.append('<div class="text-msg"><span>'+data.name+':</span> '+data.msg + '</div>');
                 scroll_down();
             });
             socket.on('info',function(data){
                 console.log('info data');
                 console.log(data);
-                chat_box.append('<div class="text-msg">'+data.msg + '</div>');
+                chat_box.append('<div class="text-msg text-admin"><span>'+data.name+':</span> '+data.msg + '</div>');
                 scroll_down();
 
             });
