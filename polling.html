@@ -146,9 +146,11 @@ and open the template in the editor.
 }
 .poll-message-box{
     height:auto;
-    max-height:300px;
+    max-height:150px;
     padding: 10px 0px;
     text-align:left;
+    overflow:hidden;
+    overflow-y: scroll;
 }
 .poll_user{
     font-weight: bold;
@@ -211,17 +213,24 @@ and open the template in the editor.
         <script type="text/javascript">
         $(document).ready(function(){
             var socket = io.connect('http://128.199.159.114:3000');
+            // var socket = io.connect('http://development.gaekon.com:3000');
             var chart = null;
             
             socket.on('get polls',function(data){
                 console.log('get polls data');
                 console.log(data);
+
+                var row = "<p><span class='poll_user'>" + data.pollingUser + " </span> has poll.</p>";
+                $('.poll-message-box').append(row);
+                scroll_down();
+
                 var dataPoint = chart.options.data[0].dataPoints;
-                dataPoint[0].y = data.A; 
-                dataPoint[1].y = data.B; 
-                dataPoint[2].y = data.C; 
-                dataPoint[3].y = data.D; 
+                dataPoint[0].y = data.pollData.A; 
+                dataPoint[1].y = data.pollData.B; 
+                dataPoint[2].y = data.pollData.C; 
+                dataPoint[3].y = data.pollData.D; 
                 chart.render();
+                
             });
             socket.on('info',function(data){
                 console.log('info data');
@@ -258,15 +267,16 @@ and open the template in the editor.
             $('.btn-poll').on('click',function(){
                 console.log('send poll');
                 console.log($(this).attr('data-val'));
-                // if($('.msg_name')){
-                //     $('.error-text').html('Please insert your name before submission.');        
-                // }
                 var poll_data = {
                     polling: $(this).attr('data-val'),
                     poll_user: $('.msg_name').val()
                 }
                 socket.emit('polling',poll_data);
             });
+
+            function scroll_down(){
+                $('.poll-message-box').animate({scrollTop: $('.poll-message-box').prop("scrollHeight")}, 300);
+            }
         });
         </script>
     </body>
