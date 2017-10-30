@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name='Ricky Kennedy'>
+        <meta title="Ricky's counter sample">
+        <meta description='This is my personal website.'>
+        <title>Ricky Kennedy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="public/css/bootstrap.css" rel="stylesheet">
+        <link href="public/css/font-awesome.min.css" rel="stylesheet">
+        <link href="public/css/jquery-ui.css" rel="stylesheet">
+
+        <link href="public/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <script type="text/javascript" src="public/js/jquery.js"></script>
+        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="public/js/jquery-ui.min"></script>
+        <script type="text/javascript" src="public/js/jquery.countdown.min.js"></script>
+        <script src="http://128.199.159.114:3000/socket.io/socket.io.js"></script>
+        <!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
+        <script src="http://128.199.159.114/public/js/canvasjs/canvasjs.min.js"></script>
+        <style type="text/css">
+
+            html,body {
+                height: 100%;
+                color: #e3e3e3;
+            }
+            p{
+                margin:0px;
+            }
+            .main-wrapper { 
+                background: #eb01a5;
+                background-image: linear-gradient(#a5c9e5, #1e5799); 
+                margin:0px;
+                padding:0px;
+                height:auto;
+                min-height:100%;
+            }
+            .container{
+                padding:5%;
+                height:100%;
+            }
+            .content{
+                padding:15px;
+                text-align: center;
+            }
+            .profile_picture{
+                width:100px;
+                margin-left:auto;
+                margin-right:auto;
+                text-align: -webkit-center;
+            }
+            .profile_picture_image{
+                background-image: url(img/rickykennedy.jpg);
+                background-position: 50% 9%;
+                background-origin: border-box;
+                border: 1px solid #a5c9e5;
+                border-radius: 50%;
+                height: 100px;
+                width: 100px;
+                background-size: 100px 120px;
+                background-repeat: no-repeat;
+            }
+
+.counter{
+  position:relative;
+  font-size:18px;
+  text-align: center;
+  width:100px;
+  height:100px;
+  border-color:#a7a7a7;
+  background-color: #361752;
+  background-image: -webkit-linear-gradient(90deg,  #B31B67,#361752);
+  margin:30px auto 20px;
+  border-radius:50%;
+}
+.counter .day{
+  font-size:32px;
+  padding-top: 15%;
+}
+.counter .day-text{
+    display:none;
+}
+.counter .back{
+  transform: rotateX(180deg);
+}
+.counter .flip{
+  transform-origin: 100% 213.5px; /* half of height */
+}
+.counter:hover .flip{
+  transform: rotateX(-180deg);
+}
+.flipping{
+    overflow: hidden;
+    -webkit-animation: flipping 5s linear infinite;
+}
+@keyframes flipping {
+    0%   { transform: rotateY(0deg) }
+    50% { transform: rotateY(180deg) }
+    100%   { transform: rotateY(360deg) }
+}
+
+.chat_box{
+    max-height:300px;
+    text-align:left;
+    border: 1px solid #ffffff;
+    height:300px; 
+    overflow:auto;
+    margin-bottom:20px;
+    padding:5px;
+}
+.text-msg{
+    display:block;
+    padding-bottom:5px;
+}
+.text-msg.text-admin{
+    color:#000;
+    font-weight:bold;
+}
+.submit-btn{
+    background-color:#e3e3e3;
+}
+.info{
+    padding-bottom:10px;
+}
+.msg_box{
+    width:70%;
+    display:inline-block;
+}
+.submit-btn{
+    width:25%;
+    display:inline-block;
+}
+.poll-message-wrapper{
+    height:auto;
+    max-height:300px;
+    padding:0px 0px 10px 0px;
+}
+.poll-message-box{
+    height:auto;
+    max-height:300px;
+    padding: 10px 0px;
+    text-align:left;
+}
+.poll_user{
+    font-weight: bold;
+    color:black;
+}
+        </style>
+        <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper">
+            <div class='container'>
+                <div class="col-md-6 col-sm-6 col-xs-12 content">
+                    <div class='profile_picture flipping'>
+                        <div class="profile_picture_image"></div>
+                        <div></div>
+                    </div>
+                    <div class='user_details'>
+                        <div class='name'>Ricky Kennedy</div>
+                        <div class="occupation">Mobile and Web Developer</div>
+                        <div class="donate"><a href="https://paypal.me/rickykennedy/1" style="color:#ffffff;">Buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe? :)</a></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 content">
+                    <div class="info">Hello there, enter your name and start polling. <br/>Enjoy!</div>
+                    <div class="info">
+                        <p>Please enter your name:</p>
+                        <input type="text" class="form-control msg_name" placeholder="e.g. Ricky" value=""/>
+                        
+                        <!--<button class="btn btn-sm btn-default my-btn">My First Together Day</button>-->
+                    </div>
+                    <div class="poll-message-wrapper">
+                        <p class="error-text text-danger"></p>
+                        <div class="poll-message-box">
+                            <!--<p><span class="poll_user">Ricky :</span> has poll</p>
+                            <p><span class="poll_user">James :</span> has poll</p>
+                            <p><span class="poll_user">Marcus :</span> has poll</p>-->
+                        </div>
+                    </div>
+                    <!--<div class="chat_box"></div>-->
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                    <!--<div class="counter flip"><p class="day"></p> <p class="day-text">days</p></div>-->
+                    
+                    <!--<form class="chat_form">-->
+                    <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 5px;">
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top: 5px;">
+                            <a href="javascript:void(0);" class="btn btn-default btn-poll" data-val="A" value="Poll A">Poll A</a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top: 5px;">
+                            <a href="javascript:void(0);" class="btn btn-default btn-poll" data-val="B" value="Poll B">Poll B</a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top: 5px;">
+                            <a href="javascript:void(0);" class="btn btn-default btn-poll" data-val="C" value="Poll C">Poll C</a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top: 5px;">
+                            <a href="javascript:void(0);" class="btn btn-default btn-poll" data-val="D" value="Poll D">Poll D</a>
+                        </div>
+                    </div>
+                    <!--</form>-->
+                </div>
+                
+            </div>
+        </div>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            var socket = io.connect('http://128.199.159.114:3000');
+            var chart = null;
+            
+            socket.on('get polls',function(data){
+                console.log('get polls data');
+                console.log(data);
+                var dataPoint = chart.options.data[0].dataPoints;
+                dataPoint[0].y = data.A; 
+                dataPoint[1].y = data.B; 
+                dataPoint[2].y = data.C; 
+                dataPoint[3].y = data.D; 
+                chart.render();
+            });
+            socket.on('info',function(data){
+                console.log('info data');
+                console.log(data);
+
+                var pollA = data.pollData.A;
+                var pollB = data.pollData.B;
+                var pollC = data.pollData.C;
+                var pollD = data.pollData.D;
+                chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    theme: "light2", // "light1", "light2", "dark1", "dark2"
+                    title:{
+                        text: "Polling"
+                    },
+                    // axisY: {
+                    // 	title: "Reserves(MMbbl)"
+                    // },
+                    data: [{        
+                        type: "column",  
+                        // showInLegend: true, 
+                        // legendMarkerColor: "grey",
+                        // legendText: "MMbbl = one million barrels",
+                        dataPoints: [      
+                            { y: pollA, label: "A" },
+                            { y: pollB,  label: "B" },
+                            { y: pollC,  label: "C" },
+                            { y: pollD,  label: "D" }
+                        ]
+                    }]
+                });
+                chart.render();
+            });
+            $('.btn-poll').on('click',function(){
+                console.log('send poll');
+                console.log($(this).attr('data-val'));
+                // if($('.msg_name')){
+                //     $('.error-text').html('Please insert your name before submission.');        
+                // }
+                var poll_data = {
+                    polling: $(this).attr('data-val'),
+                    poll_user: $('.msg_name').val()
+                }
+                socket.emit('polling',poll_data);
+            });
+        });
+        </script>
+    </body>
+</html>

@@ -403,6 +403,20 @@ a{
 .desc-wrapper > .desc-donate{
   font-size: 22px;
 }
+/* list of background colors */
+.bg-blue{
+  background-color:#0af;
+}
+.bg-darker-blue{
+  background-color: #1e5799;
+}
+.bg-light-blue{
+  background-color: #a5c9e5;
+}
+.bg-grad-darklight-blue{
+  background-image: linear-gradient(#a5c9e5, #1e5799);
+}
+/* end of list of background colors */
 .footer-wrapper{
   /*width:100%;*/
   padding: 64px 32px;
