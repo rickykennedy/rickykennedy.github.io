@@ -137,6 +137,24 @@ and open the template in the editor.
     width:25%;
     display:inline-block;
 }
+.message-wrapper{
+
+    height:auto;
+    max-height:300px;
+    padding:0px 0px 10px 0px;
+}
+.message-box{
+    height:auto;
+    max-height:150px;
+    padding: 10px 0px;
+    text-align:left;
+    overflow:hidden;
+    overflow-y: hidden;
+}
+.message-user{
+    font-weight: bold;
+    color:black;
+}
         </style>
         <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper">
             <div class='container'>
@@ -156,8 +174,12 @@ and open the template in the editor.
                     <div class="info">
                         <p>Please enter your name:</p>
                         <input type="text" class="form-control msg_name" placeholder="e.g. Ricky" value=""/>
-                        <p class="error-text text-danger"></p>
+                        <!--<p class="error-text text-danger"></p>-->
                         <!--<button class="btn btn-sm btn-default my-btn">My First Together Day</button>-->
+                    </div>
+                    <div class="message-wrapper">
+                        <p class="error-text text-danger"></p>
+                        <div class="message-box"></div>
                     </div>
                     <div class="chat_box"></div>
                     <!--<div class="counter flip"><p class="day"></p> <p class="day-text">days</p></div>-->
@@ -166,7 +188,7 @@ and open the template in the editor.
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <input type="text" class="form-control msg_box" value=""/>
                         <input class="btn btn-sm submit-btn" type="submit" value="Send"/>
-                        <p class="error-msg text-danger"></p>
+                        
                     </div>
                     </form>
                 </div>
@@ -180,9 +202,10 @@ and open the template in the editor.
             var chat_form = $('.chat_form');
             var msg_box = $('.msg_box');
             var msg_name = $('.msg_name');
+            // var id = 1;
             chat_form.submit(function(e){
                 $('.error-text').html('');
-                $('.error-msg').html('');
+                // $('.error-msg').html('');
                 e.preventDefault();
                 console.log('send message');
                 console.log(msg_box.val());
@@ -192,16 +215,122 @@ and open the template in the editor.
                 }else if(msg_name.val() == ''){
                     $('.error-text').html('Please enter your name or code name.');
                 }else if(msg_box.val() == ''){
-                    $('.error-msg').html('Please enter your message.');
+                    $('.error-text').html('Please enter your message.');
+                }
+                msg_box.focus();
+            })
+            // //setup before functions
+            var checkTypingStatus = false;
+            var checkTypingTimer = null;
+            var typingTimer;                //timer identifier
+            var doneTypingInterval = 2000;  //time in ms, 5 second for example
+            
+            // //on keyup, start the countdown
+            $('.msg_box').on('keyup', function () {
+                console.log('start typing');
+                checkTypingStatus = true;
+                if(checkTyping()){
+                    console.log('user is typing');
+                    socket.emit('typing',{ name:msg_name.val(),type:true});
+                    // console.log(checkTypingTimer);
+                    clearTimeout(typingTimer);
+                    typingTimer = setTimeout(doneTyping, doneTypingInterval);
+                    // console.log(typingTimer);
                 }
                 
-            })
+            });
+
+            // //on keydown, clear the countdown 
+            $('.msg_box').on('keydown', function () {
+                clearTimeout(typingTimer);
+                    // clearTimeout(typingTimer);
+                    typingTimer = setTimeout(doneTyping, doneTypingInterval);
+                // socket.emit('typing',{ name:msg_name.val(),type:false});
+            });
+            
+            function checkTyping(){
+
+                var currentTime = new Date().getTime();
+                // console.log('currentTime');
+                // console.log(currentTime);
+                var diffTime = currentTime - checkTypingTimer;
+                // console.log('diffTime');
+                console.log(diffTime);
+                if(checkTyping && (diffTime < doneTypingInterval)){
+                    console.log('return false');
+                    // checkTypingTimer = currentTime;
+                    // checkTypingStatus = false;
+                    
+                    return false;
+                }else{
+                    console.log('return true');
+                    checkTypingTimer = currentTime;
+                    return true;
+                }
+	            
+            }
+            // https://stackoverflow.com/questions/667555/detecting-idle-time-in-javascript-elegantly
+            // https://stackoverflow.com/questions/4220126/run-javascript-function-when-user-finishes-typing-instead-of-on-key-up
+            // //user is "finished typing," do something
+            function doneTyping () {
+                console.log('done typing');
+                console.log(msg_name.val());
+                checkTypingTimer = new Date().getTime();
+                socket.emit('typing',{ name:msg_name.val(),type:false});
+                checkTypingStatus = false;
+            }
+            // https://stackoverflow.com/questions/26502699/detect-when-user-is-starting-stopping-typing-in-jquery
+            // $('.msg_box').on('keyup', debounce(function () {
+            //     console.log('typing occurred');
+            //     if(msg_name.val() != ''){
+            //         console.log(msg_name.val());
+            //         socket.emit('typing',{ name:msg_name.val()});
+            //     }
+                
+            //     // $('.content').text($(this).val());
+            // }, 500));
+            // function debounce(func, wait, immediate) {
+            //     var timeout;
+            //     return function() {
+            //         var context = this, args = arguments;
+            //         var later = function() {
+            //             timeout = null;
+            //             if (!immediate) func.apply(context, args);
+            //         };
+            //         var callNow = immediate && !timeout;
+            //         clearTimeout(timeout);
+            //         timeout = setTimeout(later, wait);
+            //         if (callNow) func.apply(context, args);
+            //     };
+            // };
             socket.on('message',function(data){
                 console.log('message data');
                 console.log(data);
                 chat_box.append('<div class="text-msg"><span>'+data.name+':</span> '+data.msg + '</div>');
                 scroll_down();
             });
+            socket.on('isTyping',function(data){
+                console.log('typing data');
+                console.log(data);
+                if(data.type){
+                    // console.log('checking:');
+                    // console.log($('.message-box').find("#" + data.name).length);
+                    if($('.message-box').find("#" + data.name).length < 1){
+                        var row = "<p id='" + data.name + "'><span class='message-user'>" + data.name + " </span> is typing...</p>";
+                        $('.message-box').append(row);
+                        message_box_scroll_down();
+                    }
+                    
+                }else{
+                    if($('.message-box').find("#" + data.name).length > 0){
+                        $('.message-box').find("#" + data.name).remove();
+                    }
+                    // 
+                    // $('.message-box').html('');
+                }
+                
+            })
+            
             socket.on('messaging',function(data){
                 console.log('message data');
                 console.log(data);
@@ -220,6 +349,9 @@ and open the template in the editor.
                 //     scrollTop: $('.chat_box').scrollHeight
                 // }, 300);
                 $('.chat_box').animate({scrollTop: $('.chat_box').prop("scrollHeight")}, 300);
+            }
+            function message_box_scroll_down(){
+                $('.message-box').animate({scrollTop: $('.message-box').prop("scrollHeight")}, 300);
             }
         });
         </script>
