@@ -84,21 +84,24 @@ and open the template in the editor.
             </div>-->
             <div class="personal-description">
                 <h3>Introduction</h3>
-                <p>My name is Ricky Kennedy and I am currently working as Software Engineer at DBS Bank.<br>
-                Recently has been a certified Scrum Master.<br>
-                Previously work as Web & Mobile Developer.<br>
+                <p>My name is Ricky Kennedy and I am currently working as Full Stack Developer at FLO Energy.<br>
+                I am a certified Scrum Master (Probably expiring soon).<br>
+                I am currently working using Kotlin.<br>
+                I have worked with Java for 3 years and Web & Mobile Developer using appcelerator (Titanium) for 2 years.<br>
                 I am holding a diploma from Republic Polytechnic major in Business Application and a Computer Science Bachelor from University Of Wollongong Major in Digital Systems Security.<br>
-                I have been living in Singapore for the past 15 years.
+                I have been living in Singapore for the past <span id="years-in-singapore"></span> years since <span id="since-year"></span>.
                 </p>
                                 
 
                 <h3>About Me</h3>
                 <p>
-                I am an observant and loves to find solution to a problem. I am a dedicated software engineer that loves to code. <br>I am a shy person at first, but once you get to know me, I can be rather noisy. <br>I love to work in a team but also able to work individually when needed.
+                I am an observant, mostly quiet until I need to speak out. I am a dedicated software engineer that not only loves to code but also loves to find solution to problem.<br>
+                I am a shy person at first meeting, but once you get to know me, I can be rather noisy. <br>
+                I love to work in a team but also able to work individually when needed.
                 </p>
 
                 <h3>Current interest</h3>
-                <p>Learning data-driven approach and applying agile methodology in project management.</p>
+                <p>Learning event-driven and data-driven approach, while applying agile methodology in project management.</p>
 
                 <h3>My Journey</h3>
                 <p>
@@ -125,7 +128,10 @@ and open the template in the editor.
             <div class="timeline-journey">
                 <ul>
                     <li>
-                        <div><span class="timeline-journey-year">2018 - Present</span>Software Engineer (DBS Bank)</div>
+                        <div><span class="timeline-journey-year">2021 - Present</span>Full Stack Developer @ Flo</div>
+                    </li>
+                    <li>
+                        <div><span class="timeline-journey-year">2018 - 2021</span>Software Engineer (DBS Bank)</div>
                     </li>
                     <li>
                         <div><span class="timeline-journey-year">2016 - 2018 (February)</span>Web and Mobile Developer</div>
@@ -184,8 +190,12 @@ and open the template in the editor.
         </script>
         <script type="text/javascript">
         $(document).ready(function(){
+            var sinceYear = 2004
             var currentYear = (new Date).getFullYear();
             $("#currentYear").text((new Date).getFullYear() );
+            var  yearInSingapore= (new Date).getFullYear() - 2004;
+            $('#since-year').text(sinceYear)
+            $('#years-in-singapore').text(yearInSingapore)
 
         });
         </script>
