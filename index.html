@@ -1,163 +1,289 @@
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name='Ricky Kennedy'>
-        <meta title="Ricky's Resume">
-        <meta description='This is my personal website.'>
-        <title>Ricky Kennedy</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="public/css/bootstrap.css" rel="stylesheet">
-        <link href="public/css/font-awesome.min.css" rel="stylesheet">
-        <link href="public/css/mystyle.css" rel="stylesheet">
-    </head>
-    <body>
-        <script type="text/javascript" src="public/js/jquery.js"></script>
-        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
-        <style type="text/css">
-        /*body,html{
-            height:100%;
-        }*/
-        </style>
-        <!--<div class="col-md-12 col-sm-12 col-xs-12 main-banner">
-            <div class="promo-1">
-                <a href="http://www.1and1.com/web-hosting?kwk=62380636&ac=OM.US.US930K244547B7030a" rel="nofollow"><img src="http://adimg.uimserv.net/1und1/KWK/Classic-Hosting/US/NewHosting_kwk_us_728x90.gif"/></a>
-            </div>
-        </div>-->
-        <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper main-background">
-            <!--<div class="mask-overflow"></div>-->
-            <div class="col-md-12 col-sm-12 col-xs-12 header">
-                <!--<div class="right-navigation">-->
-                    <nav class="navbar navbar-default">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand logo" href="#"><img src="public/images/logo/githublogo.png"></a>
-                        </div>
-                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="active-page"><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Me</a></li>
-                                <li><a href="portfolio.html">Portfolio</a></li>
-                                <li><a href="resume.html">Resume</a></li>
-                                <!--<li><a href="#">Social Media</a></li>-->
-                                <li><a href="contact.html">Contact Me</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-            </div>
-            <div class="col-md-12 col-sm-12 col-xs-12 content">
-                <div class="desc-wrapper">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ricky Kennedy — Software Engineer</title>
+    <meta name="author" content="Ricky Kennedy">
+    <meta name="description" content="Ricky Kennedy — Software Engineer. A living track of experience, projects, and the tools I build with.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- Design tokens ---------- */
+        :root {
+            --accent: #034ea2;
+            --accent-soft: #4a8bfc;
+            --bg: #ffffff;
+            --bg-alt: #f5f7fa;
+            --surface: #ffffff;
+            --text: #1a1a1a;
+            --text-soft: #5b6472;
+            --line: #e3e8ef;
+            --shadow: 0 1px 3px rgba(16, 24, 40, .06), 0 8px 24px rgba(16, 24, 40, .06);
+            --radius: 14px;
+            --maxw: 760px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --accent: #4a8bfc;
+                --accent-soft: #7db1ff;
+                --bg: #0d1117;
+                --bg-alt: #11161d;
+                --surface: #161b22;
+                --text: #e6edf3;
+                --text-soft: #9aa7b6;
+                --line: #232b36;
+                --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+            }
+        }
 
-                    <div class='profile_picture'>
-                        <div class="profile_picture_image"></div>
-                        <div></div>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+        /* ---------- Top nav ---------- */
+        header.nav {
+            position: sticky; top: 0; z-index: 10;
+            backdrop-filter: saturate(180%) blur(12px);
+            background: color-mix(in srgb, var(--bg) 82%, transparent);
+            border-bottom: 1px solid var(--line);
+        }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+        .brand { font-weight: 800; letter-spacing: -.02em; color: var(--text); font-size: 1.05rem; }
+        .brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 22px; }
+        .nav-links a { color: var(--text-soft); font-weight: 500; font-size: .92rem; }
+        .nav-links a:hover { color: var(--accent); text-decoration: none; }
+        @media (max-width: 560px) { .nav-links { gap: 14px; } .nav-links a { font-size: .82rem; } }
+
+        /* ---------- Hero ---------- */
+        .hero { padding: 72px 0 40px; }
+        .hero-grid { display: flex; align-items: center; gap: 32px; }
+        .avatar {
+            flex: 0 0 auto; width: 128px; height: 128px; border-radius: 50%;
+            object-fit: cover; box-shadow: var(--shadow);
+            border: 3px solid var(--surface); outline: 1px solid var(--line);
+        }
+        .hero h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+        .hero .role { color: var(--accent); font-weight: 600; margin-top: 6px; font-size: 1.1rem; }
+        .hero .quote { color: var(--text-soft); margin-top: 10px; font-style: italic; }
+        .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: .92rem;
+            border: 1px solid var(--line); color: var(--text); background: var(--surface);
+            transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+        }
+        .btn:hover { text-decoration: none; transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--accent); }
+        .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .btn.primary:hover { box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 40%, transparent); }
+        @media (max-width: 560px) {
+            .hero { padding: 44px 0 28px; }
+            .hero-grid { flex-direction: column; text-align: center; gap: 20px; }
+            .cta-row { justify-content: center; }
+            .hero h1 { font-size: 2rem; }
+        }
+
+        /* ---------- Section headings ---------- */
+        section { padding: 40px 0; }
+        .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 26px; }
+        .section-head h2 { font-size: 1.35rem; font-weight: 700; letter-spacing: -.02em; }
+        .section-head .kicker { color: var(--text-soft); font-size: .85rem; }
+        .alt { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+        /* ---------- Living timeline ---------- */
+        .timeline { position: relative; margin-left: 8px; padding-left: 34px; }
+        .timeline::before {
+            content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px;
+            width: 2px; background: linear-gradient(var(--accent), var(--line));
+        }
+        .entry { position: relative; padding-bottom: 30px; }
+        .entry:last-child { padding-bottom: 0; }
+        .entry::before {
+            content: ""; position: absolute; left: -34px; top: 4px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: var(--surface); border: 3px solid var(--accent);
+        }
+        .entry.now::before { background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 20%, transparent); }
+        .entry .when { font-size: .8rem; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: .05em; }
+        .entry .title { font-weight: 700; font-size: 1.08rem; margin-top: 2px; }
+        .entry .org { color: var(--accent); font-weight: 600; }
+        .entry .detail { color: var(--text-soft); margin-top: 6px; font-size: .96rem; }
+        .badge-now {
+            display: inline-block; margin-left: 8px; vertical-align: middle;
+            font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+            color: #fff; background: var(--accent); padding: 2px 8px; border-radius: 999px;
+        }
+
+        /* ---------- Skills ---------- */
+        .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+        .skill-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
+        .skill-card h3 { font-size: .95rem; margin-bottom: 12px; }
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .chip { font-size: .82rem; padding: 4px 11px; border-radius: 999px; background: var(--bg-alt); border: 1px solid var(--line); color: var(--text-soft); }
+
+        /* ---------- Footer ---------- */
+        footer { border-top: 1px solid var(--line); padding: 36px 0; text-align: center; color: var(--text-soft); }
+        .social { display: flex; justify-content: center; gap: 18px; margin-bottom: 16px; }
+        .social a { color: var(--text-soft); font-weight: 600; font-size: .9rem; }
+        .social a:hover { color: var(--accent); text-decoration: none; }
+        .copyright { font-size: .82rem; }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <div class="wrap nav-inner">
+            <a class="brand" href="#top">Ricky<span>.</span>Kennedy</a>
+            <nav class="nav-links">
+                <a href="#journey">Journey</a>
+                <a href="#skills">Skills</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <a id="top"></a>
+    <div class="wrap">
+        <section class="hero">
+            <div class="hero-grid">
+                <img class="avatar" src="public/images/rickykennedy.jpg" alt="Ricky Kennedy">
+                <div>
+                    <h1>Ricky Kennedy</h1>
+                    <div class="role">Software Engineer</div>
+                    <p class="quote">“Code to live and live to code.”</p>
+                    <div class="cta-row">
+                        <a class="btn primary" target="_blank" href="public/files/RickyKenedy.pdf" download>Download Résumé</a>
+                        <a class="btn" href="contact.html">Get in touch</a>
                     </div>
-                    <h1 class="desc-name">Ricky Kennedy</h1>
-                    <p class="desc-quote">Code to Live and Live to Code</p>
-                    <p class="desc-resume">
-                        <a target="_blank" href="public/files/RickyKenedy.pdf" download>Download Resume</a>
-                    </p>
-                    <p class="desc-donate">
-                        <a href="https://paypal.me/rickykennedy/1" style="color:#ffffff;">Buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe? :)</a>
-                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- =====================================================================
+         LIVING TRACK OF EXPERIENCE
+         To add a new milestone, copy one <div class="entry"> block and place
+         it at the TOP of .timeline (most recent first). Add class="now" to the
+         entry that represents your current role. Dates/details below are
+         carried over from the old site + inferred — edit to match reality.
+    ====================================================================== -->
+    <section class="alt" id="journey">
+        <div class="wrap">
+            <div class="section-head">
+                <h2>The Journey</h2>
+                <span class="kicker">a living track of experience — newest first</span>
+            </div>
+            <div class="timeline">
+
+                <div class="entry now">
+                    <div class="when">2024 — Present</div>
+                    <div class="title">Software Engineer <span class="badge-now">Now</span></div>
+                    <div class="org">Flo Energy · Singapore</div>
+                    <div class="detail">Building web and backend systems for the energy space. <!-- TODO: describe what you actually work on --></div>
+                </div>
+
+                <div class="entry">
+                    <div class="when">~2018 — 2024</div>
+                    <div class="title">Web &amp; Mobile Developer</div>
+                    <div class="org">Freelance &amp; agency work</div>
+                    <div class="detail">3+ years of web development across PHP, JavaScript/jQuery and CSS; built RESTful APIs on Node.js, a Twitter crawler in PHP/Python, and mobile apps with Appcelerator. Certified Scrum Master. <!-- TODO: split into real roles/companies with dates --></div>
+                </div>
+
+                <div class="entry">
+                    <div class="when">Graduated ~2017</div>
+                    <div class="title">B.Sc. Computer Science — Digital Systems Security</div>
+                    <div class="org">University of Wollongong</div>
+                    <div class="detail">Also holds a Diploma of Business Application. Final-year project explored Python. <!-- TODO: confirm graduation year --></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="wrap">
+            <div class="section-head">
+                <h2>Tools &amp; Skills</h2>
+                <span class="kicker">what I build with</span>
+            </div>
+            <div class="skill-groups">
+                <div class="skill-card">
+                    <h3>Languages</h3>
+                    <div class="chips">
+                        <span class="chip">JavaScript</span>
+                        <span class="chip">PHP</span>
+                        <span class="chip">Python</span>
+                        <span class="chip">Java</span>
+                        <span class="chip">C++</span>
+                        <span class="chip">HTML / CSS</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Frameworks &amp; Runtime</h3>
+                    <div class="chips">
+                        <span class="chip">Node.js</span>
+                        <span class="chip">jQuery</span>
+                        <span class="chip">CakePHP</span>
+                        <span class="chip">CodeIgniter</span>
+                        <span class="chip">Yii</span>
+                        <span class="chip">Appcelerator</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Data</h3>
+                    <div class="chips">
+                        <span class="chip">MySQL</span>
+                        <span class="chip">MariaDB</span>
+                        <span class="chip">MongoDB</span>
+                        <span class="chip">OracleDB</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Practices &amp; Tools</h3>
+                    <div class="chips">
+                        <span class="chip">Git / GitHub</span>
+                        <span class="chip">Bitbucket</span>
+                        <span class="chip">REST APIs</span>
+                        <span class="chip">Scrum (CSM)</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 main-personal">
-            <div class="personal-title">
-                Mobile and Web Developer
+    </section>
+
+    <footer>
+        <div class="wrap">
+            <div class="social">
+                <a target="_blank" rel="noopener" href="https://github.com/rickykennedy">GitHub</a>
+                <a target="_blank" rel="noopener" href="https://stackoverflow.com/users/891005/icezz">Stack Overflow</a>
+                <a target="_blank" rel="noopener" href="https://www.twitter.com/woshiricky">Twitter</a>
+                <a target="_blank" rel="noopener" href="https://www.instagram.com/ricky_kennedy">Instagram</a>
             </div>
-            <div class="personal-info">
-                I am a Mobile and Web Developer and Computer Science Bachelor from University Of Wollongong Major in Digital Systems Security.
-            </div>
+            <div class="copyright">&copy; <span id="currentYear"></span> Ricky Kennedy</div>
         </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 main-portfolio">
-            <div class="portfolio-title">My Portfolio</div>
-            <div class="portfolio-projects">
-                Currently there is no project shown
-            </div>
-        </div>
-        <!--
-        <div class="col-md-12 col-sm-12 col-xs-12 main-current bg-blue">
-            <div>Current Hobbies, Work or Learning:</div>
-            <ul>
-                <li>Python</li>
-            </ul>
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 main-current bg-darker-blue">
-            <div>Current Hobbies, Work or Learning:</div>
-            <ul>
-                <li>Python</li>
-            </ul>
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 main-current bg-light-blue">
-            <div>Current Hobbies, Work or Learning:</div>
-            <ul>
-                <li>Python</li>
-            </ul>
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 main-current bg-grad-darklight-blue">
-            <div>Current Hobbies, Work or Learning:</div>
-            <ul>
-                <li>Python</li>
-            </ul>
-        </div>-->
-        <div class="col-md-12 col-sm-12 col-xs-12 main-footer">
-            <div class="footer-wrapper">
-                <div class="footer-nav">
-                    <div class="footer-navigations"><a href="index.html">Home</a></div>
-                    <div class="footer-navigations"><a href="about.html">About Me</a></div>
-                    <div class="footer-navigations"><a href="portfolio.html">Portfolio</a></div>
-                    <div class="footer-navigations"><a href="resume.html">Resume</a></div>
-                    <div class="footer-navigations"><a href="contact.html">Contact Me</a></div>
-                </div>
-                <div class="footer-row footer-info">For more information, don't hesitate to <a href="contact.html">contact me</a></div>
-                <div class="footer-row footer-social-media">
-                    <ul class="list-group">
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/woshiricky"><img alt="follow me on Twitter" src="public/images/logo/twitter30x30.png" border=0></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on facebook" href="http://www.facebook.com/woshiricky"><img alt="follow me on facebook" src="public/images/logo/facebook30x30.png" border=0></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on instagram" href="http://www.instagram.com/ricky_kennedy"><img alt="follow me on instagram" src="public/images/logo/instagram30x30.png" border=0></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on github" href="https://github.com/rickykennedy"><img src="public/images/logo/GitHub-Mark-32px.png"></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on github" href="https://stackoverflow.com/users/891005/icezz"><img src="public/images/logo/so-icon.png"></a></li>
-                            <!--<li class="list-group-item social-media"><a id="top" href="#" style="display: none; opacity: 1;"><span class="glyphicon glyphicon-chevron-up"></span></a></li>-->
-                        </ul>
-                </div>
-                
-                <div class="footer-row footer-copyright">&copy;<p id="currentYear"></p>, Ricky Kennedy Development</div>
-                <div class="footer-row footer-regulation" >
-                    <div class="policy"><a href="#">Term & Conditions</a></div>
-                    <div class="policy"><a href="#">Service Policy</a></div>
-                    <div class="policy"><a href="#">Privacy Policy</a></div>
-                </div>
-            </div>
-        </div>
-        <script>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <!-- Google Analytics -->
+    <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
         ga('create', 'UA-101153835-1', 'auto');
         ga('send', 'pageview');
-
-        </script>
-        <script type="text/javascript">
-        $(document).ready(function(){
-            var currentYear = (new Date).getFullYear();
-            $("#currentYear").text((new Date).getFullYear() );
-        });
-        </script>
-    </body>
+    </script>
+</body>
 </html>
