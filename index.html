@@ -257,6 +257,27 @@
             border-bottom: 1px solid var(--line);
         }
 
+        /* ---------- About prose ---------- */
+        .prose h3 {
+            font-size: 1.02rem;
+            font-weight: 700;
+            letter-spacing: -.01em;
+            margin: 22px 0 8px;
+        }
+
+        .prose h3:first-child {
+            margin-top: 0;
+        }
+
+        .prose p {
+            color: var(--text-soft);
+            margin-bottom: 12px;
+        }
+
+        .prose p:last-child {
+            margin-bottom: 0;
+        }
+
         /* ---------- Living timeline ---------- */
         .timeline {
             position: relative;
@@ -470,6 +491,7 @@
         <div class="wrap nav-inner">
             <a class="brand" href="#top">Ricky<span>.</span>Kennedy</a>
             <nav class="nav-links">
+                <a href="#about">About</a>
                 <a href="#journey">Journey</a>
                 <a href="#skills">Skills</a>
                 <a href="#interests">Interests</a>
@@ -496,6 +518,62 @@
             </div>
         </section>
     </div>
+
+    <section id="about">
+        <div class="wrap">
+            <div class="section-head">
+                <h2>About Me</h2>
+                <span class="kicker">who I am &amp; how I got here</span>
+            </div>
+            <div class="prose">
+                <h3>Introduction</h3>
+                <p>
+                    My name is Ricky Kennedy and I'm a Senior Software Engineer at Flo Energy in Singapore. I'm a
+                    certified Scrum Master and currently building with Kotlin day to day. Before that I worked with
+                    Java for around 3 years and spent 2 years as a Web &amp; Mobile Developer using Appcelerator
+                    (Titanium). I hold a Diploma in Business Application from Republic Polytechnic and a B.Sc. in
+                    Computer Science, majoring in Digital Systems Security, from the University of Wollongong. I've
+                    been living in Singapore for <span id="years-in-singapore"></span> years, since
+                    <span id="since-year"></span>.
+                </p>
+
+                <h3>About Me</h3>
+                <p>
+                    I'm observant and mostly quiet until I need to speak up. I'm a dedicated software engineer who not
+                    only loves to code but also loves finding the solution to a problem. I can be shy at a first
+                    meeting, but once you get to know me I turn out to be rather noisy. I love working in a team, and
+                    I'm just as comfortable working on my own when needed.
+                </p>
+
+                <h3>Current Interest</h3>
+                <p>
+                    Learning event-driven and data-driven approaches, while applying agile methodology in project
+                    management.
+                </p>
+
+                <h3>My Journey</h3>
+                <p>
+                    I came to love programming during my polytechnic years, around 2010. It probably clicked because
+                    my mind thinks systematically, so programming suited me well. My very first language was Python —
+                    it was genuinely exciting to make a turtle move left and right just by writing code. A year later
+                    I picked up Java, HTML and PHP.
+                </p>
+                <p>
+                    In my final year of polytechnic I built a Twitter crawler in Python to gather tweets for
+                    analysis. Back then it was a real challenge — so much I didn't know yet — and it took a lot of
+                    proof-of-concept work and learning. I earned an 'A' for the project, but I still felt I could have
+                    done more with more knowledge.
+                </p>
+                <p>
+                    After graduating from polytechnic I worked as a backend web developer, using the CakePHP
+                    framework for the first time alongside a great group of people. I then went on to complete my
+                    degree, where I learned a lot about systems security and algorithms. I was drawn to mobile
+                    development, went looking for that kind of work — and that's how I ended up doing both mobile and
+                    web development, and eventually where I am today.
+                </p>
+            </div>
+        </div>
+    </section>
 
     <!-- =====================================================================
          LIVING TRACK OF EXPERIENCE
@@ -713,7 +791,12 @@
     </footer>
 
     <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        var currentYear = new Date().getFullYear();
+        document.getElementById('currentYear').textContent = currentYear;
+        // "living in Singapore since" — carried over from about.html
+        var sinceYear = 2004;
+        document.getElementById('since-year').textContent = sinceYear;
+        document.getElementById('years-in-singapore').textContent = currentYear - sinceYear;
     </script>
     <!-- Google Analytics -->
     <script>
