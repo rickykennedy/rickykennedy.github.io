@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ricky Kennedy — Software Engineer</title>
     <meta name="author" content="Ricky Kennedy">
-    <meta name="description" content="Ricky Kennedy — Software Engineer. A living track of experience, projects, and the tools I build with.">
+    <meta name="description"
+        content="Ricky Kennedy — Software Engineer. A living track of experience, projects, and the tools I build with.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,6 +26,7 @@
             --radius: 14px;
             --maxw: 760px;
         }
+
         @media (prefers-color-scheme: dark) {
             :root {
                 --accent: #4a8bfc;
@@ -38,8 +41,16 @@
             }
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg);
@@ -47,99 +58,413 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
         /* ---------- Top nav ---------- */
         header.nav {
-            position: sticky; top: 0; z-index: 10;
+            position: sticky;
+            top: 0;
+            z-index: 10;
             backdrop-filter: saturate(180%) blur(12px);
             background: color-mix(in srgb, var(--bg) 82%, transparent);
             border-bottom: 1px solid var(--line);
         }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-        .brand { font-weight: 800; letter-spacing: -.02em; color: var(--text); font-size: 1.05rem; }
-        .brand span { color: var(--accent); }
-        .nav-links { display: flex; gap: 22px; }
-        .nav-links a { color: var(--text-soft); font-weight: 500; font-size: .92rem; }
-        .nav-links a:hover { color: var(--accent); text-decoration: none; }
-        @media (max-width: 560px) { .nav-links { gap: 14px; } .nav-links a { font-size: .82rem; } }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+
+        .brand {
+            font-weight: 800;
+            letter-spacing: -.02em;
+            color: var(--text);
+            font-size: 1.05rem;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: var(--text-soft);
+            font-weight: 500;
+            font-size: .92rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 560px) {
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: .82rem;
+            }
+        }
 
         /* ---------- Hero ---------- */
-        .hero { padding: 72px 0 40px; }
-        .hero-grid { display: flex; align-items: center; gap: 32px; }
-        .avatar {
-            flex: 0 0 auto; width: 128px; height: 128px; border-radius: 50%;
-            object-fit: cover; box-shadow: var(--shadow);
-            border: 3px solid var(--surface); outline: 1px solid var(--line);
+        .hero {
+            padding: 72px 0 40px;
         }
-        .hero h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
-        .hero .role { color: var(--accent); font-weight: 600; margin-top: 6px; font-size: 1.1rem; }
-        .hero .quote { color: var(--text-soft); margin-top: 10px; font-style: italic; }
-        .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .avatar {
+            flex: 0 0 auto;
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+            border: 3px solid var(--surface);
+            outline: 1px solid var(--line);
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -.03em;
+            line-height: 1.1;
+        }
+
+        .hero .role {
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 6px;
+            font-size: 1.1rem;
+        }
+
+        .hero .quote {
+            color: var(--text-soft);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
         .btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: .92rem;
-            border: 1px solid var(--line); color: var(--text); background: var(--surface);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: .92rem;
+            border: 1px solid var(--line);
+            color: var(--text);
+            background: var(--surface);
             transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
         }
-        .btn:hover { text-decoration: none; transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--accent); }
-        .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-        .btn.primary:hover { box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 40%, transparent); }
+
+        .btn:hover {
+            text-decoration: none;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .btn.primary:hover {
+            box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 40%, transparent);
+        }
+
         @media (max-width: 560px) {
-            .hero { padding: 44px 0 28px; }
-            .hero-grid { flex-direction: column; text-align: center; gap: 20px; }
-            .cta-row { justify-content: center; }
-            .hero h1 { font-size: 2rem; }
+            .hero {
+                padding: 44px 0 28px;
+            }
+
+            .hero-grid {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .cta-row {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
         }
 
         /* ---------- Section headings ---------- */
-        section { padding: 40px 0; }
-        .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 26px; }
-        .section-head h2 { font-size: 1.35rem; font-weight: 700; letter-spacing: -.02em; }
-        .section-head .kicker { color: var(--text-soft); font-size: .85rem; }
-        .alt { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        section {
+            padding: 40px 0;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 26px;
+        }
+
+        .section-head h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -.02em;
+        }
+
+        .section-head .kicker {
+            color: var(--text-soft);
+            font-size: .85rem;
+        }
+
+        .alt {
+            background: var(--bg-alt);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
 
         /* ---------- Living timeline ---------- */
-        .timeline { position: relative; margin-left: 8px; padding-left: 34px; }
+        .timeline {
+            position: relative;
+            margin-left: 8px;
+            padding-left: 34px;
+        }
+
         .timeline::before {
-            content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px;
-            width: 2px; background: linear-gradient(var(--accent), var(--line));
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: linear-gradient(var(--accent), var(--line));
         }
-        .entry { position: relative; padding-bottom: 30px; }
-        .entry:last-child { padding-bottom: 0; }
+
+        .entry {
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        .entry:last-child {
+            padding-bottom: 0;
+        }
+
         .entry::before {
-            content: ""; position: absolute; left: -34px; top: 4px;
-            width: 16px; height: 16px; border-radius: 50%;
-            background: var(--surface); border: 3px solid var(--accent);
+            content: "";
+            position: absolute;
+            left: -34px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 3px solid var(--accent);
         }
-        .entry.now::before { background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 20%, transparent); }
-        .entry .when { font-size: .8rem; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: .05em; }
-        .entry .title { font-weight: 700; font-size: 1.08rem; margin-top: 2px; }
-        .entry .org { color: var(--accent); font-weight: 600; }
-        .entry .detail { color: var(--text-soft); margin-top: 6px; font-size: .96rem; }
+
+        .entry.now::before {
+            background: var(--accent);
+            box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 20%, transparent);
+        }
+
+        .entry .when {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--text-soft);
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .entry .title {
+            font-weight: 700;
+            font-size: 1.08rem;
+            margin-top: 2px;
+        }
+
+        .entry .org {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .entry .detail {
+            color: var(--text-soft);
+            margin-top: 6px;
+            font-size: .96rem;
+        }
+
         .badge-now {
-            display: inline-block; margin-left: 8px; vertical-align: middle;
-            font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
-            color: #fff; background: var(--accent); padding: 2px 8px; border-radius: 999px;
+            display: inline-block;
+            margin-left: 8px;
+            vertical-align: middle;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--accent);
+            padding: 2px 8px;
+            border-radius: 999px;
         }
 
         /* ---------- Skills ---------- */
-        .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
-        .skill-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
-        .skill-card h3 { font-size: .95rem; margin-bottom: 12px; }
-        .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-        .chip { font-size: .82rem; padding: 4px 11px; border-radius: 999px; background: var(--bg-alt); border: 1px solid var(--line); color: var(--text-soft); }
+        .skill-groups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-card h3 {
+            font-size: .95rem;
+            margin-bottom: 12px;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip {
+            font-size: .82rem;
+            padding: 4px 11px;
+            border-radius: 999px;
+            background: var(--bg-alt);
+            border: 1px solid var(--line);
+            color: var(--text-soft);
+        }
+
+        /* ---------- Interests / reading / watching ---------- */
+        .interests {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .interest-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .interest-card .head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .interest-card .head .ico {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .interest-card h3 {
+            font-size: .98rem;
+        }
+
+        .interest-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .interest-list li {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .interest-list .item-title {
+            font-weight: 600;
+            font-size: .95rem;
+            color: var(--text);
+        }
+
+        .interest-list a.item-title:hover {
+            color: var(--accent);
+        }
+
+        .interest-list .item-meta {
+            color: var(--text-soft);
+            font-size: .84rem;
+            margin-top: 2px;
+        }
 
         /* ---------- Footer ---------- */
-        footer { border-top: 1px solid var(--line); padding: 36px 0; text-align: center; color: var(--text-soft); }
-        .social { display: flex; justify-content: center; gap: 18px; margin-bottom: 16px; }
-        .social a { color: var(--text-soft); font-weight: 600; font-size: .9rem; }
-        .social a:hover { color: var(--accent); text-decoration: none; }
-        .copyright { font-size: .82rem; }
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 36px 0;
+            text-align: center;
+            color: var(--text-soft);
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 16px;
+        }
+
+        .social a {
+            color: var(--text-soft);
+            font-weight: 600;
+            font-size: .9rem;
+        }
+
+        .social a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .copyright {
+            font-size: .82rem;
+        }
     </style>
 </head>
+
 <body>
     <header class="nav">
         <div class="wrap nav-inner">
@@ -147,6 +472,7 @@
             <nav class="nav-links">
                 <a href="#journey">Journey</a>
                 <a href="#skills">Skills</a>
+                <a href="#interests">Interests</a>
                 <a href="contact.html">Contact</a>
             </nav>
         </div>
@@ -162,7 +488,8 @@
                     <div class="role">Software Engineer</div>
                     <p class="quote">“Code to live and live to code.”</p>
                     <div class="cta-row">
-                        <a class="btn primary" target="_blank" href="public/files/RickyKenedy.pdf" download>Download Résumé</a>
+                        <a class="btn primary" target="_blank" href="public/files/RickyKenedy.pdf" download>Download
+                            Résumé</a>
                         <a class="btn" href="contact.html">Get in touch</a>
                     </div>
                 </div>
@@ -189,21 +516,25 @@
                     <div class="when">2024 — Present</div>
                     <div class="title">Software Engineer <span class="badge-now">Now</span></div>
                     <div class="org">Flo Energy · Singapore</div>
-                    <div class="detail">Building web and backend systems for the energy space. <!-- TODO: describe what you actually work on --></div>
+                    <div class="detail">Building web and backend systems for the energy space.
+                        <!-- TODO: describe what you actually work on --></div>
                 </div>
 
                 <div class="entry">
                     <div class="when">~2018 — 2024</div>
                     <div class="title">Web &amp; Mobile Developer</div>
                     <div class="org">Freelance &amp; agency work</div>
-                    <div class="detail">3+ years of web development across PHP, JavaScript/jQuery and CSS; built RESTful APIs on Node.js, a Twitter crawler in PHP/Python, and mobile apps with Appcelerator. Certified Scrum Master. <!-- TODO: split into real roles/companies with dates --></div>
+                    <div class="detail">3+ years of web development across PHP, JavaScript/jQuery and CSS; built RESTful
+                        APIs on Node.js, a Twitter crawler in PHP/Python, and mobile apps with Appcelerator. Certified
+                        Scrum Master. <!-- TODO: split into real roles/companies with dates --></div>
                 </div>
 
                 <div class="entry">
                     <div class="when">Graduated ~2017</div>
                     <div class="title">B.Sc. Computer Science — Digital Systems Security</div>
                     <div class="org">University of Wollongong</div>
-                    <div class="detail">Also holds a Diploma of Business Application. Final-year project explored Python. <!-- TODO: confirm graduation year --></div>
+                    <div class="detail">Also holds a Diploma of Business Application. Final-year project explored
+                        Python. <!-- TODO: confirm graduation year --></div>
                 </div>
 
             </div>
@@ -261,6 +592,78 @@
         </div>
     </section>
 
+    <section class="alt" id="interests">
+        <div class="wrap">
+            <div class="section-head">
+                <h2>Currently Exploring</h2>
+                <span class="kicker">what I'm reading, watching &amp; digging into</span>
+            </div>
+            <div class="interests">
+
+                <div class="interest-card">
+                    <div class="head"><span class="ico">📖</span>
+                        <h3>Reading</h3>
+                    </div>
+                    <ul class="interest-list">
+                        <!-- TODO: replace with real books/articles -->
+                        <li>
+                            <span class="item-title">Refactoring: Improving the Design of Existing Code</span>
+                            <span class="item-meta">Martin Fowler · book</span>
+                        </li>
+                        <li>
+                            <span class="item-title">Clean Code: A Handbook of Agile Software Craftsmanship</span>
+                            <span class="item-meta">Robert Martin · book</span>
+                        </li>
+                        <li>
+                            <span class="item-title">Designing Data-Intensive Applications</span>
+                            <span class="item-meta">Martin Kleppmann · book</span>
+                        </li>
+                        <li>
+                            <a class="item-title" target="_blank" rel="noopener" href="#">The Pragmatic Engineer</a>
+                            <span class="item-meta">newsletter</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="interest-card">
+                    <div class="head"><span class="ico">🎬</span>
+                        <h3>Watching</h3>
+                    </div>
+                    <ul class="interest-list">
+                        <!-- TODO: replace with real talks/channels -->
+                        <li>
+                            <a class="item-title" target="_blank" rel="noopener" href="#">System design deep-dives</a>
+                            <span class="item-meta">conference talks &amp; YouTube</span>
+                        </li>
+                        <li>
+                            <span class="item-title">Energy &amp; grid-tech explainers</span>
+                            <span class="item-meta">documentaries</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="interest-card">
+                    <div class="head"><span class="ico">🧭</span>
+                        <h3>Interests</h3>
+                    </div>
+                    <ul class="interest-list">
+                        <!-- TODO: replace with real areas of interest -->
+                        <li>
+                            <span class="item-title">Distributed systems &amp; backend scale</span>
+                        </li>
+                        <li>
+                            <span class="item-title">Clean energy &amp; the software behind it</span>
+                        </li>
+                        <li>
+                            <span class="item-title">Developer tooling &amp; automation</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="wrap">
             <div class="social">
@@ -278,12 +681,15 @@
     </script>
     <!-- Google Analytics -->
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-101153835-1', 'auto');
         ga('send', 'pageview');
     </script>
 </body>
+
 </html>
