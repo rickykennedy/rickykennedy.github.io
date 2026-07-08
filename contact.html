@@ -1,197 +1,458 @@
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name='Ricky Kennedy'>
-        <meta title="Ricky's Resume">
-        <meta description='This is my personal website.'>
-        <title>Ricky Kennedy</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="public/css/bootstrap.css" rel="stylesheet">
-        <link href="public/css/font-awesome.min.css" rel="stylesheet">
-        <link href="public/css/mystyle.css" rel="stylesheet">
-    </head>
-    <body>
-        <script type="text/javascript" src="public/js/jquery.js"></script>
-        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
-        <style type="text/css">
-        /*body,html{
-            height:100%;
-        }*/
-        </style>
-        <!-- <div class="col-md-12 col-sm-12 col-xs-12 main-banner">
-            <div class="promo-1">
-                <a href="http://www.1and1.com/web-hosting?kwk=508043931&ac=OM.US.US930K244547B7030a" rel="nofollow"><img src="http://adimg.uimserv.net/1und1/KWK/Classic-Hosting/US/NewHosting_kwk_us_728x90.gif"/></a>
-            </div>
-        </div> -->
-        <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper main-background">
-            <!--<div class="mask-overflow"></div>-->
-            <div class="col-md-12 col-sm-12 col-xs-12 header">
-                <!--<div class="right-navigation">-->
-                    <nav class="navbar navbar-default">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand logo" href="#"><img src="public/images/logo/githublogo.png"></a>
-                        </div>
-                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Me</a></li>
-                                <li><a href="portfolio.html">Portfolio</a></li>
-                                <li><a href="resume.html">Resume</a></li>
-                                <!--<li><a href="#">Social Media</a></li>-->
-                                <li class="active-page"><a href="contact.html">Contact Me</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-            </div>
-            <div class="col-md-12 col-sm-12 col-xs-12 content">
-                <div class="desc-wrapper">
 
-                    <div class='profile_picture'>
-                        <div class="profile_picture_image"></div>
-                        <div></div>
-                    </div>
-                    <h1 class="desc-name">Ricky Kennedy</h1>
-                    <p class="desc-quote">Code to Live and Live to Code</p>
-                    <p class="desc-resume">
-                        <a target="_blank" href="public/files/RickyKenedy.pdf" download>Download Resume</a>
-                    </p>
-                    <p class="desc-donate">
-                        <a href="https://paypal.me/rickykennedy/1" style="color:#ffffff;">Buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe? :)</a>
-                    </p>
-                </div>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact — Ricky Kennedy</title>
+    <meta name="author" content="Ricky Kennedy">
+    <meta name="description" content="Get in touch with Ricky Kennedy — collaboration, services, or just to share an idea.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- Design tokens ---------- */
+        :root {
+            --accent: #034ea2;
+            --accent-soft: #4a8bfc;
+            --bg: #ffffff;
+            --bg-alt: #f5f7fa;
+            --surface: #ffffff;
+            --text: #1a1a1a;
+            --text-soft: #5b6472;
+            --line: #e3e8ef;
+            --shadow: 0 1px 3px rgba(16, 24, 40, .06), 0 8px 24px rgba(16, 24, 40, .06);
+            --radius: 14px;
+            --maxw: 760px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --accent: #4a8bfc;
+                --accent-soft: #7db1ff;
+                --bg: #0d1117;
+                --bg-alt: #11161d;
+                --surface: #161b22;
+                --text: #e6edf3;
+                --text-soft: #9aa7b6;
+                --line: #232b36;
+                --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- Top nav ---------- */
+        header.nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: saturate(180%) blur(12px);
+            background: color-mix(in srgb, var(--bg) 82%, transparent);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+        }
+
+        .brand {
+            font-weight: 800;
+            letter-spacing: -.02em;
+            color: var(--text);
+            font-size: 1.05rem;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: var(--text-soft);
+            font-weight: 500;
+            font-size: .92rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links a.current {
+            color: var(--accent);
+        }
+
+        @media (max-width: 560px) {
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: .82rem;
+            }
+        }
+
+        /* ---------- Page header ---------- */
+        .page-head {
+            padding: 64px 0 8px;
+            text-align: center;
+        }
+
+        .page-head h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -.03em;
+            line-height: 1.1;
+        }
+
+        .page-head .lead {
+            color: var(--text-soft);
+            margin: 14px auto 0;
+            max-width: 52ch;
+        }
+
+        .page-head .coffee {
+            margin-top: 10px;
+            color: var(--text-soft);
+            font-size: .95rem;
+        }
+
+        @media (max-width: 560px) {
+            .page-head {
+                padding: 40px 0 4px;
+            }
+
+            .page-head h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ---------- Buttons ---------- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: .95rem;
+            font-family: inherit;
+            cursor: pointer;
+            border: 1px solid var(--line);
+            color: var(--text);
+            background: var(--surface);
+            transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+        }
+
+        .btn:hover {
+            text-decoration: none;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .btn.primary:hover {
+            box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 40%, transparent);
+        }
+
+        /* ---------- Contact form ---------- */
+        section {
+            padding: 32px 0 48px;
+        }
+
+        .form-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field label {
+            display: block;
+            font-size: .85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            font-family: inherit;
+            font-size: .95rem;
+            color: var(--text);
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 11px 13px;
+            transition: border-color .12s ease, box-shadow .12s ease;
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: var(--text-soft);
+            opacity: .8;
+        }
+
+        .field textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+        }
+
+        #response {
+            font-size: .92rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: none;
+        }
+
+        /* ---------- Other ways to reach ---------- */
+        .reach {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .reach a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--text-soft);
+            border: 1px solid var(--line);
+            background: var(--surface);
+            border-radius: 999px;
+            padding: 8px 16px;
+        }
+
+        .reach a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 36px 0;
+            text-align: center;
+            color: var(--text-soft);
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 16px;
+        }
+
+        .social a {
+            color: var(--text-soft);
+            font-weight: 600;
+            font-size: .9rem;
+        }
+
+        .social a:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .copyright {
+            font-size: .82rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="nav">
+        <div class="wrap nav-inner">
+            <a class="brand" href="index.html">Ricky<span>.</span>Kennedy</a>
+            <nav class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#journey">Journey</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#interests">Interests</a>
+                <a href="contact.html" class="current">Contact</a>
+            </nav>
         </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 main-contact">
-            <!--<form action="send_email.php" method="post">-->
-            <div class="contact-row contact-title">Contact me now</div>
-            <!--<div class="contact-row contact-subtitle">Please don't hesitate to reach out to me if you have any questions or feedback about the service I offer. Just drop a note below. </div>-->
-            <div class="contact-row contact-subtitle">Feel free to drop me an email for the service I offer or any collaboration work or even as simple as sharing an idea.</div>
-            <div class="contact-row contact-note">Or you could <a href="https://paypal.me/rickykennedy/1">buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe?</a> :)</div>
-            <div class="contact-row contact-form">
-                <!--<div class="col-md-8 col-sm-12 col-xs-12">-->
+    </header>
 
-                    <div id="response" class="row">
-                        <!--Error: fill in all the the form-->
-                    </div>
-                    <div class="row">
-                        <input id="contact-form-name" name="name" type="text" placeholder="Type your name here."></input>
-                    </div>
-                    <div class="row">
-                        <input id="contact-form-email" name="email" type="email" placeholder="Type your email here."></input>
-                    </div>
-                    <div class="row">
-                        <textarea id="contact-form-message" name="message" placeholder="Share your message with me."></textarea>
-                    </div>
-                    <div class="row">
-                        <input class="btn btn-primary btn-submit" name="submit" type="submit" value="submit" data-status="false"></input>
-                    </div>
-                <!--</div>-->
-                <!--<div class="col-md-8 col-sm-12 col-xs-12">
-
-                </div>-->
-            </div>
-            <!--</form>-->
+    <div class="wrap">
+        <div class="page-head">
+            <h1>Let's talk</h1>
+            <p class="lead">
+                Feel free to drop me an email about the services I offer, any collaboration work, or even
+                something as simple as sharing an idea.
+            </p>
+            <p class="coffee">
+                Or you could <a href="https://paypal.me/rickykennedy/1">buy me a coffee ☕</a>, maybe? :)
+            </p>
         </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 main-footer">
-            <div class="footer-wrapper">
-                <div class="footer-nav">
-                    <div class="footer-navigations"><a href="index.html">Home</a></div>
-                    <div class="footer-navigations"><a href="about.html">About Me</a></div>
-                    <div class="footer-navigations"><a href="portfolio.html">Portfolio</a></div>
-                    <div class="footer-navigations"><a href="resume.html">Resume</a></div>
-                    <div class="footer-navigations"><a href="contact.html">Contact Me</a></div>
+
+        <section>
+            <div class="form-card">
+                <div id="response"></div>
+
+                <div class="field">
+                    <label for="contact-form-name">Name</label>
+                    <input id="contact-form-name" name="name" type="text" placeholder="Your name">
                 </div>
-                <div class="footer-row footer-info">For more information, don't hesitate to <a href="#">contact me</a></div>
-                <div class="footer-row footer-social-media">
-                    <ul class="list-group">
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/woshiricky"><img alt="follow me on Twitter" src="public/images/logo/twitter30x30.png" border=0></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on facebook" href="http://www.facebook.com/woshiricky"><img alt="follow me on facebook" src="public/images/logo/facebook30x30.png" border=0></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on instagram" href="http://www.instagram.com/ricky_kennedy"><img alt="follow me on instagram" src="public/images/logo/instagram30x30.png" border=0></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on github" href="https://github.com/rickykennedy"><img src="public/images/logo/GitHub-Mark-32px.png"></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on github" href="https://stackoverflow.com/users/891005/icezz"><img src="public/images/logo/so-icon.png"></a></li>
-                            <!--<li class="list-group-item social-media"><a id="top" href="#" style="display: none; opacity: 1;"><span class="glyphicon glyphicon-chevron-up"></span></a></li>-->
-                        </ul>
+                <div class="field">
+                    <label for="contact-form-email">Email</label>
+                    <input id="contact-form-email" name="email" type="email" placeholder="you@example.com">
                 </div>
-                <div class="footer-row footer-copyright">&copy;<p id="currentYear"></p>, Ricky Kennedy Development</div>
-                <div class="footer-row footer-regulation" >
-                    <div class="policy"><a href="#">Term & Conditions</a></div>
-                    <div class="policy"><a href="#">Service Policy</a></div>
-                    <div class="policy"><a href="#">Privacy Policy</a></div>
+                <div class="field">
+                    <label for="contact-form-message">Message</label>
+                    <textarea id="contact-form-message" name="message" placeholder="Share your message with me."></textarea>
                 </div>
+                <button class="btn primary btn-submit" name="submit" type="submit" value="submit" data-status="false">
+                    Send message
+                </button>
             </div>
+
+            <div class="reach">
+                <a target="_blank" rel="noopener" href="https://github.com/rickykennedy">GitHub</a>
+                <a target="_blank" rel="noopener" href="https://stackoverflow.com/users/891005/icezz">Stack Overflow</a>
+                <a target="_blank" href="public/files/RickyKenedy.pdf" download>Résumé ↓</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="wrap">
+            <div class="social">
+                <a target="_blank" rel="noopener" href="https://github.com/rickykennedy">GitHub</a>
+                <a target="_blank" rel="noopener" href="https://stackoverflow.com/users/891005/icezz">Stack Overflow</a>
+                <a target="_blank" rel="noopener" href="https://www.twitter.com/woshiricky">Twitter</a>
+                <a target="_blank" rel="noopener" href="https://www.instagram.com/ricky_kennedy">Instagram</a>
+            </div>
+            <div class="copyright">&copy; <span id="currentYear"></span> Ricky Kennedy</div>
         </div>
-        <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    </footer>
 
-        ga('create', 'UA-101153835-1', 'auto');
-        ga('send', 'pageview');
+    <script type="text/javascript" src="public/js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#currentYear").text((new Date).getFullYear());
 
-        </script>
-        <script type="text/javascript">
-        $(document).ready(function(){
-            var currentYear = (new Date).getFullYear();
-            $("#currentYear").text((new Date).getFullYear() );
-
-            $('.btn-submit').on('click',function(){
-                if($(this).attr('data-status') == "false" && $('#contact-form-name').val() != "" && $('#contact-form-email').val() != "" && $('#contact-form-message').val() != "" && $('#btn-submit').val() != ""){
+            $('.btn-submit').on('click', function () {
+                if ($(this).attr('data-status') == "false" && $('#contact-form-name').val() != "" && $('#contact-form-email').val() != "" && $('#contact-form-message').val() != "") {
                     $(this).attr('data-status', true);
                     var btn = $(this);
                     var data = {
-                        name : $('#contact-form-name').val(),
-                        email : $('#contact-form-email').val(),
-                        message : $('#contact-form-message').val(),
-                        submit : $('.btn-submit').val(),
-                    }
+                        name: $('#contact-form-name').val(),
+                        email: $('#contact-form-email').val(),
+                        message: $('#contact-form-message').val(),
+                        submit: $('.btn-submit').val(),
+                    };
                     $.ajax({
                         url: "send_email.php",
                         type: "post",
-                        data: data ,
+                        data: data,
                         dataType: 'json',
                         success: function (response) {
-                        // you will get response from your php page (what you echo or print)                 
-                            if(response['code'] == "200"){
-                                $('#response').css('color','green').html(response['message']);
-                            }else{
-                                $('#response').css('color','red').html(response['message']);
+                            // response from send_email.php (what it echoes/prints)
+                            if (response['code'] == "200") {
+                                $('#response').css('color', 'green').html(response['message']);
+                            } else {
+                                $('#response').css('color', 'red').html(response['message']);
                             }
                             $('#response').fadeIn();
                             btn.attr('data-status', false);
-                            setTimeout(function(){
+                            setTimeout(function () {
                                 $('#response').fadeOut();
-                            },15000);
+                            }, 15000);
                         },
-                        error: function(jqXHR, textStatus, errorThrown) {
+                        error: function (jqXHR, textStatus, errorThrown) {
                             console.log(textStatus, errorThrown);
                             btn.attr('data-status', false);
-                            setTimeout(function(){
+                            setTimeout(function () {
                                 $('#response').fadeOut();
-                            },15000);
-
+                            }, 15000);
                         }
                     });
-                    
-                }else{
-                    $('#response').css('color','red').html('Please fill in the form');
+                } else {
+                    $('#response').css('color', 'red').html('Please fill in the form').fadeIn();
                 }
             });
         });
-        </script>
-    </body>
+    </script>
+    <!-- Google Analytics -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-101153835-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+
 </html>
