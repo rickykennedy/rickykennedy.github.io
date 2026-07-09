@@ -1,131 +1,178 @@
-<!-- nodejs.php -->
-<!-- This page is about how to install express on terminal -->
-
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name='Ricky Kennedy'>
-        <meta title="Ricky's Resume">
-        <meta description='This is my personal website.'>
-        <title>Ricky Kennedy</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <style type="text/css">
-            body{
-                position:relative;
-                width:100%;
-                height:100%;
-                background-color:#cccccc;
-                margin: 0px;
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Installing Express &amp; npm basics — Ricky Kennedy</title>
+    <meta name="author" content="Ricky Kennedy">
+    <meta name="description" content="Quick notes on installing Express, stopping Node gracefully, and checking / updating npm.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #034ea2;
+            --accent-soft: #4a8bfc;
+            --bg: #ffffff;
+            --bg-alt: #f5f7fa;
+            --surface: #ffffff;
+            --text: #1a1a1a;
+            --text-soft: #5b6472;
+            --line: #e3e8ef;
+            --shadow: 0 1px 3px rgba(16, 24, 40, .06), 0 8px 24px rgba(16, 24, 40, .06);
+            --radius: 14px;
+            --maxw: 760px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --accent: #4a8bfc;
+                --accent-soft: #7db1ff;
+                --bg: #0d1117;
+                --bg-alt: #11161d;
+                --surface: #161b22;
+                --text: #e6edf3;
+                --text-soft: #9aa7b6;
+                --line: #232b36;
+                --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
             }
-            .header{
-                text-align:center;
-            }
-            .share-button{
-                position:relative;
-                padding:0px 8px 0px 8px;
-            }
-            .share-button img{
-                width:250px;
-                display: block;
-                vertical-align: middle;
-                margin: auto;
-                border-radius: 5px;
-            }
-            .container{
-                border-radius: 15px;
-                background-color:cornflowerblue;
-                position:relative;
-                margin:0px 8px 45px 8px;
-                padding:0px 8px 8px 8px;
-            }
-            .profile_picture{
-                padding:8px 0px 0px 15px;
-                display:inline-block;
-            }
-            .profile_picture img {
-                width: 100px;
-                margin: 5px 5px 0px 0px;
-                display: inline;
-                border-radius: 5px;
-            }
-            .user_details{
-                display:inline-block;
-                vertical-align: top;
-            }
-            .user_details div{
-                width:auto;
-            }
-            .user_details p{
-                display:inline-block;
-                margin-left:10px;
-            }
-            #footer {
-                  position: fixed;
-                  z-index: 10;
-                  left: 0;
-                  right: 0;
-                  bottom: 0;
-                  height: 40px;
-                background: #2e2c2a;
-                text-align: center;
-            }
-        </style>
-        <div class='header'>
-            <h1>Ricky Kennedy</h1>
-            <h2>Node.js</h2>
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+        header.nav {
+            position: sticky; top: 0; z-index: 10;
+            backdrop-filter: saturate(180%) blur(12px);
+            background: color-mix(in srgb, var(--bg) 82%, transparent);
+            border-bottom: 1px solid var(--line);
+        }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+        .brand { font-weight: 800; letter-spacing: -.02em; color: var(--text); font-size: 1.05rem; flex: 0 0 auto; }
+        .brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: var(--text-soft); font-weight: 500; font-size: .92rem; flex: 0 0 auto; }
+        .nav-links a:hover { color: var(--accent); text-decoration: none; }
+        .nav-links a.current { color: var(--accent); }
+        @media (max-width: 640px) {
+            .nav-links { gap: 14px; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+            .nav-links::-webkit-scrollbar { display: none; }
+            .nav-links a { font-size: .82rem; }
+        }
+
+        /* ---------- Article ---------- */
+        .article { padding: 44px 0 56px; }
+        .back { font-size: .88rem; font-weight: 600; color: var(--text-soft); }
+        .back:hover { color: var(--accent); text-decoration: none; }
+        .article h1 { font-size: 2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.15; margin: 14px 0 6px; }
+        .article .meta { font-size: .8rem; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: .05em; }
+        .article h2 { font-size: 1.15rem; font-weight: 700; margin: 28px 0 10px; }
+        .article p { color: var(--text-soft); margin: 10px 0; }
+        .article ol, .article ul { margin: 12px 0 12px 22px; }
+        .article li { margin: 8px 0; }
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: .88em; background: var(--bg-alt); border: 1px solid var(--line);
+            border-radius: 6px; padding: 1px 6px; color: var(--text); word-break: break-word;
+        }
+        .note {
+            margin: 22px 0; padding: 14px 16px; border-left: 3px solid var(--accent);
+            background: var(--bg-alt); border-radius: 8px; color: var(--text-soft); font-size: .92rem;
+        }
+
+        footer { border-top: 1px solid var(--line); padding: 36px 0; text-align: center; color: var(--text-soft); }
+        .social { display: flex; justify-content: center; gap: 18px; margin-bottom: 16px; }
+        .social a { color: var(--text-soft); font-weight: 600; font-size: .9rem; }
+        .social a:hover { color: var(--accent); text-decoration: none; }
+        .copyright { font-size: .82rem; }
+    </style>
+</head>
+
+<body>
+    <header class="nav">
+        <div class="wrap nav-inner">
+            <a class="brand" href="index.html">Ricky<span>.</span>Kennedy</a>
+            <nav class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#journey">Journey</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="portfolio.html">Projects</a>
+                <a href="writing.html" class="current">Writing</a>
+                <a href="resume.html">Résumé</a>
+                <a href="contact.html">Contact</a>
+            </nav>
         </div>
-        <div class='container'>
-            <div class='row-content'>
-                <div>How to install express from command line</div>
-                <div>
-                    <ul>
-                        <li>To install express, type the command "<em>sudo npm install express</em>"</li>
-                        <li>To install express globally, type the command "<em>sudo npm install -g express</em>"</li>
-                        <li>
-                            <div>If you see an issue with security vulnerability in Express</div>
-                            <div>To install express, type the command "<em>sudo npm install -g express-generator@4</em>"</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class='row-content'>
-                <div><How to stop node.js gracefully</div>
-                <p>It is as simple as pressing ctrl + c</p>
+    </header>
+
+    <div class="wrap">
+        <article class="article">
+            <a class="back" href="writing.html">← Writing</a>
+            <div class="meta" style="margin-top:14px;">2015 · Note · Node.js</div>
+            <h1>Installing Express &amp; npm basics</h1>
+
+            <div class="note">
+                These notes are from 2015 (npm 2.x / 3.x era). Modern Node ships with a much newer npm, and
+                <code>express-generator</code> versions have moved on — treat the version numbers below as historical.
             </div>
 
-            <div class='row-content'>
-                <p>To check npm version, type <em>npm --version</em></p>
-                <p>expected outcome: <em>2.14.4</em></p>
+            <h2>Installing Express</h2>
+            <ul>
+                <li>Install Express locally: <code>sudo npm install express</code></li>
+                <li>Install Express globally: <code>sudo npm install -g express</code></li>
+                <li>If you hit a security-vulnerability warning with the generator:
+                    <code>sudo npm install -g express-generator@4</code></li>
+            </ul>
+
+            <h2>Stopping Node gracefully</h2>
+            <p>As simple as pressing <code>Control + C</code>.</p>
+
+            <h2>Checking &amp; updating npm</h2>
+            <ul>
+                <li>Check the npm version: <code>npm --version</code> (back then, <code>2.14.4</code>)</li>
+                <li>Update npm: <code>sudo npm install npm -g</code></li>
+            </ul>
+        </article>
+    </div>
+
+    <footer>
+        <div class="wrap">
+            <div class="social">
+                <a target="_blank" rel="noopener" href="https://github.com/rickykennedy">GitHub</a>
+                <a target="_blank" rel="noopener" href="https://stackoverflow.com/users/891005/icezz">Stack Overflow</a>
+                <a target="_blank" rel="noopener" href="https://www.twitter.com/woshiricky">Twitter</a>
+                <a target="_blank" rel="noopener" href="https://www.instagram.com/ricky_kennedy">Instagram</a>
             </div>
-            <div class='row-content'>
-                <p>To update npm, type <em>sudo npm install npm -g</em></p>
-                <p>outcome should be <em>/usr/local/bin/npm -> /usr/local/lib/node_modules/npm/bin/npm-cli.js
-npm@3.7.5 /usr/local/lib/node_modules/npm</em></p>
-            </div>
+            <div class="copyright">&copy; <span id="currentYear"></span> Ricky Kennedy</div>
         </div>
-        <div id="footer">
-            <div class="left">
-                <p>© 2015 Ricky Kennedy. All Rights Reserved.</p>
-            </div>
-        </div>
-    </body>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <!-- Google Analytics -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-101153835-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+
 </html>
-
-
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
