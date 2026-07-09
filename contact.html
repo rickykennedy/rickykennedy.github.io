@@ -110,6 +110,7 @@
             color: var(--text-soft);
             font-weight: 500;
             font-size: .92rem;
+            flex: 0 0 auto;
         }
 
         .nav-links a:hover {
@@ -121,9 +122,20 @@
             color: var(--accent);
         }
 
-        @media (max-width: 560px) {
+        @media (max-width: 640px) {
+            .nav-inner {
+                gap: 14px;
+            }
+
             .nav-links {
                 gap: 14px;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-links::-webkit-scrollbar {
+                display: none;
             }
 
             .nav-links a {
@@ -336,7 +348,8 @@
                 <a href="index.html#about">About</a>
                 <a href="index.html#journey">Journey</a>
                 <a href="index.html#skills">Skills</a>
-                <a href="index.html#interests">Interests</a>
+                <a href="portfolio.html">Projects</a>
+                <a href="resume.html">Résumé</a>
                 <a href="contact.html" class="current">Contact</a>
             </nav>
         </div>

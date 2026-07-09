@@ -1,132 +1,267 @@
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name='Ricky Kennedy'>
-        <meta title="Ricky's Resume">
-        <meta description='This is my personal website.'>
-        <title>Ricky Kennedy</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="public/css/bootstrap.css" rel="stylesheet">
-        <link href="public/css/font-awesome.min.css" rel="stylesheet">
-        <link href="public/css/mystyle.css" rel="stylesheet">
-    </head>
-    <body>
-        <script type="text/javascript" src="public/js/jquery.js"></script>
-        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
-        <style type="text/css">
-        /*body,html{
-            height:100%;
-        }*/
-        </style>
-        <!-- <div class="col-md-12 col-sm-12 col-xs-12 main-banner">
-            <div class="promo-1">
-                <a href="http://www.1and1.com/web-hosting?kwk=62380636&ac=OM.US.US930K244547B7030a" rel="nofollow"><img src="http://adimg.uimserv.net/1und1/KWK/Classic-Hosting/US/NewHosting_kwk_us_728x90.gif"/></a>
-            </div>
-        </div> -->
-        
-        <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper main-background">
-            <!--<div class="mask-overflow"></div>-->
-            <div class="col-md-12 col-sm-12 col-xs-12 header">
-                <!--<div class="right-navigation">-->
-                    <nav class="navbar navbar-default">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand logo" href="#"><img src="public/images/logo/githublogo.png"></a>
-                        </div>
-                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Me</a></li>
-                                <li class="active-page"><a href="portfolio.html">Portfolio</a></li>
-                                <li><a href="resume.html">Resume</a></li>
-                                <!--<li><a href="#">Social Media</a></li>-->
-                                <li><a href="contact.html">Contact Me</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-            </div>
-            <div class="col-md-12 col-sm-12 col-xs-12 content">
-                <div class="desc-wrapper">
 
-                    <div class='profile_picture'>
-                        <div class="profile_picture_image"></div>
-                        <div></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projects — Ricky Kennedy</title>
+    <meta name="author" content="Ricky Kennedy">
+    <meta name="description" content="Projects and things Ricky Kennedy has built — real-time demos, crawlers, APIs and mobile apps.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ---------- Design tokens ---------- */
+        :root {
+            --accent: #034ea2;
+            --accent-soft: #4a8bfc;
+            --bg: #ffffff;
+            --bg-alt: #f5f7fa;
+            --surface: #ffffff;
+            --text: #1a1a1a;
+            --text-soft: #5b6472;
+            --line: #e3e8ef;
+            --shadow: 0 1px 3px rgba(16, 24, 40, .06), 0 8px 24px rgba(16, 24, 40, .06);
+            --radius: 14px;
+            --maxw: 760px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --accent: #4a8bfc;
+                --accent-soft: #7db1ff;
+                --bg: #0d1117;
+                --bg-alt: #11161d;
+                --surface: #161b22;
+                --text: #e6edf3;
+                --text-soft: #9aa7b6;
+                --line: #232b36;
+                --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+            }
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+        /* ---------- Top nav ---------- */
+        header.nav {
+            position: sticky; top: 0; z-index: 10;
+            backdrop-filter: saturate(180%) blur(12px);
+            background: color-mix(in srgb, var(--bg) 82%, transparent);
+            border-bottom: 1px solid var(--line);
+        }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+        .brand { font-weight: 800; letter-spacing: -.02em; color: var(--text); font-size: 1.05rem; flex: 0 0 auto; }
+        .brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: var(--text-soft); font-weight: 500; font-size: .92rem; flex: 0 0 auto; }
+        .nav-links a:hover { color: var(--accent); text-decoration: none; }
+        .nav-links a.current { color: var(--accent); }
+        @media (max-width: 640px) {
+            .nav-links { gap: 14px; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+            .nav-links::-webkit-scrollbar { display: none; }
+            .nav-links a { font-size: .82rem; }
+        }
+
+        /* ---------- Page header ---------- */
+        .page-head { padding: 56px 0 8px; }
+        .page-head h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+        .page-head .lead { color: var(--text-soft); margin-top: 12px; max-width: 56ch; }
+        @media (max-width: 560px) { .page-head { padding: 36px 0 4px; } .page-head h1 { font-size: 1.8rem; } }
+
+        /* ---------- Project grid ---------- */
+        section { padding: 28px 0 48px; }
+        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+        .project {
+            background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+            padding: 20px; box-shadow: var(--shadow); display: flex; flex-direction: column;
+            transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+        }
+        .project:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(16, 24, 40, .1); border-color: var(--accent); }
+        .project .top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+        .project h3 { font-size: 1.02rem; }
+        .tag {
+            font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+            padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-soft); background: var(--bg-alt);
+        }
+        .tag.live { color: #fff; background: var(--accent); border-color: var(--accent); }
+        .project p { color: var(--text-soft); font-size: .94rem; flex: 1 0 auto; }
+        .project .stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+        .project .stack span { font-size: .76rem; padding: 3px 9px; border-radius: 999px; background: var(--bg-alt); border: 1px solid var(--line); color: var(--text-soft); }
+        .project .links { margin-top: 14px; display: flex; gap: 14px; }
+        .project .links a { font-size: .86rem; font-weight: 600; }
+
+        .callout {
+            margin-top: 26px; padding: 16px 18px; border: 1px dashed var(--line);
+            border-radius: var(--radius); color: var(--text-soft); font-size: .92rem; background: var(--bg-alt);
+        }
+
+        /* ---------- Footer ---------- */
+        footer { border-top: 1px solid var(--line); padding: 36px 0; text-align: center; color: var(--text-soft); }
+        .social { display: flex; justify-content: center; gap: 18px; margin-bottom: 16px; }
+        .social a { color: var(--text-soft); font-weight: 600; font-size: .9rem; }
+        .social a:hover { color: var(--accent); text-decoration: none; }
+        .copyright { font-size: .82rem; }
+    </style>
+</head>
+
+<body>
+    <header class="nav">
+        <div class="wrap nav-inner">
+            <a class="brand" href="index.html">Ricky<span>.</span>Kennedy</a>
+            <nav class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#journey">Journey</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="portfolio.html" class="current">Projects</a>
+                <a href="resume.html">Résumé</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="wrap">
+        <div class="page-head">
+            <h1>Projects</h1>
+            <p class="lead">
+                A selection of things I've built — from real-time web demos to crawlers, APIs and mobile apps.
+                More on my <a target="_blank" rel="noopener" href="https://github.com/rickykennedy">GitHub</a>.
+            </p>
+        </div>
+
+        <section>
+            <div class="projects">
+
+                <!-- ============================================================
+                     Real projects seeded from the existing site. Fill in the
+                     TODO links/descriptions, and copy a .project block to add
+                     more. Use <span class="tag live"> for something visitors
+                     can try, <span class="tag"> for archived/past work.
+                ============================================================= -->
+
+                <div class="project">
+                    <div class="top">
+                        <h3>Real-time Chat</h3>
+                        <span class="tag live">Demo</span>
                     </div>
-                    <h1 class="desc-name">Ricky Kennedy</h1>
-                    <p class="desc-quote">Code to Live and Live to Code</p>
-                    <p class="desc-resume">
-                        <a target="_blank" href="public/files/RickyKenedy.pdf" download>Download Resume</a>
-                    </p>
-                    <p class="desc-donate">
-                        <a href="https://paypal.me/rickykennedy/1" style="color:#ffffff;">Buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe? :)</a>
-                    </p>
+                    <p>A live chat room built on WebSockets, with messages broadcast to everyone connected in real
+                        time.</p>
+                    <div class="stack"><span>Socket.io</span><span>Node.js</span><span>jQuery</span></div>
+                    <div class="links"><a href="chat.html">Open demo →</a></div>
                 </div>
-            </div>
-        </div>
-        
-        <div class="col-md-12 col-sm-12 col-xs-12 main-portfolio">
-            <div class="portfolio-title">My Portfolio</div>
-            <div class="portfolio-projects">
-                Currently there is no project shown
-            </div>
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12 main-footer">
-            <div class="footer-wrapper">
-                <div class="footer-nav">
-                    <div class="footer-navigations"><a href="index.html">Home</a></div>
-                    <div class="footer-navigations"><a href="about.html">About Me</a></div>
-                    <div class="footer-navigations"><a href="portfolio.html">Portfolio</a></div>
-                    <div class="footer-navigations"><a href="resume.html">Resume</a></div>
-                    <div class="footer-navigations"><a href="contact.html">Contact Me</a></div>
-                </div>
-                <div class="footer-row footer-info">For more information, don't hesitate to <a href="contact.html">contact me</a></div>
-                <div class="footer-row footer-social-media">
-                    <ul class="list-group">
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/woshiricky"><img alt="follow me on Twitter" src="public/images/logo/twitter30x30.png" border=0></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on facebook" href="http://www.facebook.com/woshiricky"><img alt="follow me on facebook" src="public/images/logo/facebook30x30.png" border=0></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on instagram" href="http://www.instagram.com/ricky_kennedy"><img alt="follow me on instagram" src="public/images/logo/instagram30x30.png" border=0></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on github" href="https://github.com/rickykennedy"><img src="public/images/logo/GitHub-Mark-32px.png"></a></li>
-                            <li class="list-group-item social-media"><a target="_blank" title="follow me on github" href="https://stackoverflow.com/users/891005/icezz"><img src="public/images/logo/so-icon.png"></a></li>
-                            <!--<li class="list-group-item social-media"><a id="top" href="#" style="display: none; opacity: 1;"><span class="glyphicon glyphicon-chevron-up"></span></a></li>-->
-                        </ul>
-                </div>
-                
-                <div class="footer-row footer-copyright">&copy;<p id="currentYear"></p>, Ricky Kennedy Development</div>
-                <div class="footer-row footer-regulation" >
-                    <div class="policy"><a href="#">Term & Conditions</a></div>
-                    <div class="policy"><a href="#">Service Policy</a></div>
-                    <div class="policy"><a href="#">Privacy Policy</a></div>
-                </div>
-            </div>
-        </div>
-        <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+                <div class="project">
+                    <div class="top">
+                        <h3>Live Polling</h3>
+                        <span class="tag live">Demo</span>
+                    </div>
+                    <p>A polling app where votes update instantly across all viewers as they come in.</p>
+                    <div class="stack"><span>Socket.io</span><span>Node.js</span></div>
+                    <div class="links"><a href="polling.html">Open demo →</a></div>
+                </div>
+
+                <div class="project">
+                    <div class="top">
+                        <h3>Live Visitor Counter</h3>
+                        <span class="tag live">Demo</span>
+                    </div>
+                    <p>A real-time counter tracking how many people are on the page at once.</p>
+                    <div class="stack"><span>Socket.io</span><span>Node.js</span></div>
+                    <div class="links"><a href="counter.html">Open demo →</a></div>
+                </div>
+
+                <div class="project">
+                    <div class="top">
+                        <h3>Twitter Crawler</h3>
+                        <span class="tag">Archived</span>
+                    </div>
+                    <p>Final-year project: a crawler that gathered tweets from an account for analysis. A lot of
+                        proof-of-concept and learning packed into one 'A'-graded project.</p>
+                    <div class="stack"><span>Python</span><span>PHP</span></div>
+                    <!-- TODO: add repo/write-up link if available -->
+                </div>
+
+                <div class="project">
+                    <div class="top">
+                        <h3>RESTful API Backend</h3>
+                        <span class="tag">Past work</span>
+                    </div>
+                    <p>Backend server exposing a RESTful API, built to serve web and mobile clients.</p>
+                    <div class="stack"><span>Node.js</span><span>MongoDB</span></div>
+                    <!-- TODO: add repo/link + specifics -->
+                </div>
+
+                <div class="project">
+                    <div class="top">
+                        <h3>Mobile Apps</h3>
+                        <span class="tag">Past work</span>
+                    </div>
+                    <p>Cross-platform mobile apps built with Appcelerator (Titanium) during my time as a web &amp;
+                        mobile developer.</p>
+                    <div class="stack"><span>Appcelerator</span><span>JavaScript</span></div>
+                    <!-- TODO: name specific apps if shareable -->
+                </div>
+
+                <div class="project">
+                    <div class="top">
+                        <h3>This Website</h3>
+                        <span class="tag live">Live</span>
+                    </div>
+                    <p>My personal site — hand-written static HTML/CSS, no framework, deployed on GitHub Pages.</p>
+                    <div class="stack"><span>HTML</span><span>CSS</span><span>GitHub Pages</span></div>
+                    <div class="links">
+                        <a target="_blank" rel="noopener" href="https://github.com/rickykennedy/rickykennedy.github.io">Source →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="callout">
+                Want to see more, or discuss a collaboration? Check out my
+                <a target="_blank" rel="noopener" href="https://github.com/rickykennedy">GitHub</a> or
+                <a href="contact.html">get in touch</a>.
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="wrap">
+            <div class="social">
+                <a target="_blank" rel="noopener" href="https://github.com/rickykennedy">GitHub</a>
+                <a target="_blank" rel="noopener" href="https://stackoverflow.com/users/891005/icezz">Stack Overflow</a>
+                <a target="_blank" rel="noopener" href="https://www.twitter.com/woshiricky">Twitter</a>
+                <a target="_blank" rel="noopener" href="https://www.instagram.com/ricky_kennedy">Instagram</a>
+            </div>
+            <div class="copyright">&copy; <span id="currentYear"></span> Ricky Kennedy</div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <!-- Google Analytics -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-101153835-1', 'auto');
         ga('send', 'pageview');
+    </script>
+</body>
 
-        </script>
-        <script type="text/javascript">
-        $(document).ready(function(){
-            var currentYear = (new Date).getFullYear();
-            $("#currentYear").text((new Date).getFullYear() );
-        });
-        </script>
-    </body>
 </html>
