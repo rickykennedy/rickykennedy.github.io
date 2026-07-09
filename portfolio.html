@@ -75,11 +75,39 @@
             .nav-links a { font-size: .82rem; }
         }
 
-        /* ---------- Page header ---------- */
-        .page-head { padding: 56px 0 8px; }
-        .page-head h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
-        .page-head .lead { color: var(--text-soft); margin-top: 12px; max-width: 56ch; }
-        @media (max-width: 560px) { .page-head { padding: 36px 0 4px; } .page-head h1 { font-size: 1.8rem; } }
+        /* ---------- Hero (matches homepage) ---------- */
+        .hero { padding: 64px 0 24px; }
+        .hero-grid { display: flex; align-items: center; gap: 32px; }
+        .avatar {
+            flex: 0 0 auto; width: 116px; height: 116px; border-radius: 50%;
+            object-fit: cover; box-shadow: var(--shadow);
+            border: 3px solid var(--surface); outline: 1px solid var(--line);
+        }
+        .hero h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+        .hero .role { color: var(--accent); font-weight: 600; margin-top: 6px; font-size: 1.05rem; }
+        .hero .quote { color: var(--text-soft); margin-top: 8px; font-style: italic; }
+        .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: .92rem;
+            border: 1px solid var(--line); color: var(--text); background: var(--surface);
+            transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+        }
+        .btn:hover { text-decoration: none; transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--accent); }
+        .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .btn.primary:hover { box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 40%, transparent); }
+        @media (max-width: 560px) {
+            .hero { padding: 40px 0 16px; }
+            .hero-grid { flex-direction: column; text-align: center; gap: 20px; }
+            .cta-row { justify-content: center; }
+            .hero h1 { font-size: 1.9rem; }
+        }
+
+        /* ---------- Section heading ---------- */
+        .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 22px; }
+        .section-head h2 { font-size: 1.35rem; font-weight: 700; letter-spacing: -.02em; }
+        .section-head .kicker { color: var(--text-soft); font-size: .85rem; }
+        .lead { color: var(--text-soft); max-width: 56ch; }
 
         /* ---------- Project grid ---------- */
         section { padding: 28px 0 48px; }
@@ -134,15 +162,30 @@
     </header>
 
     <div class="wrap">
-        <div class="page-head">
-            <h1>Projects</h1>
-            <p class="lead">
+        <section class="hero">
+            <div class="hero-grid">
+                <img class="avatar" src="public/images/rickykennedy.jpg" alt="Ricky Kennedy">
+                <div>
+                    <h1>Ricky Kennedy</h1>
+                    <div class="role">Software Engineer · Projects</div>
+                    <p class="quote">“Code to live and live to code.”</p>
+                    <div class="cta-row">
+                        <a class="btn primary" target="_blank" rel="noopener" href="https://github.com/rickykennedy">View GitHub</a>
+                        <a class="btn" href="contact.html">Get in touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-head">
+                <h2>Projects</h2>
+                <span class="kicker">things I've built</span>
+            </div>
+            <p class="lead" style="margin-bottom: 22px;">
                 A selection of things I've built — from real-time web demos to crawlers, APIs and mobile apps.
                 More on my <a target="_blank" rel="noopener" href="https://github.com/rickykennedy">GitHub</a>.
             </p>
-        </div>
-
-        <section>
             <div class="projects">
 
                 <!-- ============================================================
@@ -175,11 +218,12 @@
 
                 <div class="project">
                     <div class="top">
-                        <h3>Live Visitor Counter</h3>
-                        <span class="tag live">Demo</span>
+                        <h3>Days-Since Counter</h3>
+                        <span class="tag live">Live</span>
                     </div>
-                    <p>A real-time counter tracking how many people are on the page at once.</p>
-                    <div class="stack"><span>Socket.io</span><span>Node.js</span></div>
+                    <p>A small widget that counts the days since a chosen date, using a jQuery UI datepicker. Runs
+                        fully in the browser — no server needed.</p>
+                    <div class="stack"><span>jQuery</span><span>jQuery UI</span></div>
                     <div class="links"><a href="counter.html">Open demo →</a></div>
                 </div>
 

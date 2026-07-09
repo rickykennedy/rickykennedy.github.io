@@ -75,10 +75,17 @@
             .nav-links a { font-size: .82rem; }
         }
 
-        /* ---------- Page header ---------- */
-        .page-head { padding: 56px 0 8px; }
-        .page-head h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
-        .page-head .role { color: var(--accent); font-weight: 600; margin-top: 6px; font-size: 1.05rem; }
+        /* ---------- Hero (matches homepage) ---------- */
+        .hero { padding: 64px 0 24px; }
+        .hero-grid { display: flex; align-items: center; gap: 32px; }
+        .avatar {
+            flex: 0 0 auto; width: 116px; height: 116px; border-radius: 50%;
+            object-fit: cover; box-shadow: var(--shadow);
+            border: 3px solid var(--surface); outline: 1px solid var(--line);
+        }
+        .hero h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+        .hero .role { color: var(--accent); font-weight: 600; margin-top: 6px; font-size: 1.05rem; }
+        .hero .quote { color: var(--text-soft); margin-top: 8px; font-style: italic; }
         .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
         .btn {
             display: inline-flex; align-items: center; gap: 8px;
@@ -89,7 +96,12 @@
         .btn:hover { text-decoration: none; transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--accent); }
         .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
         .btn.primary:hover { box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 40%, transparent); }
-        @media (max-width: 560px) { .page-head { padding: 36px 0 4px; } .page-head h1 { font-size: 1.8rem; } }
+        @media (max-width: 560px) {
+            .hero { padding: 40px 0 16px; }
+            .hero-grid { flex-direction: column; text-align: center; gap: 20px; }
+            .cta-row { justify-content: center; }
+            .hero h1 { font-size: 1.9rem; }
+        }
 
         /* ---------- Sections ---------- */
         section { padding: 32px 0; }
@@ -147,14 +159,20 @@
     </header>
 
     <div class="wrap">
-        <div class="page-head">
-            <h1>Résumé</h1>
-            <div class="role">Ricky Kennedy · Senior Software Engineer</div>
-            <div class="cta-row">
-                <a class="btn primary" target="_blank" href="public/files/RickyKenedy.pdf" download>Download PDF</a>
-                <a class="btn" href="contact.html">Get in touch</a>
+        <section class="hero">
+            <div class="hero-grid">
+                <img class="avatar" src="public/images/rickykennedy.jpg" alt="Ricky Kennedy">
+                <div>
+                    <h1>Ricky Kennedy</h1>
+                    <div class="role">Senior Software Engineer</div>
+                    <p class="quote">“Code to live and live to code.”</p>
+                    <div class="cta-row">
+                        <a class="btn primary" target="_blank" href="public/files/RickyKenedy.pdf" download>Download Résumé</a>
+                        <a class="btn" href="contact.html">Get in touch</a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <section class="alt">

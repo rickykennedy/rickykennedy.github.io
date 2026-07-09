@@ -1,286 +1,254 @@
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name='Ricky Kennedy'>
-        <meta title="Ricky's counter sample">
-        <meta description='This is my personal website.'>
-        <title>Ricky Kennedy</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="public/css/bootstrap.css" rel="stylesheet">
-        <link href="public/css/font-awesome.min.css" rel="stylesheet">
-        <link href="public/css/jquery-ui.css" rel="stylesheet">
 
-        <link href="public/css/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <script type="text/javascript" src="public/js/jquery.js"></script>
-        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="public/js/jquery-ui.min"></script>
-        <script type="text/javascript" src="public/js/jquery.countdown.min.js"></script>
-        <!-- <script src="http://128.199.159.114:3000/socket.io/socket.io.js"></script>  -->
-        <script src="https://www.rickykennedy.tk:3000/socket.io/socket.io.js"></script>
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        <!-- <script src="http://128.199.159.114/public/js/canvasjs/canvasjs.min.js"></script> -->
-        <style type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Live Polling — Ricky Kennedy</title>
+    <meta name="author" content="Ricky Kennedy">
+    <meta name="description" content="A real-time polling demo built on Socket.io, Node.js and CanvasJS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #034ea2;
+            --accent-soft: #4a8bfc;
+            --bg: #ffffff;
+            --bg-alt: #f5f7fa;
+            --surface: #ffffff;
+            --text: #1a1a1a;
+            --text-soft: #5b6472;
+            --line: #e3e8ef;
+            --shadow: 0 1px 3px rgba(16, 24, 40, .06), 0 8px 24px rgba(16, 24, 40, .06);
+            --radius: 14px;
+            --maxw: 760px;
+        }
 
-            html,body {
-                height: 100%;
-                color: #e3e3e3;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --accent: #4a8bfc;
+                --accent-soft: #7db1ff;
+                --bg: #0d1117;
+                --bg-alt: #11161d;
+                --surface: #161b22;
+                --text: #e6edf3;
+                --text-soft: #9aa7b6;
+                --line: #232b36;
+                --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
             }
-            p{
-                margin:0px;
-            }
-            .main-wrapper { 
-                background: #eb01a5;
-                background-image: linear-gradient(#a5c9e5, #1e5799); 
-                margin:0px;
-                padding:0px;
-                height:auto;
-                min-height:100%;
-            }
-            .container{
-                padding:5%;
-                height:100%;
-            }
-            .content{
-                padding:15px;
-                text-align: center;
-            }
-            .profile_picture{
-                width:100px;
-                margin-left:auto;
-                margin-right:auto;
-                text-align: -webkit-center;
-            }
-            .profile_picture_image{
-                background-image: url(img/rickykennedy.jpg);
-                background-position: 50% 9%;
-                background-origin: border-box;
-                border: 1px solid #a5c9e5;
-                border-radius: 50%;
-                height: 100px;
-                width: 100px;
-                background-size: 100px 120px;
-                background-repeat: no-repeat;
-            }
+        }
 
-.counter{
-  position:relative;
-  font-size:18px;
-  text-align: center;
-  width:100px;
-  height:100px;
-  border-color:#a7a7a7;
-  background-color: #361752;
-  background-image: -webkit-linear-gradient(90deg,  #B31B67,#361752);
-  margin:30px auto 20px;
-  border-radius:50%;
-}
-.counter .day{
-  font-size:32px;
-  padding-top: 15%;
-}
-.counter .day-text{
-    display:none;
-}
-.counter .back{
-  transform: rotateX(180deg);
-}
-.counter .flip{
-  transform-origin: 100% 213.5px; /* half of height */
-}
-.counter:hover .flip{
-  transform: rotateX(-180deg);
-}
-.flipping{
-    overflow: hidden;
-    -webkit-animation: flipping 5s linear infinite;
-}
-@keyframes flipping {
-    0%   { transform: rotateY(0deg) }
-    50% { transform: rotateY(180deg) }
-    100%   { transform: rotateY(360deg) }
-}
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
 
-.chat_box{
-    max-height:300px;
-    text-align:left;
-    border: 1px solid #ffffff;
-    height:300px; 
-    overflow:auto;
-    margin-bottom:20px;
-    padding:5px;
-}
-.text-msg{
-    display:block;
-    padding-bottom:5px;
-}
-.text-msg.text-admin{
-    color:#000;
-    font-weight:bold;
-}
-.submit-btn{
-    background-color:#e3e3e3;
-}
-.info{
-    padding-bottom:10px;
-}
-.msg_box{
-    width:70%;
-    display:inline-block;
-}
-.submit-btn{
-    width:25%;
-    display:inline-block;
-}
-.poll-message-wrapper{
-    height:auto;
-    max-height:300px;
-    padding:0px 0px 10px 0px;
-}
-.poll-message-box{
-    height:auto;
-    max-height:150px;
-    padding: 10px 0px;
-    text-align:left;
-    overflow:hidden;
-    overflow-y: hidden;
-}
-.poll_user{
-    font-weight: bold;
-    color:black;
-}
-        </style>
-        <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper">
-            <div class='container'>
-                <div class="col-md-6 col-sm-6 col-xs-12 content">
-                    <div class='profile_picture flipping'>
-                        <div class="profile_picture_image"></div>
-                        <div></div>
-                    </div>
-                    <div class='user_details'>
-                        <div class='name'>Ricky Kennedy</div>
-                        <div class="occupation">Mobile and Web Developer</div>
-                        <div class="donate"><a href="https://paypal.me/rickykennedy/1" style="color:#ffffff;">Buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe? :)</a></div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 content">
-                    <div class="info">Hello there, enter your name and start polling. <br/>Enjoy!</div>
-                    <div class="info">
-                        <p>Please enter your name:</p>
-                        <input type="text" class="form-control msg_name" placeholder="e.g. Ricky" value=""/>
-                        
-                        <!--<button class="btn btn-sm btn-default my-btn">My First Together Day</button>-->
-                    </div>
-                    <div class="poll-message-wrapper">
-                        <p class="error-text text-danger"></p>
-                        <div class="poll-message-box">
-                            <!--<p><span class="poll_user">Ricky :</span> has poll</p>
-                            <p><span class="poll_user">James :</span> has poll</p>
-                            <p><span class="poll_user">Marcus :</span> has poll</p>-->
-                        </div>
-                    </div>
-                    <!--<div class="chat_box"></div>-->
-                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-                    <!--<div class="counter flip"><p class="day"></p> <p class="day-text">days</p></div>-->
-                    
-                    <!--<form class="chat_form">-->
-                    <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 5px;">
-                        <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top: 5px;">
-                            <a href="javascript:void(0);" class="btn btn-default btn-poll" data-val="A" value="Poll A">Poll A</a>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top: 5px;">
-                            <a href="javascript:void(0);" class="btn btn-default btn-poll" data-val="B" value="Poll B">Poll B</a>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top: 5px;">
-                            <a href="javascript:void(0);" class="btn btn-default btn-poll" data-val="C" value="Poll C">Poll C</a>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12" style="padding-top: 5px;">
-                            <a href="javascript:void(0);" class="btn btn-default btn-poll" data-val="D" value="Poll D">Poll D</a>
-                        </div>
-                    </div>
-                    <!--</form>-->
-                </div>
-                
-            </div>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+        header.nav {
+            position: sticky; top: 0; z-index: 10;
+            backdrop-filter: saturate(180%) blur(12px);
+            background: color-mix(in srgb, var(--bg) 82%, transparent);
+            border-bottom: 1px solid var(--line);
+        }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+        .brand { font-weight: 800; letter-spacing: -.02em; color: var(--text); font-size: 1.05rem; flex: 0 0 auto; }
+        .brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: var(--text-soft); font-weight: 500; font-size: .92rem; flex: 0 0 auto; }
+        .nav-links a:hover { color: var(--accent); text-decoration: none; }
+        .nav-links a.current { color: var(--accent); }
+        @media (max-width: 640px) {
+            .nav-links { gap: 14px; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+            .nav-links::-webkit-scrollbar { display: none; }
+            .nav-links a { font-size: .82rem; }
+        }
+
+        /* ---------- Page header ---------- */
+        .page-head { padding: 44px 0 8px; }
+        .back { font-size: .88rem; font-weight: 600; color: var(--text-soft); }
+        .back:hover { color: var(--accent); text-decoration: none; }
+        .page-head h1 { font-size: 2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; margin: 14px 0 6px; }
+        .page-head .lead { color: var(--text-soft); max-width: 56ch; }
+        .stack-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+        .stack-tags span { font-size: .76rem; padding: 3px 9px; border-radius: 999px; background: var(--bg-alt); border: 1px solid var(--line); color: var(--text-soft); }
+
+        /* ---------- Demo card ---------- */
+        section { padding: 24px 0 48px; }
+        .demo-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+        .field-label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: 6px; }
+        .demo-card input[type="text"] {
+            width: 100%; font-family: inherit; font-size: .95rem; color: var(--text);
+            background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px;
+            transition: border-color .12s ease, box-shadow .12s ease;
+        }
+        .demo-card input[type="text"]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+
+        #chartContainer { height: 320px; width: 100%; margin: 16px 0; }
+        .error-text { color: #d64545; font-size: .86rem; font-weight: 600; min-height: 18px; }
+        .poll-message-box { max-height: 120px; overflow: hidden; text-align: left; color: var(--text-soft); font-size: .88rem; }
+        .poll_user { font-weight: 600; color: var(--text); }
+
+        .poll-buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 6px; }
+        .btn-poll {
+            display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+            padding: 12px 18px; border-radius: 10px; font-weight: 700; font-size: 1rem; font-family: inherit;
+            border: 1px solid var(--line); color: var(--text); background: var(--surface);
+            transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, background .12s ease;
+        }
+        .btn-poll:hover { transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+        .offline {
+            display: none; margin: 0 0 16px; padding: 14px 16px; border-radius: 10px;
+            border: 1px solid var(--line); border-left: 3px solid #d6a145;
+            background: var(--bg-alt); color: var(--text-soft); font-size: .9rem;
+        }
+
+        footer { border-top: 1px solid var(--line); padding: 36px 0; text-align: center; color: var(--text-soft); }
+        .social { display: flex; justify-content: center; gap: 18px; margin-bottom: 16px; }
+        .social a { color: var(--text-soft); font-weight: 600; font-size: .9rem; }
+        .social a:hover { color: var(--accent); text-decoration: none; }
+        .copyright { font-size: .82rem; }
+    </style>
+</head>
+
+<body>
+    <header class="nav">
+        <div class="wrap nav-inner">
+            <a class="brand" href="index.html">Ricky<span>.</span>Kennedy</a>
+            <nav class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#journey">Journey</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="portfolio.html" class="current">Projects</a>
+                <a href="writing.html">Writing</a>
+                <a href="resume.html">Résumé</a>
+                <a href="contact.html">Contact</a>
+            </nav>
         </div>
-        <script type="text/javascript">
-        $(document).ready(function(){
-            // var socket = io.connect('http://128.199.159.114:3000');
-            // var socket = io.connect('http://development.gaekon.com:3000');
-            // var socket = io.connect('https://www.rickykenendy.tk:3000');
-            var socket = io.connect('https://www.rickykennedy.tk:3000', {secure: true});
-            var chart = null;
-            
-            socket.on('get polls',function(data){
-                console.log('get polls data');
-                console.log(data);
+    </header>
 
+    <div class="wrap">
+        <div class="page-head">
+            <a class="back" href="portfolio.html">← Projects</a>
+            <h1>Live Polling</h1>
+            <p class="lead">Cast a vote and watch the tally update instantly for everyone viewing — the bar chart
+                re-renders in real time as votes stream in over WebSockets.</p>
+            <div class="stack-tags"><span>Socket.io</span><span>Node.js</span><span>CanvasJS</span></div>
+        </div>
+
+        <section>
+            <div class="demo-card">
+                <div id="offline-notice" class="offline">
+                    ⚠️ The polling server is currently offline, so this demo can't connect right now. The interface is
+                    still shown below for reference.
+                </div>
+
+                <label class="field-label" for="poll-name">Your name</label>
+                <input id="poll-name" type="text" class="form-control msg_name" placeholder="e.g. Ricky" value="" />
+
+                <p class="error-text"></p>
+                <div class="poll-message-box"></div>
+
+                <div id="chartContainer"></div>
+
+                <div class="poll-buttons">
+                    <a href="javascript:void(0);" class="btn-poll" data-val="A" value="Poll A">Poll A</a>
+                    <a href="javascript:void(0);" class="btn-poll" data-val="B" value="Poll B">Poll B</a>
+                    <a href="javascript:void(0);" class="btn-poll" data-val="C" value="Poll C">Poll C</a>
+                    <a href="javascript:void(0);" class="btn-poll" data-val="D" value="Poll D">Poll D</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="wrap">
+            <div class="social">
+                <a target="_blank" rel="noopener" href="https://github.com/rickykennedy">GitHub</a>
+                <a target="_blank" rel="noopener" href="https://stackoverflow.com/users/891005/icezz">Stack Overflow</a>
+                <a target="_blank" rel="noopener" href="https://www.twitter.com/woshiricky">Twitter</a>
+                <a target="_blank" rel="noopener" href="https://www.instagram.com/ricky_kennedy">Instagram</a>
+            </div>
+            <div class="copyright">&copy; <span id="currentYear"></span> Ricky Kennedy</div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="public/js/jquery.js"></script>
+    <!-- Socket.io client is served by the polling backend. Update BOTH this src and
+         SOCKET_URL below when the server moves (see the .tk migration note). -->
+    <script src="https://www.rickykennedy.tk:3000/socket.io/socket.io.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#currentYear").text((new Date).getFullYear());
+
+            if (typeof io === 'undefined') {
+                $('#offline-notice').show();
+                return;
+            }
+
+            var SOCKET_URL = 'https://www.rickykennedy.tk:3000';
+            var socket = io.connect(SOCKET_URL, { secure: true });
+            var chart = null;
+
+            socket.on('get polls', function (data) {
                 var row = "<p><span class='poll_user'>" + data.pollingUser + " </span> has poll.</p>";
                 $('.poll-message-box').append(row);
                 scroll_down();
 
                 var dataPoint = chart.options.data[0].dataPoints;
-                dataPoint[0].y = data.pollData.A; 
-                dataPoint[1].y = data.pollData.B; 
-                dataPoint[2].y = data.pollData.C; 
-                dataPoint[3].y = data.pollData.D; 
+                dataPoint[0].y = data.pollData.A;
+                dataPoint[1].y = data.pollData.B;
+                dataPoint[2].y = data.pollData.C;
+                dataPoint[3].y = data.pollData.D;
                 chart.render();
-                
             });
-            socket.on('info',function(data){
-                console.log('info data');
-                console.log(data);
 
+            socket.on('info', function (data) {
                 var pollA = data.pollData.A;
                 var pollB = data.pollData.B;
                 var pollC = data.pollData.C;
                 var pollD = data.pollData.D;
                 chart = new CanvasJS.Chart("chartContainer", {
                     animationEnabled: true,
-                    theme: "light2", // "light1", "light2", "dark1", "dark2"
-                    title:{
-                        text: "Polling"
-                    },
-                    // axisY: {
-                    // 	title: "Reserves(MMbbl)"
-                    // },
-                    data: [{        
-                        type: "column",  
-                        // showInLegend: true, 
-                        // legendMarkerColor: "grey",
-                        // legendText: "MMbbl = one million barrels",
-                        dataPoints: [      
+                    theme: "light2",
+                    title: { text: "Polling" },
+                    data: [{
+                        type: "column",
+                        dataPoints: [
                             { y: pollA, label: "A" },
-                            { y: pollB,  label: "B" },
-                            { y: pollC,  label: "C" },
-                            { y: pollD,  label: "D" }
+                            { y: pollB, label: "B" },
+                            { y: pollC, label: "C" },
+                            { y: pollD, label: "D" }
                         ]
                     }]
                 });
                 chart.render();
             });
-            $('.btn-poll').on('click',function(){
-                console.log('send poll');
-                console.log($(this).attr('data-val'));
+
+            $('.btn-poll').on('click', function () {
                 var poll_data = {
                     polling: $(this).attr('data-val'),
                     poll_user: $('.msg_name').val()
-                }
-                socket.emit('polling',poll_data);
+                };
+                socket.emit('polling', poll_data);
             });
 
-            function scroll_down(){
-                $('.poll-message-box').animate({scrollTop: $('.poll-message-box').prop("scrollHeight")}, 300);
+            function scroll_down() {
+                $('.poll-message-box').animate({ scrollTop: $('.poll-message-box').prop("scrollHeight") }, 300);
             }
         });
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>

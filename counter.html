@@ -1,251 +1,230 @@
-
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name='Ricky Kennedy'>
-        <meta title="Ricky's counter sample">
-        <meta description='This is my personal website.'>
-        <title>Ricky Kennedy</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="public/css/bootstrap.css" rel="stylesheet">
-        <link href="public/css/font-awesome.min.css" rel="stylesheet">
-        <link href="public/css/jquery-ui.css" rel="stylesheet">
 
-        <link href="public/css/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <script type="text/javascript" src="public/js/jquery.js"></script>
-        <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="public/js/jquery-ui.min"></script>
-        <script type="text/javascript" src="public/js/jquery.countdown.min.js"></script>
-        <style type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Days-Since Counter — Ricky Kennedy</title>
+    <meta name="author" content="Ricky Kennedy">
+    <meta name="description" content="A small jQuery UI demo that counts the days since a chosen date.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="public/css/jquery-ui.css" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #034ea2;
+            --accent-soft: #4a8bfc;
+            --bg: #ffffff;
+            --bg-alt: #f5f7fa;
+            --surface: #ffffff;
+            --text: #1a1a1a;
+            --text-soft: #5b6472;
+            --line: #e3e8ef;
+            --shadow: 0 1px 3px rgba(16, 24, 40, .06), 0 8px 24px rgba(16, 24, 40, .06);
+            --radius: 14px;
+            --maxw: 760px;
+        }
 
-            html,body {
-                height: 100%;
-                color: #e3e3e3;
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --accent: #4a8bfc;
+                --accent-soft: #7db1ff;
+                --bg: #0d1117;
+                --bg-alt: #11161d;
+                --surface: #161b22;
+                --text: #e6edf3;
+                --text-soft: #9aa7b6;
+                --line: #232b36;
+                --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
             }
-            p{
-                margin:0px;
-            }
-            .main-wrapper { 
-                background: #eb01a5;
-                background-image: linear-gradient(#a5c9e5, #1e5799); 
-                margin:0px;
-                padding:0px;
-                height:auto;
-                min-height:100%;
-            }
-            .container{
-                padding:5%;
-                height:100%;
-            }
-            .content{
-                padding:15px;
-                text-align: center;
-            }
-            .profile_picture{
-                width:100px;
-                margin-left:auto;
-                margin-right:auto;
-                text-align: -webkit-center;
-            }
-            .profile_picture_image{
-                background-image: url(img/rickykennedy.jpg);
-                background-position: 50% 9%;
-                background-origin: border-box;
-                border: 1px solid #a5c9e5;
-                border-radius: 50%;
-                height: 100px;
-                width: 100px;
-                background-size: 100px 120px;
-                background-repeat: no-repeat;
-            }
+        }
 
-.counter{
-  position:relative;
-  font-size:18px;
-  text-align: center;
-  width:100px;
-  height:100px;
-  border-color:#a7a7a7;
-  background-color: #361752;
-  background-image: -webkit-linear-gradient(90deg,  #B31B67,#361752);
-  margin:30px auto 20px;
-  border-radius:50%;
-}
-.counter .day{
-  font-size:32px;
-  padding-top: 15%;
-}
-.counter .day-text{
-    display:none;
-}
-.counter .back{
-  transform: rotateX(180deg);
-}
-.counter .flip{
-  transform-origin: 100% 213.5px; /* half of height */
-}
-.counter:hover .flip{
-  transform: rotateX(-180deg);
-}
-.flipping{
-    overflow: hidden;
-    -webkit-animation: flipping 5s linear infinite;
-}
-@keyframes flipping {
-    0%   { transform: rotateY(0deg) }
-    50% { transform: rotateY(180deg) }
-    100%   { transform: rotateY(360deg) }
-}
-        </style>
-        <div class="col-md-12 col-sm-12 col-xs-12 main-wrapper">
-            <div class='container'>
-                <div class="content">
-                    <div class='profile_picture flipping'>
-                        <div class="profile_picture_image"></div>
-                        <div></div>
-                    </div>
-                    <div class='user_details'>
-                        <div class='name'>Ricky Kennedy</div>
-                        <div class="occupation">Mobile and Web Developer</div>
-                        <div class="donate"><a href="https://paypal.me/rickykennedy/1" style="color:#ffffff;">Buy me a <i class="fa fa-coffee" aria-hidden="true"></i>, maybe? :)</a></div>
-                    </div>
-                    <div>
-                        <p>Click here to find out my first date with my girlfriend.</p>
-                        <button class="btn btn-sm btn-default my-btn">My First Together Day</button>
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="info">Hello there, click on the date first together day box and choose the date you first hangout with your love one. <br/>Enjoy!</div>
-                    <div id="getting-started"></div>
-                    <div class="counter flip"><p class="day"></p> <p class="day-text">days</p></div>
-                    <div>
-                        <input type="text" class="first_day" value="First together day"/>
-                        <!--<input type="text" class="" value="Today"/>-->
-                        <!--<button class="btn btn-default btn-calculate">Calculate</button>-->
-                    </div>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
 
-                </div>
-                
-            </div>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+        header.nav {
+            position: sticky; top: 0; z-index: 10;
+            backdrop-filter: saturate(180%) blur(12px);
+            background: color-mix(in srgb, var(--bg) 82%, transparent);
+            border-bottom: 1px solid var(--line);
+        }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+        .brand { font-weight: 800; letter-spacing: -.02em; color: var(--text); font-size: 1.05rem; flex: 0 0 auto; }
+        .brand span { color: var(--accent); }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: var(--text-soft); font-weight: 500; font-size: .92rem; flex: 0 0 auto; }
+        .nav-links a:hover { color: var(--accent); text-decoration: none; }
+        .nav-links a.current { color: var(--accent); }
+        @media (max-width: 640px) {
+            .nav-links { gap: 14px; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+            .nav-links::-webkit-scrollbar { display: none; }
+            .nav-links a { font-size: .82rem; }
+        }
+
+        /* ---------- Page header ---------- */
+        .page-head { padding: 44px 0 8px; }
+        .back { font-size: .88rem; font-weight: 600; color: var(--text-soft); }
+        .back:hover { color: var(--accent); text-decoration: none; }
+        .page-head h1 { font-size: 2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; margin: 14px 0 6px; }
+        .page-head .lead { color: var(--text-soft); max-width: 56ch; }
+        .stack-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+        .stack-tags span { font-size: .76rem; padding: 3px 9px; border-radius: 999px; background: var(--bg-alt); border: 1px solid var(--line); color: var(--text-soft); }
+
+        /* ---------- Demo card ---------- */
+        section { padding: 24px 0 48px; }
+        .demo-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); text-align: center; }
+        .field-label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: 6px; text-align: left; }
+        .demo-card input[type="text"] {
+            width: 100%; font-family: inherit; font-size: .95rem; color: var(--text);
+            background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px;
+            transition: border-color .12s ease, box-shadow .12s ease;
+        }
+        .demo-card input[type="text"]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+
+        .counter {
+            width: 150px; height: 150px; border-radius: 50%; margin: 8px auto 22px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: #fff; background: var(--accent);
+            background-image: linear-gradient(135deg, var(--accent-soft), var(--accent));
+            box-shadow: var(--shadow);
+        }
+        .counter .day { font-size: 2.6rem; font-weight: 800; line-height: 1; }
+        .counter .day-text { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; display: none; }
+
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;
+            padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: .92rem; font-family: inherit;
+            border: 1px solid var(--line); color: var(--text); background: var(--surface);
+            transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+        }
+        .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--accent); text-decoration: none; }
+
+        footer { border-top: 1px solid var(--line); padding: 36px 0; text-align: center; color: var(--text-soft); }
+        .social { display: flex; justify-content: center; gap: 18px; margin-bottom: 16px; }
+        .social a { color: var(--text-soft); font-weight: 600; font-size: .9rem; }
+        .social a:hover { color: var(--accent); text-decoration: none; }
+        .copyright { font-size: .82rem; }
+    </style>
+</head>
+
+<body>
+    <header class="nav">
+        <div class="wrap nav-inner">
+            <a class="brand" href="index.html">Ricky<span>.</span>Kennedy</a>
+            <nav class="nav-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#journey">Journey</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="portfolio.html" class="current">Projects</a>
+                <a href="writing.html">Writing</a>
+                <a href="resume.html">Résumé</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="wrap">
+        <div class="page-head">
+            <a class="back" href="portfolio.html">← Projects</a>
+            <h1>Days-Since Counter</h1>
+            <p class="lead">Pick any date and this little widget tells you how many days have passed since — a small
+                jQuery UI datepicker demo. Runs entirely in your browser, no server needed.</p>
+            <div class="stack-tags"><span>jQuery</span><span>jQuery UI</span></div>
         </div>
 
-        <!-- <div class="header-background">
-            <div id="mask-overlay"></div>
-            <div class='header'>
-                <h1>Ricky Kennedy</h1>
-                <h2 class="highlight">Live to code and code to live</h2>
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                      <blockquote class="marquee">
-                        Mobile and Web Developer.
-                      </blockquote>
+        <section>
+            <div class="demo-card">
+                <div class="counter">
+                    <p class="day">—</p>
+                    <p class="day-text">days</p>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                     <h3> Programming Quote </h3>
-                      <blockquote>
-                        "The trouble with programmers is that you can never tell what a programmer is doing until it’s too late"
-                        - Seymour Cray
-                      </blockquote>
+
+                <div id="getting-started"></div>
+
+                <label class="field-label" for="counter-date">Choose a date</label>
+                <input id="counter-date" type="text" class="first_day" placeholder="Pick a date" value="" />
+
+                <div style="margin-top: 14px;">
+                    <button class="btn my-btn" type="button">Use a sample date</button>
                 </div>
             </div>
-        </div> -->
+        </section>
+    </div>
 
-        
-
-        <!-- <div id="container-last" class="container">
-            <div class="container-left">
-                <h1>Contact Info</h1>
-                <ul>
-                    <li><i></i><span>Email:</span> <a href="javascript:void(0);">Rickykennedy.development@gmail.com</a></li>
-                    <li><i></i><span>Mobile:</span> <span class="phone-code" href="#" data-toggle="tooltip" title="International Code Number for Singapore" data-placement="top">+65 </span> <span>9224 2773</span></li>
-                </ul>
+    <footer>
+        <div class="wrap">
+            <div class="social">
+                <a target="_blank" rel="noopener" href="https://github.com/rickykennedy">GitHub</a>
+                <a target="_blank" rel="noopener" href="https://stackoverflow.com/users/891005/icezz">Stack Overflow</a>
+                <a target="_blank" rel="noopener" href="https://www.twitter.com/woshiricky">Twitter</a>
+                <a target="_blank" rel="noopener" href="https://www.instagram.com/ricky_kennedy">Instagram</a>
             </div>
+            <div class="copyright">&copy; <span id="currentYear"></span> Ricky Kennedy</div>
         </div>
-        <div id="footer">
-            <div class="row">
-              <div class="col-xs-12 col-md-6 copyright">© 2016 Ricky Kennedy. All Rights Reserved.</div>
-              <div class="col-xs-12 col-md-6">
-                    <ul class="list-group">
-                        <li class="list-group-item social-media"><a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/woshiricky"><img alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0></a></li>
-                        <li class="list-group-item social-media"><a target="_blank" title="follow me on facebook" href="http://www.facebook.com/woshiricky"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a></li>
-                        <li class="list-group-item social-media"><a target="_blank" title="follow me on instagram" href="http://www.instagram.com/ricky_kennedy"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a></li>
-                        <li class="list-group-item social-media"><a target="_blank" title="follow me on github" href="https://github.com/rickykennedy"><img src="public/images/GitHub-Mark-32px.png"></a></li>
-                        <li class="list-group-item social-media back-to-top"><a id="top" href="#" style="display: none; opacity: 1;"><span class="glyphicon glyphicon-chevron-up"></span></a></li>
-                    </ul>
+    </footer>
 
-                    
-              </div>
-            </div>
-            <div class="right"></div>
-        </div> -->
-        <script type="text/javascript">
-        $(document).ready(function(){
-            $( function() {
-                $( ".first_day" ).datepicker({
-                    changeMonth: true,
-                    changeYear: true
-                });
+    <script type="text/javascript" src="public/js/jquery.js"></script>
+    <script type="text/javascript" src="public/js/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#currentYear").text((new Date).getFullYear());
+
+            $(".first_day").datepicker({
+                changeMonth: true,
+                changeYear: true
             });
-            $('.my-btn').on('click',function(){
+
+            $('.my-btn').on('click', function () {
                 var firstDay = '02/14/2015';
                 $('.first_day').val(firstDay);
                 countDate(firstDay);
             });
-            $('.first_day').on('change',function(){
-                console.log($('.first_day').val());
+
+            $('.first_day').on('change', function () {
                 var firstDay = $('.first_day').val();
                 countDate(firstDay);
             });
-            function countDate(firstDay){
 
+            function countDate(firstDay) {
                 var dateObj = new Date();
-                var month = dateObj.getUTCMonth() + 1; //months from 1-12
+                var month = dateObj.getUTCMonth() + 1;
                 var day = dateObj.getUTCDate();
                 var year = dateObj.getUTCFullYear();
 
                 var today = month + "/" + day + "/" + year;
                 var diffDays = daydiff(parseDate(firstDay), parseDate(today)) + 1;
-                if(diffDays >= 0){
-                    if(diffDays == 0){
-                        $('.day-text').html('day');
-                    }else{
-                        $('.day-text').html('days');
-                    }
+                if (diffDays >= 0) {
+                    $('.day-text').html(diffDays == 0 ? 'day' : 'days');
                     $('.day').html(diffDays);
                     $('.day-text').show();
-                }else{
-                    alert('Please choose older date.');
+                } else {
+                    alert('Please choose an older date.');
                 }
             }
+
             function parseDate(str) {
                 var mdy = str.split('/');
-                return new Date(mdy[2], mdy[0]-1, mdy[1]);
+                return new Date(mdy[2], mdy[0] - 1, mdy[1]);
             }
 
             function daydiff(first, second) {
-                return Math.round((second-first)/(1000*60*60*24));
+                return Math.round((second - first) / (1000 * 60 * 60 * 24));
             }
-            // $('[data-toggle="tooltip"]').tooltip(); 
-            //     $(window).scroll(function() {
-            //      if ($(this).scrollTop() > 100) {
-            //         $('#top').fadeIn();
-            //     } else {
-            //         // $('#top').css({'opacity':'0','display':'none'}).fadeOut();
-            //         $('#top').fadeOut();
-            //         // $('#top').css(['opacity','display'],['0','none']);
-            //     }
-            // });
-            //  $('#getting-started').countdown('2018/01/01', function(event) {
-            //     $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
-            // });
         });
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>
