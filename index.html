@@ -466,6 +466,71 @@
             margin-top: 2px;
         }
 
+        /* ---------- Learning wishlist / experiments ---------- */
+        .experiments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+
+        .xp-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: transform .12s ease, border-color .12s ease;
+        }
+
+        .xp-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .xp-card .learn {
+            font-weight: 700;
+            font-size: 1.02rem;
+            letter-spacing: -.01em;
+        }
+
+        .xp-card .prove {
+            color: var(--text-soft);
+            font-size: .92rem;
+            margin-top: 8px;
+        }
+
+        .xp-card .prove b {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .xp-status {
+            align-self: flex-start;
+            margin-top: 16px;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            color: var(--text-soft);
+            background: var(--bg-alt);
+        }
+
+        .xp-status.building {
+            color: #fff;
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .xp-status.done {
+            color: var(--accent);
+            border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+        }
+
         /* ---------- Footer ---------- */
         footer {
             border-top: 1px solid var(--line);
@@ -506,6 +571,7 @@
                 <a href="#about">About</a>
                 <a href="#journey">Journey</a>
                 <a href="#skills">Skills</a>
+                <a href="#wishlist">Wishlist</a>
                 <a href="portfolio.html">Projects</a>
                 <a href="writing.html">Writing</a>
                 <a href="resume.html">Résumé</a>
@@ -786,6 +852,49 @@
                             <span class="item-title">Developer tooling &amp; automation</span>
                         </li>
                     </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         LEARNING WISHLIST
+         A hands-on experiments backlog: things I want to LEARN, each paired
+         with how I'll PROVE it (a real project, not a toy demo).
+         To add one, copy a <div class="xp-card"> block. Status chip options:
+           <span class="xp-status">Idea</span>            (default / grey)
+           <span class="xp-status building">Building</span> (accent fill)
+           <span class="xp-status done">Done</span>         (accent outline)
+    ====================================================================== -->
+    <section id="wishlist">
+        <div class="wrap">
+            <div class="section-head">
+                <h2>Learning Wishlist</h2>
+                <span class="kicker">experiments I want to build — the technique &amp; how I'll prove it</span>
+            </div>
+            <div class="experiments">
+
+                <div class="xp-card">
+                    <div class="learn">Micro-frontends + BFF</div>
+                    <div class="prove">Wire a micro-frontend architecture with a <b>backend-for-frontend</b> layer
+                        into a real project — independently deployable UIs, one tailored API per experience.</div>
+                    <span class="xp-status">Idea</span>
+                </div>
+
+                <!-- TODO: the entries below are starters — edit or replace with your own -->
+                <div class="xp-card">
+                    <div class="learn">Event-driven architecture</div>
+                    <div class="prove">Build a service that reacts to a <b>message broker</b> (Kafka / NATS) instead
+                        of synchronous calls — ties into the event-driven work I'm digging into.</div>
+                    <span class="xp-status">Idea</span>
+                </div>
+
+                <div class="xp-card">
+                    <div class="learn">End-to-end observability</div>
+                    <div class="prove">Instrument a project with <b>OpenTelemetry</b> tracing, metrics and logs, and
+                        actually debug a real issue from the traces.</div>
+                    <span class="xp-status">Idea</span>
                 </div>
 
             </div>
